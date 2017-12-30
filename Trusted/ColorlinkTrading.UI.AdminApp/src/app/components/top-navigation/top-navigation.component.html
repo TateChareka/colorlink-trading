@@ -1,0 +1,183 @@
+<button md-button [mdMenuTriggerFor]="transactionsMenu">
+    <md-icon>credit_card</md-icon>
+    <span> TRANSACTIONS </span>
+</button>
+
+<button md-button [mdMenuTriggerFor]="customersMenu">
+    <md-icon>people</md-icon>
+    <span> MEMBERS </span>
+</button>
+
+
+<button md-button [mdMenuTriggerFor]="communicationsMenu">
+    <md-icon>mail</md-icon>
+    <span> COMMUNICATIONS </span>
+</button>
+
+<button md-button [mdMenuTriggerFor]="spendingPartnersMenu">
+    <md-icon>people</md-icon>
+    <span> SPENDING PARTNERS </span>
+</button>
+
+<a button md-button [mdMenuTriggerFor]="metricsMenu">
+    <md-icon>attachment</md-icon>
+    <span> METRICS </span>
+</a>
+
+<button md-button [mdMenuTriggerFor]="schoolsMenu">
+    <md-icon>folder_open</md-icon>
+    <span> EDUCATIONAL INSTITUTIONS </span>
+</button>
+
+<button md-button [mdMenuTriggerFor]="feesMenu">
+    <md-icon>credit_card</md-icon>
+    <span> FEES </span>
+</button>
+
+
+
+<!-- <button md-button [mdMenuTriggerFor]="employeesMenu">
+    <md-icon>people</md-icon>
+    <span> EMPLOYEES </span>
+</button>
+
+<a button md-button [mdMenuTriggerFor]="growthMenu">
+    <md-icon>shopping_cart</md-icon>
+    <span> GROWTH </span>
+</a> -->
+
+
+<md-menu #customersMenu="mdMenu">
+    <a md-menu-item routerLink="/members-list">
+        <md-icon>people</md-icon>
+        <span>Member List</span>
+    </a>
+    <a md-menu-item routerLink="/acceleratorlistings-list">
+        <md-icon>card_membership</md-icon>
+        <span>Accelerator Listings</span>
+    </a>
+    <a md-menu-item routerLink="/statementruns-list">
+        <md-icon>folder_open</md-icon>
+        <span>Statement Runs</span>
+    </a>
+    <a md-menu-item routerLink="/memberstatements-list">
+        <md-icon>attachment</md-icon>
+        <span>Member Statements</span>
+    </a>
+    <a md-menu-item routerLink="/dischemactivationstatus-list">
+        <md-icon>shopping_cart</md-icon>
+        <span>Dischem Activation Status</span>
+    </a>
+    <a md-menu-item routerLink="/nedbankactivationstatus-list">
+        <md-icon>credit_card</md-icon>
+        <span>Nedbank Activation Status</span>
+    </a>
+    <a md-menu-item routerLink="/nedbankftpdownload-list">
+        <md-icon>cloud_download</md-icon>
+        <span>Nedbank FTP Download</span>
+    </a>
+</md-menu>
+
+<md-menu #transactionsMenu="mdMenu">
+    <a md-menu-item routerLink="/spendingtoolsummary-list">
+        <md-icon>people</md-icon>
+        <span>Spending Tool Summary</span>
+    </a>
+    <a md-menu-item routerLink="/spendingtooltransactions-list">
+        <md-icon>list</md-icon>
+        <span>Spending Tool Transactions</span>
+    </a>
+    <a md-menu-item routerLink="/acceleratortransactions-list">
+        <md-icon>list</md-icon>
+        <span>Accelerator Tool Transactions</span>
+    </a>
+    <a md-menu-item routerLink="/generositytransactions-list">
+        <md-icon>list</md-icon>
+        <span>Generosity Tool Transactions</span>
+    </a>
+    <a md-menu-item routerLink="/valuetransactions-list">
+        <md-icon>list</md-icon>
+        <span>Value Tool Transactions</span>
+    </a>
+    <a md-menu-item routerLink="/accountfeessummary-list">
+        <md-icon>list</md-icon>
+        <span>Account Fees Summary</span>
+    </a>
+    <a md-menu-item routerLink="/accountfeetransactions-list">
+        <md-icon>list</md-icon>
+        <span>Account Fee Transactions</span>
+    </a>
+    <a md-menu-item routerLink="/growthtransactions-list">
+        <md-icon>list</md-icon>
+        <span>Account Growth Transactions</span>
+    </a>
+    <a md-menu-item routerLink="/transactionssummary-list">
+        <md-icon>list</md-icon>
+        <span>Monthly Transaction Summary</span>
+    </a>
+    <a md-menu-item routerLink="/processacceleratortool-list">
+        <md-icon>attachment</md-icon>
+        <span>Process Accelerator Tool</span>
+    </a>
+
+    <a md-menu-item routerLink="/processspendingtool-list">
+        <md-icon>attachment</md-icon>
+        <span>Process Spending Partner Tools</span>
+    </a>
+
+</md-menu>
+
+<md-menu #communicationsMenu="mdMenu">
+    <a md-menu-item routerLink="/communicationsmessages-list">
+        <md-icon>people</md-icon>
+        <span>Communication Messages</span>
+    </a>
+    <a md-menu-item routerLink="/communicationstemplates-list">
+        <md-icon>card_membership</md-icon>
+        <span>Communication Templates</span>
+    </a>
+    <a md-menu-item routerLink="/communicationstypes-list">
+        <md-icon>folder_open</md-icon>
+        <span>Communication Types</span>
+    </a>
+    <a md-menu-item routerLink="/messagelogs-list">
+        <md-icon>mail</md-icon>
+        <span>Message Logs</span>
+    </a>
+</md-menu>
+
+<md-menu #spendingPartnersMenu="mdMenu">
+    <a md-menu-item routerLink="/spendingpartner-list">
+        <md-icon>people</md-icon>
+        <span>Spending Partner List</span>
+    </a>
+</md-menu>
+
+<md-menu #feesMenu="mdMenu">
+    <a md-menu-item routerLink="/accountfee-list">
+        <md-icon>attachment</md-icon>
+        <span>Process Account Fees</span>
+    </a>
+</md-menu>
+
+<md-menu #metricsMenu="mdMenu">
+    <a md-menu-item routerLink="/metrics-list">
+        <md-icon>credit_card</md-icon>
+        <span>Member Metric - By Month</span>
+    </a>
+</md-menu>
+
+
+<!-- <md-menu #growthMenu="mdMenu">
+
+</md-menu>
+<md-menu #employeesMenu="mdMenu">
+
+</md-menu> -->
+
+<md-menu #schoolsMenu="mdMenu">
+    <a md-menu-item routerLink="/educationalinstitution-list">
+        <md-icon>list</md-icon>
+        <span>Educational Institution List</span>
+    </a>
+</md-menu>

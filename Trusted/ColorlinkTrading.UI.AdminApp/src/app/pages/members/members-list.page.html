@@ -1,0 +1,88 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+
+	<dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+	 [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+		<dxo-filter-row [visible]="showFilterRow" [applyFilter]="auto"></dxo-filter-row>
+		<dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+
+		<dxi-column dataField="PersonId" caption="Id" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CardNumber" caption="Card Number" [hidingPriority]="12" headerCellTemplate="headerTemplate" cellTemplate="highlightCellTemplate"></dxi-column>
+		<dxi-column dataField="Title" caption="Title" [hidingPriority]="07" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="FirstName" caption="First Name" [hidingPriority]="11" headerCellTemplate="headerTemplate" cellTemplate="highlightCellTemplate"></dxi-column>
+		<dxi-column dataField="LastName" caption="Last Name" [hidingPriority]="10" headerCellTemplate="headerTemplate" cellTemplate="highlightCellTemplate"></dxi-column>
+		<dxi-column dataField="Gender" caption="Gender" [hidingPriority]="06" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="IdentificationDetails" caption="Identification Details" [hidingPriority]="06" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="Email" caption="Email Address" [hidingPriority]="08" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="MobileNumber" caption="Mobile Number" [hidingPriority]="05" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="RegistrationSource" caption="Registration Source" [hidingPriority]="12" headerCellTemplate="headerTemplate"
+		 cellTemplate="highlightCellTemplate"></dxi-column>
+		<dxi-column dataField="AccountStatus" caption="Account Status" [hidingPriority]="01" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CreatedDate" caption="Registration Date" [hidingPriority]="09" headerCellTemplate="headerTemplate"
+		 [customizeText]="formatDateTimeColumn"></dxi-column>
+		<dxi-column dataField="IsCommunicationsEnabled" caption="Is Communications Enabled" [hidingPriority]="09" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="AddressDetails" caption="Address" [hidingPriority]="01" headerCellTemplate="headerTemplate" cellTemplate="highlightCellTemplate"></dxi-column>
+
+		<dxi-column [customizeText]="generateActionsCell" caption="Actions" cellTemplate="actionCellTemplate"></dxi-column>
+		<div *dxTemplate="let info of 'headerTemplate'">
+			<span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+		</div>
+
+		<div *dxTemplate="let a of 'actionCellTemplate'">
+			<button *ngIf="a.data.IsCommunicationsEnabled" md-icon-button mdTooltip="Actions" [mdMenuTriggerFor]="enabledMenu" mdTooltipPosition="right"
+			 (click)="ActionRow = a.data">
+				<i class="material-icons">settings</i>
+			</button>
+			<button *ngIf="!a.data.IsCommunicationsEnabled" md-icon-button mdTooltip="Actions" [mdMenuTriggerFor]="disabledMenu" mdTooltipPosition="right"
+			 (click)="ActionRow = a.data">
+				<i class="material-icons">settings</i>
+			</button>
+		</div>
+
+
+		<dxo-search-panel [visible]="false" [width]="240" placeholder="Search..." [highlightSearchText]="true"></dxo-search-panel>
+		<div *dxTemplate="let data of 'totalItemCount'">
+			<div class="informer">
+				<h2 class="count">{{totalCount}}</h2>
+				<span class="name">Total Count</span>
+			</div>
+		</div>
+		<div *dxTemplate="let data of 'periodLabel'">
+			<h3 class="period-dropdown-label">Registration Date</h3>
+		</div>
+		<div *dxTemplate="let d of 'highlightCellTemplate'" [innerHTML]="(d | gridTextHighlight: SearchText)"></div>
+
+		<dxo-paging [pageSize]="20"></dxo-paging>
+		<dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20,50,100]"></dxo-pager>
+
+		<dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+		<dxo-remote-operations [filtering]="true" [sorting]="true" [paging]="true">
+		</dxo-remote-operations>
+	</dx-data-grid>
+
+	<md-menu #disabledMenu="mdMenu" xPosition="before" yPosition="below">
+		<button md-menu-item (click)="EnableCommunications()"> Enable Comms </button>
+		<button md-menu-item (click)="manageMember()"> Manage Member </button>
+		<button md-menu-item (click)="deleteMember()"> Delete Member </button>
+	</md-menu>
+	<md-menu #enabledMenu="mdMenu" xPosition="before" yPosition="below">
+		<button md-menu-item (click)="DisableCommunications()"> Disable Comms </button>
+		<button md-menu-item (click)="manageMember()"> Manage Member </button>
+		<button md-menu-item (click)="deleteMember()"> Delete Member </button>
+	</md-menu>
+</div>
+
+<dx-popup title="Confirmation" [dragEnabled]="false" [closeOnOutsideClick]="true" class="popup" [width]="350" [height]="150"
+ [showTitle]="false" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupMailDeleteVisible">
+	<div *dxTemplate="let data of 'content'">
+		<p align="center">
+			Are you sure you want to delete this Member?
+		</p>
+		<p align="center">
+			<dx-button text="Yes" type="danger" [useSubmitBehavior]="true" (onClick)="deleteMemberYes()">
+			</dx-button>
+			<dx-button text="No" type="success" [useSubmitBehavior]="true" (onClick)="deleteMemberNo()">
+			</dx-button>
+		</p>
+	</div>
+</dx-popup>

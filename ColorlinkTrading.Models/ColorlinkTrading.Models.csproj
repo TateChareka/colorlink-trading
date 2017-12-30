@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0AFF4666-A28C-41E9-A102-6CA081BA7392}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ColorlinkTrading.Models</RootNamespace>
+    <AssemblyName>ColorlinkTrading.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeliveryNote\DNoteProductItemResultModel.cs" />
+    <Compile Include="NonVatInvoice\NonVatInvoiceItemResultModel.cs" />
+    <Compile Include="NonVatInvoice\NonVatInvoiceListResultModel.cs" />
+    <Compile Include="NonVatInvoice\NonVatInvoiceProductItemResultModel.cs" />
+    <Compile Include="NonVatInvoice\NonVatInvoiceRequestModel.cs" />
+    <Compile Include="VATDeduction\VATDeductionItemResultModel.cs" />
+    <Compile Include="VATDeduction\VATDeductionListResultModel.cs" />
+    <Compile Include="VATDeduction\VATDeductionRequestModel.cs" />
+    <Compile Include="Payment\PaymentItemResultModel.cs" />
+    <Compile Include="Payment\PaymentListResultModel.cs" />
+    <Compile Include="Payment\PaymentRequestModel.cs" />
+    <Compile Include="Letter\LetterItemResultModel.cs" />
+    <Compile Include="Letter\LetterListResultModel.cs" />
+    <Compile Include="Letter\LetterRequestModel.cs" />
+    <Compile Include="ProformaInvoice\ProformaRequestModel.cs" />
+    <Compile Include="ProformaInvoice\ProformaItemResultModel.cs" />
+    <Compile Include="ProformaInvoice\ProformaListResultModel.cs" />
+    <Compile Include="ProformaInvoice\ProformaProductItemResultModel.cs" />
+    <Compile Include="DeliveryNote\DNoteItemResultModel.cs" />
+    <Compile Include="DeliveryNote\DNoteListResultModel.cs" />
+    <Compile Include="DeliveryNote\DNoteRequestModel.cs" />
+    <Compile Include="Product\ProductItemResultModel.cs" />
+    <Compile Include="Product\ProductListResultModel.cs" />
+    <Compile Include="Product\ProductRequestModel.cs" />
+    <Compile Include="Qoutation\QoutationRequestModel.cs" />
+    <Compile Include="Qoutation\QoutationItemResultModel.cs" />
+    <Compile Include="Qoutation\QoutationListResultModel.cs" />
+    <Compile Include="Qoutation\QoutationProductItemResultModel.cs" />
+    <Compile Include="Customer\CustomerRequestModel.cs" />
+    <Compile Include="Customer\CustomerItemResultModel.cs" />
+    <Compile Include="Customer\CustomerListResultModel.cs" />
+    <Compile Include="Security\MemberGUIDRequestModel.cs" />
+    <Compile Include="Standard\GenericFilterDataRequestModel.cs" />
+    <Compile Include="FileUpload\FileUploadRequestModel.cs" />
+    <Compile Include="Standard\DevExtremeFilter.cs" />
+    <Compile Include="Standard\DevExtremeFilterGroup.cs" />
+    <Compile Include="Standard\DevExtremeFilterItem.cs" />
+    <Compile Include="Standard\GenericConfigurationRequestModel.cs" />
+    <Compile Include="Standard\GenericListResultModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\MemberPasswordResetModel.cs" />
+    <Compile Include="Security\MemberRequestModel.cs" />
+    <Compile Include="Security\MemberModel.cs" />
+    <Compile Include="Security\MemberAuthenticationRequestModel.cs" />
+    <Compile Include="Security\MemberAuthenticationResultModel.cs" />
+    <Compile Include="Standard\GenericItemRequestModel.cs" />
+    <Compile Include="Standard\GenericMediaResultModel.cs" />
+    <Compile Include="Standard\GenericPageRequestModel.cs" />
+    <Compile Include="Standard\GenericPageResultModel.cs" />
+    <Compile Include="Standard\GenericMediaRequestModel.cs" />
+    <Compile Include="Standard\GenericRequestModel.cs" />
+    <Compile Include="Standard\GenericResultModel.cs" />
+    <Compile Include="Standard\GenericItemResultModel.cs" />
+    <Compile Include="Standard\GenericSearchRequestModel.cs" />
+    <Compile Include="VatInvoice\VatInvoiceRequestModel.cs" />
+    <Compile Include="VatInvoice\VatInvoiceItemResultModel.cs" />
+    <Compile Include="VatInvoice\VatInvoiceListResultModel.cs" />
+    <Compile Include="VatInvoice\VatInvoiceProductItemResultModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ColorlinkTrading.DataAccess\ColorlinkTrading.DataAccess.csproj">
+      <Project>{7479f968-40f6-4fe2-977a-469b82b57523}</Project>
+      <Name>ColorlinkTrading.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SofticeMailFetcher\SofticeMailFetcher.csproj">
+      <Project>{14b03773-2c4d-474a-acb2-b7f3a006a6b0}</Project>
+      <Name>SofticeMailFetcher</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,17 @@
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\Trusted.GENIE.Models.dll.config
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\Trusted.GENIE.Models.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\Trusted.GENIE.Models.pdb
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\ChilkatDotNet45.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\DocumentFormat.OpenXml.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\EntityFramework.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\EntityFramework.SqlServer.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\System.Linq.Dynamic.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\Trusted.GENIE.DataAccess.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\Trusted.GENIE.DataAccess.pdb
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\Trusted.GENIE.DataAccess.dll.config
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\DocumentFormat.OpenXml.xml
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\EntityFramework.xml
+C:\Projects\trusted-genie\Trusted.GENIE.Models\bin\x64\Debug\EntityFramework.SqlServer.xml
+C:\Projects\trusted-genie\Trusted.GENIE.Models\obj\x64\Debug\Trusted.GENIE.Models.csprojResolveAssemblyReference.cache
+C:\Projects\trusted-genie\Trusted.GENIE.Models\obj\x64\Debug\Trusted.GENIE.Models.dll
+C:\Projects\trusted-genie\Trusted.GENIE.Models\obj\x64\Debug\Trusted.GENIE.Models.pdb

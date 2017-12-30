@@ -1,0 +1,187 @@
+<div fxLayout="row" fxLayoutAlign="center center" max-width="600">
+    <form class="centerForm" (submit)="SaveRecord($event)">
+
+        <dx-form id="form" [colCount]="1" [formData]="focustItem" [readOnly]="false" [showColonAfterLabel]="true" [showValidationSummary]="true"
+            validationGroup="EducationalInstitutionData">
+            <dxi-item itemType="tabbed" [tabPanelOptions]="{ deferRendering: false }">
+
+                <dxi-tab title="Information">
+                    <dxi-item dataField="EducationalInstitutionId" [editorOptions]="{ disabled: true }">
+                        <dxo-label text="ID"> </dxo-label>
+                    </dxi-item>
+
+                    <dxi-item dataField="EducationalInstitutionName">
+                        <dxo-label text="Institution Name"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Institution Name is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolsContactTelephone">
+                        <dxo-label text="Contact Number"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Contact Number is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolAccountsDeptEmail">
+                        <dxo-label text="Email Address"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Email Address is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="EducationDepartmentRegNo">
+                        <dxo-label text="Reg No"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Reg No is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="StartGradeId" editorType="dxSelectBox" caption="Start Grade Id" [editorOptions]="{
+                        placeholder:'Start Grade Id',
+                        items: GradesList, 
+                        displayExpr: 'value',
+                        valueExpr: 'value'
+                        }">
+                        <dxo-label text="Start Grade"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Start Grade is required"> </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="FinishGradeId" editorType="dxSelectBox" caption="Finish Grade Id" [editorOptions]="{
+                        placeholder:'Finish Grade Id',
+                        items: GradesList, 
+                        displayExpr: 'value',
+                        valueExpr: 'value'
+                        }">
+                        <dxo-label text="Finish Grade"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Finish Grade is required"> </dxi-validation-rule>
+                    </dxi-item>
+                </dxi-tab>
+
+                <dxi-tab title="Address">
+
+                    <dxi-item dataField="SchoolLocationAddressLine1" editorType="dxTextArea" caption="Address Line 1" [editorOptions]="{
+                        placeholder:'Address Line 1',
+                        height: 90, 
+                        maxLength: '100'
+                        }">
+                        <dxo-label text="Address Line 1"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Address is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolLocationAddressLine2" editorType="dxTextArea" caption="Address Line 2" [editorOptions]="{
+                        placeholder:'Address Line 2',
+                        height: 90, 
+                        maxLength: '100'
+                        }">
+                        <dxo-label text="Address Line 2"> </dxo-label>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolLocationCityorTown">
+                        <dxo-label text="City or Town"> </dxo-label>
+                        <dxi-validation-rule type="required" message="City or Town is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolLocationProvinceId" editorType="dxSelectBox" caption="Province" [editorOptions]="{
+                        placeholder:'Province',
+                        items: ProvincesList, 
+                        displayExpr: 'text',
+                        valueExpr: 'value'
+                        }">
+                        <dxo-label text="Province"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Province is required"> </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolLocationPostalCode">
+                        <dxo-label text="Postal Code"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Postal Code is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolLocationLatitude">
+                        <dxo-label text="Latitude"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Latitude is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolLocationLongitude">
+                        <dxo-label text="Longitude"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Longitude is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+                </dxi-tab>
+
+                <dxi-tab title="Contact Person">
+
+                    <dxi-item dataField="SchoolPrimaryContactPerson">
+                        <dxo-label text="Primary Contact Person"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Primary Contact Person is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+
+                    <dxi-item dataField="SchoolPrimaryContactPersonRole">
+                        <dxo-label text="Primary Contacts' Role"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Primary Contacts' Role is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolPrimaryContactPersonTitle">
+                        <dxo-label text="Primary Contacts' Title"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Primary Contacts' Title is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="SchoolSecondContactPerson">
+                        <dxo-label text="Secondary Contact Person"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Secondary Contact Person is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+                </dxi-tab>
+
+                <dxi-tab title="Banking Details">
+                    <dxi-item dataField="BankName">
+                        <dxo-label text="Bank Name"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Bank Name is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="BankAccountName">
+                        <dxo-label text="Account Name"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Account Name is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="BankAccountNo">
+                        <dxo-label text="Account Number"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Account Number is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="BranchCode">
+                        <dxo-label text="Branch Code"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Branch Code is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                    <dxi-item dataField="AccountType">
+                        <dxo-label text="Accoun Type"> </dxo-label>
+                        <dxi-validation-rule type="required" message="Account Type is required">
+                        </dxi-validation-rule>
+                    </dxi-item>
+
+                </dxi-tab>
+
+            </dxi-item>
+        </dx-form>
+        <br />
+        <br />
+        <div>
+            <dx-button text="Cancel" type="danger" (click)="CancelSave()" [useSubmitBehavior]="true" width="100">
+            </dx-button>
+            <dx-button text="Save" type="default" [useSubmitBehavior]="true" width="100" validationGroup="EducationalInstitutionData"
+                style="margin-left:300px" [useSubmitBehavior]="true">
+            </dx-button>
+        </div>
+
+    </form>
+</div>

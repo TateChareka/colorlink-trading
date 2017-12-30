@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+:root {
+    --header-color:rgb(63, 81, 181);
+    --header-text-color: #fff;
+    --search-text-highlight-color: yellow;
+}
+body {
+    margin: 0px;
+}
+.mat-card-title {
+    color: var(--header-color);
+}
+/* grid styling */
+div.dx-datagrid-headers table.dx-datagrid-table tbody tr.dx-header-row td {
+    background-color: var(--header-color);
+    color: var(--header-text-color);
+    font-weight: bold;
+}
+.dx-datagrid-column-chooser .dx-overlay-content .dx-popup-title {
+    background-color: var(--header-color)!important;
+    color: var(--header-text-color);
+}
+.dx-datagrid-column-chooser .dx-overlay-content .dx-popup-title .dx-closebutton .dx-icon {
+    color: var(--header-text-color);
+}
+.dx-datagrid-column-chooser .dx-overlay-content .dx-popup-title .dx-closebutton .dx-icon:hover {
+    color: var(--header-color);
+}
+fab styling
+.mat-fab.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+    background-color: var(--header-color);
+}
+.toolbar-fill-remaining-space {
+    flex: 1 1 auto;
+}
+/* grid text highlighting on search */
+.grid-highlight-search {
+    background-color: var(--search-text-highlight-color);
+}
+
+
+.centerForm
+{
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #3f51b5;
+    display: block;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .centerForm
+    {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,56 @@
+<div fxLayout="row" fxLayoutAlign="center center" max-width="600">
+    <form class="centerForm" (submit)="SaveRecord($event)">
+        <dx-form id="form" [colCount]="1" [formData]="focustItem" [readOnly]="false" [showColonAfterLabel]="true" [showValidationSummary]="true"
+            validationGroup="AcceleratorData">
+            <dxi-item dataField="AcceleratorId" [editorOptions]="{ disabled: true }">
+                <dxo-label text="ID"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="CardNumber" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Card Number"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="FullName" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Full Name"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="Email" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Email Address"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="MobileNumber" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Mobile Number"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="IdentificationNumber" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Identification Number"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="PaymentMethodType" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Payment Method Type"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="ZARAmount" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Amount (ZAR)"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="AccountHolderName" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Account Holder Name"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="PaymentDay" [editorOptions]="{ disabled: true }">
+                <dxo-label text="Payment Day"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="AcceleratorStatus" caption="" editorType="dxSelectBox" [editorOptions]="{
+                    placeholder:'Accelerator Status',
+                    items: AcceleratorStatusList
+                    }">
+                <dxo-label text="Accelerator Status">
+                </dxo-label>
+                <dxi-validation-rule type="required" message="Accelerator Status is required">
+                </dxi-validation-rule>
+            </dxi-item>
+        </dx-form>
+        <br />
+        <br />
+        <div>
+            <dx-button text="Cancel" type="danger" (click)="CancelSave()" [useSubmitBehavior]="true" width="100">
+            </dx-button>
+            <dx-button text="Save" type="default" [useSubmitBehavior]="true" width="100" validationGroup="AcceleratorData" style="margin-left:300px"
+                [useSubmitBehavior]="true">
+            </dx-button>
+        </div>
+
+    </form>
+</div>

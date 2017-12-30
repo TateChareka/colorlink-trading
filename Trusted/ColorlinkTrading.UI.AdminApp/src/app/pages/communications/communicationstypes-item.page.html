@@ -1,0 +1,55 @@
+<div fxLayout="row" fxLayoutAlign="center center" max-width="600">
+	<form class="centerForm" (submit)="SaveRecord($event)">
+		<dx-form id="form" [colCount]="1" [formData]="focustItem" [readOnly]="false" [showColonAfterLabel]="true" [showValidationSummary]="true"
+		 validationGroup="CommunicationTypeData">
+
+			<dxi-item dataField="CommunicationTypeId" [editorOptions]="{ disabled: true }">
+				<dxo-label text="ID"> </dxo-label>
+			</dxi-item>
+			<dxi-item dataField="CommunicationType1" [editorOptions]="{ disabled: false }">
+				<dxo-label text="Communication Type"> </dxo-label>
+				<dxi-validation-rule type="required" message="Communiction Type is required"></dxi-validation-rule>
+			</dxi-item>
+			<dxi-item dataField="BrandName" caption="" editorType="dxSelectBox" [editorOptions]="{
+                placeholder:'Brand Name',
+                items: BrandNamesList
+                }">
+				<dxo-label text="Brand Name">
+				</dxo-label>
+				<dxi-validation-rule type="required" message="Brand Name is required">
+				</dxi-validation-rule>
+			</dxi-item>
+
+			<dxi-item itemType="simple" dataField="IsActive" editorType="dxCheckBox" [editorOptions]="{ 
+                text: 'Is Active'
+            }">
+				<dxo-label [visible]="false">
+				</dxo-label>
+			</dxi-item>
+
+			<dxi-item itemType="simple" dataField="IsSystemCommunication" editorType="dxCheckBox" [editorOptions]="{ 
+                text: 'Is System Communication'
+            }">
+				<dxo-label [visible]="false">
+				</dxo-label>
+			</dxi-item>
+
+			<dxi-item itemType="simple" dataField="CanUnsubscribe" editorType="dxCheckBox" [editorOptions]="{ 
+                text: 'Can Unsubscribe'
+            }">
+				<dxo-label [visible]="false">
+				</dxo-label>
+			</dxi-item>
+		</dx-form>
+		<br />
+		<br />
+		<div>
+			<dx-button text="Cancel" type="danger" (click)="CancelSave()" [useSubmitBehavior]="true" width="100">
+			</dx-button>
+			<dx-button text="Save" type="default" [useSubmitBehavior]="true" width="100" validationGroup="CommunicationTypeData" style="margin-left:300px"
+			 [useSubmitBehavior]="true">
+			</dx-button>
+		</div>
+
+	</form>
+</div>

@@ -1,0 +1,70 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="centerForm">
+    <div>
+        Debit Order Date:
+        <br/>
+        <dx-date-box [value]="debitOrderDate" displayFormat="dd MMMM yyyy" width="250"></dx-date-box>
+        <br/> Select File:
+        <br/>
+        <input id="file-field" name="file-field" (change)="uploadFile($event)" type="file" accept=".xlsx,.xls">
+        <br/>
+        <br/>
+
+        <div>
+            <dx-button class="buttonRight" ng-disabled="processState==true" type="default" text="View Transactions" (onClick)="getAcceleratorTransaction()">
+            </dx-button>
+        </div>
+
+
+        <br/>
+        <br/>
+    </div>
+
+    <table class="communicationGridTable" *ngIf="hasContent">
+        <thead>
+            <th>Txn Id</th>
+            <th>Card Number</th>
+            <th>Member Name</th>
+            <th>Bank</th>
+            <th>Banch</th>
+            <th>Account #</th>
+            <th>Amount</th>
+            <th>Validation</th>
+            <th *ngIf="hasError">Feedback</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of AcceleratorTransactionList">
+                <td>{{item.TransactionId}}</td>
+                <td>{{item.CardNumber}}</td>
+                <td>{{item.AccountName}}</td>
+                <td>{{item.Bank}}</td>
+                <td>{{item.Branch}}</td>
+                <td>{{item.AccountNumber}}</td>
+                <td>{{item.Amount}}</td>
+                <td align="center">
+                    <img *ngIf="item.IsValidRow==true" id="check" src="assets/tick.png" height="20" width="20">
+                    <img *ngIf="item.IsValidRow==false" id="error" src="assets/error.png" height="20" width="20">
+                </td>
+                <td *ngIf="hasError">{{item.ValidationFeedback}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <br/>
+        <br/>
+        <dx-button *ngIf="!hasError && hasContent" type="default" text="Process Accelerator Tools" (onClick)="processAcceleratorTransactions()">
+        </dx-button>
+    </div>
+</div>
+
+<dx-popup title="Confirmation" [dragEnabled]="false" [closeOnOutsideClick]="true" class="popup" [width]="350" [height]="150"
+    [showTitle]="false" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupMailDeleteVisible">
+    <div *dxTemplate="let data of 'content'">
+        <p align="center">SUMMARY
+            <br/> {{resultsFeedback}}
+        </p>
+        <p align="center">
+            <dx-button text="Close" type="success" [useSubmitBehavior]="true" (onClick)="closeFeedbackPopup()">
+            </dx-button>
+        </p>
+    </div>
+</dx-popup>

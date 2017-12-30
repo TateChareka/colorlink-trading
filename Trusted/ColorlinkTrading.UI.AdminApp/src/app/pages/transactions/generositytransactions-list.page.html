@@ -1,0 +1,72 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+
+    <dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+        [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+        <dxo-filter-row [visible]="showFilterRow" [applyFilter]="auto"></dxo-filter-row>
+        <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+
+        <dxi-column dataField="GenerosityToolTransactionId" caption="Id" [hidingPriority]="9" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AccountHolderPersonId" caption="Account Holder Person Id" [hidingPriority]="8" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AccountHolderName" caption="Account Holder Name" [hidingPriority]="7" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AccountCardNumber" caption="Account Card Number" [hidingPriority]="6" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="TransactionDateTime" caption="Date" headerCellTemplate="headerTemplate" [hidingPriority]="5"[customizeText]="formatDateColumn"></dxi-column>
+        <dxi-column dataField="EduTimePoints" caption="EduTime Points" [hidingPriority]="4" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="BeneficiaryCount" caption="Beneficiary Count" [hidingPriority]="3" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AveragePricePerSchoolDay" caption="Average Price Per SchoolDay" [hidingPriority]="2" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="SchoolDaysValue" caption="SchoolDays Value" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+
+       <div *dxTemplate="let info of 'headerTemplate'">
+            <span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+        </div>
+        
+        <dxo-search-panel [visible]="false" [width]="240" placeholder="Search..." [highlightSearchText]="true"></dxo-search-panel>
+
+        <dxo-summary>
+            <dxi-total-item displayFormat="Total: {0}" column="SchoolDaysValue">
+            </dxi-total-item>
+            <dxi-total-item displayFormat="Total: {0}" column="EduTimePoints">
+            </dxi-total-item>
+            <dxi-total-item displayFormat="Total: {0}" column="AveragePricePerSchoolDay">
+            </dxi-total-item>
+            <dxi-total-item displayFormat="Total: {0}" column="BeneficiaryCount">
+            </dxi-total-item>
+        </dxo-summary>
+
+        <div *dxTemplate="let data of 'totalItemCount'">
+            <div class="informer">
+                <h2 class="count">{{totalCount}}</h2>
+                <span class="name">Total Count</span>
+            </div>
+        </div>
+
+        <div *dxTemplate="let data of 'periodLabel'">
+
+        </div>
+
+        <div *dxTemplate="let data of 'monthFromDropDown'">
+            <dx-date-box [acceptCustomValue]="false" [showClearButton]="true" displayFormat="dd MMMM yyyy" type="date" placeholder="Date From"
+                [width]="200" (onValueChanged)="MonthFromChanged($event)" [value]="SearchDateFrom"> </dx-date-box>
+        </div>
+
+        <div *dxTemplate="let data of 'monthToDropDown'">
+            <dx-date-box [acceptCustomValue]="false" [showClearButton]="true" displayFormat="dd MMMM yyyy" type="date" placeholder="Date To"
+                [width]="200" (onValueChanged)="MonthToChanged($event)" [value]="SearchDateTo"> </dx-date-box>
+        </div>
+
+        <div *dxTemplate="let data of 'searchTransactions'">
+            <dx-text-box placeholder="Search ..." [showClearButton]="true" [mode]="Search" (onValueChanged)="TextFilterChanged($event)"
+                [width]="300"></dx-text-box>
+        </div>
+
+        <div *dxTemplate="let d of 'highlightCellTemplate'" [innerHTML]="(d | gridTextHighlight: SearchText)"></div>
+
+        <dxo-paging [pageSize]="20"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20,50,100]"></dxo-pager>
+
+        <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+        <dxo-remote-operations [filtering]="true" [sorting]="true" [paging]="true" [summary]="true">
+        </dxo-remote-operations>
+    </dx-data-grid>
+    
+</div>

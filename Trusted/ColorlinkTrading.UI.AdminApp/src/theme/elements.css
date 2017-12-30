@@ -1,0 +1,71 @@
+.pageModalOverlay
+{
+    background-color: black;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 99990;
+    opacity: .48;
+    top:0;
+    left:0;
+}
+
+.pageModalContainer
+{
+    background-color: transparent;
+    position: fixed;
+    left: 20%;
+    right: 20%;
+    top:10%;
+    z-index: 99999; 
+}
+
+.controlVisible
+{
+    display: block;
+}
+
+.controlInvisible
+{
+    display: none;
+}
+
+.elementAlignLeft
+{
+    text-align: left;
+}
+
+.elementAlignCenter
+{
+    text-align: center;
+}
+
+.elementAlignRight
+{
+    text-align: right;
+}
+
+
+.cursorPointer
+{
+    cursor: pointer;
+}
+
+
+.simpleTable{
+    width:100%;
+    border-collapse: collapse;
+}
+  
+.simpleTable th{
+   text-align: left;
+   border-bottom: 2px solid #E91E63;
+}
+
+.simpleTable td{
+    padding:5px;
+    padding-top:15px;
+    padding-bottom:15px;
+    text-align: left;
+    border-bottom: 1px solid #E91E63;
+}

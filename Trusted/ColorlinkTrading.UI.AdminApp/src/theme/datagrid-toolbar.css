@@ -1,0 +1,32 @@
+/* grid toolbar customisation for searching */
+/deep/ .dx-datagrid-header-panel .dx-toolbar {
+    margin: 0;
+    padding-right: 20px;
+    background-color: #5186C3;
+}
+/deep/ .dx-datagrid-header-panel .dx-toolbar-items-container  {
+    height: 70px;
+}
+.dx-datagrid-header-panel .dx-toolbar-before {
+    background-color: #337AB7;
+}
+/deep/ .informer {
+    height: 70px;
+    width: 130px;
+    text-align: center;
+    background: #2A507C url("/assets/toolbar-arrow.png") no-repeat 100% 50%;
+}
+/deep/ .count {
+    color: #fff;
+    padding-top: 15px;
+    line-height: 27px;
+    margin-bottom: 0px!important;
+    margin-top: 0px!important;
+}
+/deep/ .name {
+    color: #619dd1;
+}
+.period-dropdown-label {
+    color: #fff;
+    font-weight: normal;
+}

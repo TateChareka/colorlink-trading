@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="centerForm">
+
+    <div>
+        <dx-select-box [items]="VendorsList" placeholder="All Spending Partners" [showClearButton]="true" displayExpr="VendorName"
+            valueExpr="VendorId" (onValueChanged)="vendorChanged($event)" [width]="250"></dx-select-box>
+        <br/> Select File:
+        <br/>
+        <input id="file-field" name="file-field" (change)="uploadFile($event)" type="file" accept=".xlsx,.xls">
+        <br/>
+        <br/>
+        <dx-button ng-disabled="processState==true" type="default" text="Process Spending Transaction" (onClick)="processSpendingPartnerTransactions()">
+        </dx-button>
+    </div>
+
+    <dx-text-box *ngIf="hasError" value="Explanation when Error Occurs"></dx-text-box>
+
+    ErrorMessage : {{errorContent}}
+
+</div>

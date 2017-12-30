@@ -1,0 +1,10 @@
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\SofticeMailFetcher.dll
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\SofticeMailFetcher.pdb
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\ChilkatDotNet45.dll
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\DocumentFormat.OpenXml.dll
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\HtmlAgilityPack.dll
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\DocumentFormat.OpenXml.xml
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\HtmlAgilityPack.pdb
+C:\Projects\trusted-genie\SofticeMailFetcher\bin\x64\Debug\HtmlAgilityPack.xml
+C:\Projects\trusted-genie\SofticeMailFetcher\obj\x64\Debug\SofticeMailFetcher.dll
+C:\Projects\trusted-genie\SofticeMailFetcher\obj\x64\Debug\SofticeMailFetcher.pdb

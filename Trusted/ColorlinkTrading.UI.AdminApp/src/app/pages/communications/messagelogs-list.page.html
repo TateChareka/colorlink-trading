@@ -1,0 +1,102 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+
+	<dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+	 [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+		<dxo-filter-row [visible]="showFilterRow" [applyFilter]="auto"></dxo-filter-row>
+		<dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+
+		<dxi-column dataField="MessageQueueItemId" caption="Id" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="BrandName" caption="Brand Name" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="PersonCardNumber" caption="Card Number" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="DateQueuedToSend" caption="Date Queued To Send" [customizeText]="formatDateTimeColumn" [hidingPriority]="1"
+		 headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="MsgTo" caption="Message To" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="DateSent" caption="Date Sent" [hidingPriority]="1" [customizeText]="formatDateTimeColumn" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="MessageTypeDescription" caption="Message Type" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="MsgSubject" caption="Message Subject" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="MsgCC" caption="Message CC" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CreatedByUserName" caption="Created By" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="AttachmentCount" caption="Attachment Count" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="TrackingDateLinkClicked" caption="Tracking Date Link Clicked" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="TrackingDateViewed" caption="Tracking Date Viewed" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column [customizeText]="generateActionsCell" caption="Actions" cellTemplate="actionCellTemplate"></dxi-column>
+
+
+		<!-- <dxi-column dataField="" caption="" [hidingPriority]="1" headerCellTemplate="headerTemplate"></dxi-column> -->
+		<div *dxTemplate="let info of 'headerTemplate'">
+			<span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+		</div>
+		<div *dxTemplate="let a of 'actionCellTemplate'">
+			<button md-icon-button mdTooltip="Actions" [mdMenuTriggerFor]="viewMenu" mdTooltipPosition="right" (click)="ActionRow = a.data">
+				<i class="material-icons">settings</i>
+			</button>
+		</div>
+		<dxo-search-panel [visible]="false" [width]="240" placeholder="Search..." [highlightSearchText]="true"></dxo-search-panel>
+		<div *dxTemplate="let data of 'totalItemCount'">
+			<div class="informer">
+				<h2 class="count">{{totalCount}}</h2>
+				<span class="name">Total Count</span>
+			</div>
+		</div>
+		<div *dxTemplate="let data of 'periodLabel'">
+			<h3 class="period-dropdown-label">Created Date</h3>
+		</div>
+		<div *dxTemplate="let d of 'highlightCellTemplate'" [innerHTML]="(d | gridTextHighlight: SearchText)"></div>
+
+		<div *dxTemplate="let data of 'brandDropDown'">
+			<dx-select-box [items]="BrandNamesList" placeholder="All Brand Names" [showClearButton]="true" (onValueChanged)="brandNamesChanged($event)"
+			 [width]="180"></dx-select-box>
+		</div>
+
+		<div *dxTemplate="let data of 'messageTypeDropdown'">
+			<dx-select-box [items]="MessageTypesList" placeholder="All Message Types" [showClearButton]="true" (onValueChanged)="messageTypesChanged($event)"
+			 [width]="180"></dx-select-box>
+		</div>
+
+		<dxo-paging [pageSize]="20"></dxo-paging>
+		<dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20,50,100]"></dxo-pager>
+
+		<dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+		<dxo-remote-operations [filtering]="true" [sorting]="true" [paging]="true">
+		</dxo-remote-operations>
+	</dx-data-grid>
+	<md-menu #viewMenu="mdMenu" xPosition="before" yPosition="below">
+		<button md-menu-item (click)="viewMessageContent()"> View Message </button>
+	</md-menu>
+</div>
+
+<dx-popup title="Confirmation" [dragEnabled]="false" [closeOnOutsideClick]="true" class="popup" [width]="800" [height]="800"
+ [showTitle]="false" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupMailDeleteVisible">
+	<div *dxTemplate="let data of 'content'">
+		<div class="mailHTMLViewerClassDivEmail">
+			<iframe [src]="mailContentSRC" frameborder="0" class="mailHTMLViewerClass"></iframe>
+		</div>
+
+		<!-- <div *ngIf="(SMSContent==true && EmailContent==false)" class="mailHTMLViewerClassDivSMS">
+			{{mailContentSRC}}
+			<blockquote class="chat">
+				<p class="them">
+					Annie, I'm going to be a lil late for the rehearsal, tonight.
+				</p>
+
+				<p class="me">
+					S'Okay, Maude. You know your lines...?
+				</p>
+
+				<p class="them">
+					I know em, I don't know what order they come in...
+				</p>
+
+				<p class="me">
+					We'll work it out...
+				</p>
+			</blockquote>
+		</div> -->
+
+		<p align="center">
+			<dx-button text="Close" type="success" [useSubmitBehavior]="true" (onClick)="closeMessageContent()">
+			</dx-button>
+		</p>
+	</div>
+</dx-popup>

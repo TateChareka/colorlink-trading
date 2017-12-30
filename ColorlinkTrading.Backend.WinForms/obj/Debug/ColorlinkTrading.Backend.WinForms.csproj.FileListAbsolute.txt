@@ -1,0 +1,110 @@
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Backend.WinForms.exe.config
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Backend.WinForms.exe
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Backend.WinForms.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Models.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTtrading.Logic.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\SofticeMailFetcher.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ChilkatDotNet45.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTtrading.Logic.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTtrading.Logic.dll.config
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Models.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Models.dll.config
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\SofticeMailFetcher.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csprojResolveAssemblyReference.cache
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Properties.Resources.resources
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csproj.GenerateResource.Cache
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.exe
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.AddCustomer.resources
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.ColorlinkTrading.resources
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\Interop.PAGEOBJECTMODELLib.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csproj.ResolveComReference.cache
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.EditCustomer.resources
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\FlashControlV71.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\log4net.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Reports.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\log4net.xml
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.CashReciept.CashReciept.resources
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Product.EditProduct.resources
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.NewProduct.resources
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.VATInvoice.NewInvoice.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csprojResolveAssemblyReference.cache
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\Interop.PAGEOBJECTMODELLib.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csproj.ResolveComReference.cache
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.CashReciept.CashReciept.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.ColorlinkTrading.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.AddCustomer.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.EditCustomer.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Product.EditProduct.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.NewProduct.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Properties.Resources.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.VATInvoice.NewInvoice.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csproj.GenerateResource.Cache
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.exe
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Backend.WinForms.exe.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Backend.WinForms.exe
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Backend.WinForms.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Models.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTtrading.Logic.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.Shared.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\FlashControlV71.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\log4net.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\Reports.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\SofticeMailFetcher.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\System.Data.SqlServerCe.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\System.Linq.Dynamic.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ChilkatDotNet45.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTtrading.Logic.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTtrading.Logic.dll.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Models.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\ColorlinkTrading.Models.dll.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\SofticeMailFetcher.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\log4net.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.xml

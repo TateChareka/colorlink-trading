@@ -1,0 +1,65 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+
+    <dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+        [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+        <dxo-filter-row [visible]="showFilterRow" [applyFilter]="auto"></dxo-filter-row>
+        <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+
+        <dxi-column dataField="AcceleratorId" caption="Id" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="CardNumber" caption="Card Number" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="FullName" caption="Full Name" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="Email" caption="Email Address" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="MobileNumber" caption="Mobile Number" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="IdentificationNumber" caption="Identification Number" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="PaymentMethodType" caption="Payment Method Type" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="ZARAmount" caption="Amount (ZAR)" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="BankName" caption="Bank Name" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="BranchNumber" caption="Branch Number" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AccountNumber" caption="Account Number" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AccountHolderName" caption="Account Holder Name" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="PaymentDay" caption="Payment Day" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="AcceleratorStatus" caption="Accelerator Status" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="UpdatedDate" caption="Updated Date" [hidingPriority]="11" headerCellTemplate="headerTemplate" [customizeText]="formatDateTimeColumn"></dxi-column>
+        <dxi-column dataField="UpdatedByUserName" caption="UpdatedBy" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+
+        <dxi-column [customizeText]="generateActionsCell" caption="Actions" cellTemplate="actionCellTemplate"></dxi-column>
+        <div *dxTemplate="let info of 'headerTemplate'">
+            <span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+        </div>
+        <div *dxTemplate="let a of 'actionCellTemplate'">
+            <div style="white-space: normal; display: none">
+                <a href="#" (click)="handleEditMessage(a)">Edit</a> |
+                <a href="#" (click)="handleRemoveMessage(a)">Remove</a> |
+                <a href="#" (click)="handleQueueMessage(a)">Queue NOW</a> |
+                <a href="#" (click)="handleSendTestMessage(a)">Send me a Test</a>
+            </div>
+            <button *ngIf="!a.data.ShowUnSentEditMenu" md-icon-button mdTooltip="Actions" [mdMenuTriggerFor]="appMenuSent" mdTooltipPosition="right"
+                (click)="ActionRow = a.data">
+                <i class="material-icons">settings</i>
+            </button>
+        </div>
+        <dxo-search-panel [visible]="false" [width]="240" placeholder="Search..." [highlightSearchText]="true"></dxo-search-panel>
+        <div *dxTemplate="let data of 'totalItemCount'">
+            <div class="informer">
+                <h2 class="count">{{totalCount}}</h2>
+                <span class="name">Total Count</span>
+            </div>
+        </div>
+        <div *dxTemplate="let data of 'periodLabel'">
+            <h3 class="period-dropdown-label">Updated Date</h3>
+        </div>
+        <div *dxTemplate="let d of 'highlightCellTemplate'" [innerHTML]="(d | gridTextHighlight: SearchText)"></div>
+
+        <dxo-paging [pageSize]="20"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20,50,100]"></dxo-pager>
+
+        <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+        <dxo-remote-operations [filtering]="true" [sorting]="true" [paging]="true">
+        </dxo-remote-operations>
+    </dx-data-grid>
+    <md-menu #appMenuSent="mdMenu" xPosition="before" yPosition="below">
+        <button md-menu-item (click)="EditAcceleratorListings()"> Edit Accelerator </button>
+        <!-- <button md-menu-item (click)="DownloadMandate()"> Download Mandate </button> -->
+    </md-menu>
+</div>

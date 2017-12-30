@@ -1,0 +1,10 @@
+md-card-header {
+    background-color: var(--header-color)!important;
+    color: var(--header-text-color)!important;
+}
+md-card-content {
+    padding: 20px;
+}
+h2, md-icon {
+    color: var(--header-color)!important;
+}

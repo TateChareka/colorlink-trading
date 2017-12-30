@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center center" max-width="600">
+    <form class="centerForm" (submit)="SaveRecord($event)">
+
+        <dx-form id="form" [colCount]="1" [formData]="focustItem" [readOnly]="false" [showColonAfterLabel]="true" [showValidationSummary]="true"
+            validationGroup="AccountFeeData">
+            <dxi-item dataField="AccountFeesID" [editorOptions]="{ disabled: true }">
+                <dxo-label text="ID"> </dxo-label>
+            </dxi-item>
+            <dxi-item dataField="FeeMonth" caption="" editorType="dxSelectBox" [editorOptions]="{
+                placeholder:'Fee Month',
+                items: FeeMonthsList
+                }">
+                <dxo-label text="Fee Month">
+                </dxo-label>
+                <dxi-validation-rule type="required" message="Fee Month is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="FeeModelId" editorType="dxSelectBox" caption="Fee Model" [editorOptions]="{
+                placeholder:'Fee Model',
+                items: FeeModelsList, 
+                displayExpr: 'FeeModelName',
+                valueExpr: 'FeeModelId'
+                }">
+                <dxo-label text="Fee Model"> </dxo-label>
+                <dxi-validation-rule type="required" message="Fee Model is required"> </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="FeeProcessDate" editorType="dxDateBox" [editorOptions]="{ displayFormat: 'dd MMMM yyyy', acceptCustomValue:fals,width:300 }">
+                <dxo-label text="Fee Process Date"> </dxo-label>
+                <dxi-validation-rule type="required" message="Fee Process Date is required"> </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="FeeTransactionDate" editorType="dxDateBox" [editorOptions]="{ displayFormat: 'dd MMMM yyyy', acceptCustomValue:false,width:300 }">
+                <dxo-label text="Fee Transaction Date"> </dxo-label>
+                <dxi-validation-rule type="required" message="Fee Transaction Date is required"> </dxi-validation-rule>
+            </dxi-item>
+        </dx-form>
+        <br />
+        <br />
+        <div>
+            <dx-button text="Cancel" type="danger" (click)="CancelSave()" [useSubmitBehavior]="true" width="100">
+            </dx-button>
+            <dx-button text="Save" type="default" [useSubmitBehavior]="true" width="100" validationGroup="AccountFeeData" style="margin-left:300px"
+                [useSubmitBehavior]="true">
+            </dx-button>
+        </div>
+
+    </form>
+</div>

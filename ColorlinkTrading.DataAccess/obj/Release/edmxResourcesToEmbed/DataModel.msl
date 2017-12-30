@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelEntities">
+    <EntitySetMapping Name="FileUploads">
+      <EntityTypeMapping TypeName="DataModel.FileUpload">
+        <MappingFragment StoreEntitySet="FileUpload">
+          <ScalarProperty Name="FileGUID" ColumnName="FileGUID" />
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="FileUploadTypeId" ColumnName="FileUploadTypeId" />
+          <ScalarProperty Name="FileUploadId" ColumnName="FileUploadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MediaFiles">
+      <EntityTypeMapping TypeName="DataModel.MediaFile">
+        <MappingFragment StoreEntitySet="MediaFile">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="MediaDescription" ColumnName="MediaDescription" />
+          <ScalarProperty Name="MediaGUID" ColumnName="MediaGUID" />
+          <ScalarProperty Name="MediaFileId" ColumnName="MediaFileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYSLOGRequestHistories">
+      <EntityTypeMapping TypeName="DataModel.SYSLOGRequestHistory">
+        <MappingFragment StoreEntitySet="SYSLOGRequestHistory">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FormParameters" ColumnName="FormParameters" />
+          <ScalarProperty Name="HTTPMethod" ColumnName="HTTPMethod" />
+          <ScalarProperty Name="TotalBytes" ColumnName="TotalBytes" />
+          <ScalarProperty Name="QueryString" ColumnName="QueryString" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="SystemUserGUID" ColumnName="SystemUserGUID" />
+          <ScalarProperty Name="LoginHistoryId" ColumnName="LoginHistoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLoginGUIDs">
+      <EntityTypeMapping TypeName="DataModel.UserLoginGUID">
+        <MappingFragment StoreEntitySet="UserLoginGUID">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DateGenerated" ColumnName="DateGenerated" />
+          <ScalarProperty Name="LoginGUID" ColumnName="LoginGUID" />
+          <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+          <ScalarProperty Name="UserLoginGUIDId" ColumnName="UserLoginGUIDId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemUsers">
+      <EntityTypeMapping TypeName="DataModel.SystemUser">
+        <MappingFragment StoreEntitySet="SystemUser">
+          <ScalarProperty Name="AccountLockoutDate" ColumnName="AccountLockoutDate" />
+          <ScalarProperty Name="FailedPasswordAttempts" ColumnName="FailedPasswordAttempts" />
+          <ScalarProperty Name="RequestGuidExpiryDate" ColumnName="RequestGuidExpiryDate" />
+          <ScalarProperty Name="IsRequestGuidExpired" ColumnName="IsRequestGuidExpired" />
+          <ScalarProperty Name="RequestGuid" ColumnName="RequestGuid" />
+          <ScalarProperty Name="TermsAndConditionsAcceptDate" ColumnName="TermsAndConditionsAcceptDate" />
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FailedLoginAttempts" ColumnName="FailedLoginAttempts" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="LastPasswordChangeDate" ColumnName="LastPasswordChangeDate" />
+          <ScalarProperty Name="EncryptedPassword" ColumnName="EncryptedPassword" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="DataModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="VatRegistrationNumber" ColumnName="VatRegistrationNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryNotes">
+      <EntityTypeMapping TypeName="DataModel.DeliveryNote">
+        <MappingFragment StoreEntitySet="DeliveryNote">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+          <ScalarProperty Name="DnoteDate" ColumnName="DnoteDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="DnoteId" ColumnName="DnoteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceNonVats">
+      <EntityTypeMapping TypeName="DataModel.InvoiceNonVat">
+        <MappingFragment StoreEntitySet="InvoiceNonVat">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+          <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicesVats">
+      <EntityTypeMapping TypeName="DataModel.InvoicesVat">
+        <MappingFragment StoreEntitySet="InvoicesVat">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+          <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Letters">
+      <EntityTypeMapping TypeName="DataModel.Letter">
+        <MappingFragment StoreEntitySet="Letters">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LetterDate" ColumnName="LetterDate" />
+          <ScalarProperty Name="LetterContent" ColumnName="LetterContent" />
+          <ScalarProperty Name="LetterRecipient" ColumnName="LetterRecipient" />
+          <ScalarProperty Name="LetterId" ColumnName="LetterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="DataModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+          <ScalarProperty Name="BalanceAfterPayment" ColumnName="BalanceAfterPayment" />
+          <ScalarProperty Name="EndInvoice" ColumnName="EndInvoice" />
+          <ScalarProperty Name="StartInvoice" ColumnName="StartInvoice" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DataModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CompetitorDetails" ColumnName="CompetitorDetails" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="CompetitorPrice" ColumnName="CompetitorPrice" />
+          <ScalarProperty Name="PriceIncVat" ColumnName="PriceIncVat" />
+          <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+          <ScalarProperty Name="CashPrice" ColumnName="CashPrice" />
+          <ScalarProperty Name="RandPricePostMarkup" ColumnName="RandPricePostMarkup" />
+          <ScalarProperty Name="RandPricePostVat" ColumnName="RandPricePostVat" />
+          <ScalarProperty Name="RandPricePreVat" ColumnName="RandPricePreVat" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductDnotes">
+      <EntityTypeMapping TypeName="DataModel.ProductDnote">
+        <MappingFragment StoreEntitySet="ProductDnote">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DnoteNo" ColumnName="DnoteNo" />
+          <ScalarProperty Name="ProductDnoteId" ColumnName="ProductDnoteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductInvoiceNonVats">
+      <EntityTypeMapping TypeName="DataModel.ProductInvoiceNonVat">
+        <MappingFragment StoreEntitySet="ProductInvoiceNonVat">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="ProductInvoiceNonVatId" ColumnName="ProductInvoiceNonVatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductInvoiceVats">
+      <EntityTypeMapping TypeName="DataModel.ProductInvoiceVat">
+        <MappingFragment StoreEntitySet="ProductInvoiceVat">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="ProductInvoiceVatId" ColumnName="ProductInvoiceVatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductQoutes">
+      <EntityTypeMapping TypeName="DataModel.ProductQoute">
+        <MappingFragment StoreEntitySet="ProductQoute">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="QouteNo" ColumnName="QouteNo" />
+          <ScalarProperty Name="ProductQouteId" ColumnName="ProductQouteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicesVatV1">
+      <EntityTypeMapping TypeName="DataModel.InvoicesVatV1">
+        <MappingFragment StoreEntitySet="InvoicesVatV1">
+          <ScalarProperty Name="column10" ColumnName="column10" />
+          <ScalarProperty Name="column9" ColumnName="column9" />
+          <ScalarProperty Name="column8" ColumnName="column8" />
+          <ScalarProperty Name="column7" ColumnName="column7" />
+          <ScalarProperty Name="column6" ColumnName="column6" />
+          <ScalarProperty Name="column5" ColumnName="column5" />
+          <ScalarProperty Name="column4" ColumnName="column4" />
+          <ScalarProperty Name="column3" ColumnName="column3" />
+          <ScalarProperty Name="column2" ColumnName="column2" />
+          <ScalarProperty Name="column1" ColumnName="column1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Qoutations">
+      <EntityTypeMapping TypeName="DataModel.Qoutation">
+        <MappingFragment StoreEntitySet="Qoutation">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+          <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="QouteNumber" ColumnName="QouteNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

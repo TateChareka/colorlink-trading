@@ -1,0 +1,39 @@
+<!-- Mobile Menu -->
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Browser Menu -->
+<ion-header width-check [hideWhenWidth]="769" [greaterThen]="true" class="menu-browser">
+  <ion-navbar padding-horizontal>
+    <ion-row>
+      <ion-col col-auto *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-label sd-pointer>{{p.title}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-footer>
+  <ion-row>
+    <ion-col text-center>
+      <small> COPYRIGHT © 2017 TRUSTED / SCHOOL-DAYS® </small>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,50 @@
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.Models.dll.config
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.Models.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.Models.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\SofticeMailFetcher.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ChilkatDotNet45.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\SofticeMailFetcher.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.csprojResolveAssemblyReference.cache
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.Models.dll.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.Models.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.Models.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\SofticeMailFetcher.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\System.Data.SqlServerCe.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\System.Linq.Dynamic.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ChilkatDotNet45.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\SofticeMailFetcher.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.csprojResolveAssemblyReference.cache
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.pdb

@@ -1,0 +1,26 @@
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.dll
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Users\Tatenda Chareka\Documents\Visual Studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\System.Data.SqlServerCe.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.dll
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.pdb

@@ -1,0 +1,130 @@
+<div fxLayout="row" fxLayoutAlign="center center" max-width="1000">
+	<form class="centerForm" style="min-width:80%" (submit)="SaveRecord($event)">
+		<dx-form id="form" [colCount]="1" [formData]="focustItem" [readOnly]="false" [showColonAfterLabel]="true" [showValidationSummary]="true"
+		 validationGroup="CommunicationTemplateData">
+			<dxi-item itemType="tabbed" [tabPanelOptions]="{ deferRendering: false }">
+
+				<dxi-tab title="Information">
+
+					<dxi-item dataField="CommunicationTemplateId" [editorOptions]="{ disabled: true }">
+						<dxo-label text="ID"> </dxo-label>
+					</dxi-item>
+
+					<dxi-item dataField="CommunicationTemplateName">
+						<dxo-label text="Communication Template Name"> </dxo-label>
+						<dxi-validation-rule type="required" message="Communication Template Name is required">
+						</dxi-validation-rule>
+					</dxi-item>
+
+					<dxi-item dataField="BrandName" caption="" editorType="dxSelectBox" [editorOptions]="{
+								placeholder:'Brand Name',
+								items: BrandNamesList
+								}">
+						<dxo-label text="Brand Name"> </dxo-label>
+						<dxi-validation-rule type="required" message="Brand Names is required">
+						</dxi-validation-rule>
+					</dxi-item>
+
+					<dxi-item dataField="CommunicationType" editorType="dxSelectBox" caption="Communication Type" [editorOptions]="{
+								placeholder:'Communication Type',
+								items: CommunicationTypeList, 
+								displayExpr: 'CommunicationType1',
+								valueExpr: 'CommunicationTypeId'
+								}">
+						<dxo-label text="Communication Type"> </dxo-label>
+						<dxi-validation-rule type="required" message="Communication Type is required"> </dxi-validation-rule>
+					</dxi-item>
+
+					<dxi-item itemType="simple" dataField="IsActive" editorType="dxCheckBox" [editorOptions]="{ 
+								text: 'Is Active'
+							}">
+						<dxo-label [visible]="false"> </dxo-label>
+					</dxi-item>
+
+					<dxi-item dataField="CommunicationTemplateReference" editorType="dxTextArea" caption="Communication Template Reference" [editorOptions]="{
+						placeholder:'Communication Template Reference',
+						maxLength: 50,
+						height: 60
+						}">
+						<dxo-label text="Communication Template Reference"> </dxo-label>
+						<dxi-validation-rule type="required" message="Reference is required"> </dxi-validation-rule>
+					</dxi-item>
+
+				</dxi-tab>
+
+				<dxi-tab title="Mail Content">
+					<dx-form id="form" [colCount]="2">
+						<dxi-item itemType="group" caption="MAIL TEMPLATE FETCHER">
+
+							<dx-data-grid #grid id="gridContainer" [dataSource]="EmailsList" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+							 [hoverStateEnabled]="true" [rowAlternationEnabled]="true" [showBorders]="true" (onSelectionChanged)="GridRowSelected($event)">
+								<dxo-selection mode="single"></dxo-selection>
+								<dxi-column dataField="EmailDate" caption="Email Date" [hidingPriority]="3" headerCellTemplate="headerTemplate" [width]="130"
+								 [allowSorting]="false"></dxi-column>
+								<dxi-column dataField="EmailSubject" caption="Email Subject" [width]="400" [hidingPriority]="2" headerCellTemplate="headerTemplate"
+								 [allowSorting]="false"></dxi-column>
+								<dxi-column dataField="FromName" caption="From" headerCellTemplate="headerTemplate" [hidingPriority]="1" [allowSorting]="false"
+								 [width]="200"></dxi-column>
+								<dxi-column [customizeText]="generateActionsCell" alignment="center" caption="Select Item" cellTemplate="actionCellTemplate"></dxi-column>
+								<div *dxTemplate="let info of 'headerTemplate'">
+									<span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+								</div>
+								<div *dxTemplate="let a of 'actionCellTemplate'">
+									<dx-button *ngIf="a.data.ImapUid==ImapUid" icon="check" type="success" text="">
+									</dx-button>
+
+									<!-- <dx-button type="danger" text="Delete" (onClick)="doneClick()">
+									</dx-button> -->
+								</div>
+							</dx-data-grid>
+						</dxi-item>
+						<dxi-item itemType="group" caption="HTML RENDER">
+							<dx-text-box [readOnly]="true" [hoverStateEnabled]="false" [(value)]="HTMLRender"></dx-text-box>
+						</dxi-item>
+					</dx-form>
+
+				</dxi-tab>
+				<dxi-tab title="In App Content">
+
+					<dxi-item dataField="InAppMessageTemplateContent" editorType="dxTextArea" caption="InApp Content" [editorOptions]="{
+							placeholder:'InApp Content',
+							maxLength: 2000,
+							height: 200							
+							}">
+						<dxo-label text="InApp Content"> </dxo-label>
+					</dxi-item>
+
+				</dxi-tab>
+
+				<dxi-tab title="SMS Content">
+
+					<dxi-item dataField="SMSTemplateContent" editorType="dxTextArea" caption="SMS Content" [editorOptions]="{
+						placeholder:'SMS Content',
+						maxLength: 2000,
+						height: 200
+						}">
+						<dxo-label text="SMS Content"> </dxo-label>
+					</dxi-item>
+
+					<dxi-item>
+						<!-- <dx-file-uploader #fileUploader uploadUrl="uploadSMSFile($event)" [multiple]="false" accept="*" uploadMode="instantly" uploadUrl="/MediaService/UploadFileUsingIdentifier"></dx-file-uploader> -->
+
+						<input id="file-field" name="file-field" (change)="uploadSMSFile($event)" type="file" accept=".png,.jpg,.jpeg">
+					</dxi-item>
+
+
+				</dxi-tab>
+			</dxi-item>
+		</dx-form>
+		<br />
+		<br />
+		<div>
+			<dx-button text="Cancel" type="danger" (click)="CancelSave()" [useSubmitBehavior]="true" width="100">
+			</dx-button>
+			<dx-button text="Save" type="default" [useSubmitBehavior]="true" width="100" validationGroup="CommunicationTemplateData"
+			 style="margin-left:300px" [useSubmitBehavior]="true">
+			</dx-button>
+		</div>
+
+	</form>
+</div>

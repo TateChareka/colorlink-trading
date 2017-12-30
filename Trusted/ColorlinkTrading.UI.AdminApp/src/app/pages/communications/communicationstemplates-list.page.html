@@ -1,0 +1,67 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+
+	<dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+	 [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+		<dxo-filter-row [visible]="showFilterRow" [applyFilter]="auto"></dxo-filter-row>
+		<dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+
+		<dxi-column dataField="CommunicationTemplateId" caption="Id" [hidingPriority]="9" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CommunicationTemplateName" caption="Template Name" [hidingPriority]="9" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="BrandName" caption="Brand Name" [hidingPriority]="8" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CommunicationType" caption="Communication Type" [hidingPriority]="7" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CreatedDate" caption="Created Date" [hidingPriority]="6" headerCellTemplate="headerTemplate" [customizeText]="formatDateTimeColumn"></dxi-column>
+		<dxi-column dataField="IsActive" caption="Is Active" [hidingPriority]="4" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="CreatedByUserName" caption="Created By" [hidingPriority]="3" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="UpdatedByUserName" caption="Updated By" [hidingPriority]="2" headerCellTemplate="headerTemplate"></dxi-column>
+		<dxi-column dataField="UpdatedDate" caption="Updated Date" [hidingPriority]="1" headerCellTemplate="headerTemplate" [customizeText]="formatDateColumn"></dxi-column>
+
+		<dxi-column [customizeText]="generateActionsCell" caption="Actions" cellTemplate="actionCellTemplate"></dxi-column>
+		<div *dxTemplate="let info of 'headerTemplate'">
+			<span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+		</div>
+		<div *dxTemplate="let a of 'actionCellTemplate'">
+			<button *ngIf="!a.data.ShowUnSentEditMenu" md-icon-button mdTooltip="Actions" [mdMenuTriggerFor]="appMenuSent" mdTooltipPosition="right"
+			 (click)="ActionRow = a.data">
+				<i class="material-icons">settings</i>
+			</button>
+		</div>
+		<dxo-search-panel [visible]="false" [width]="240" placeholder="Search..." [highlightSearchText]="true"></dxo-search-panel>
+		<div *dxTemplate="let data of 'totalItemCount'">
+			<div class="informer">
+				<h2 class="count">{{totalCount}}</h2>
+				<span class="name">Total Count</span>
+			</div>
+		</div>
+		<div *dxTemplate="let data of 'periodLabel'">
+			<h3 class="period-dropdown-label">Created Date</h3>
+		</div>
+		<div *dxTemplate="let d of 'highlightCellTemplate'" [innerHTML]="(d | gridTextHighlight: SearchText)"></div>
+
+		<dxo-paging [pageSize]="20"></dxo-paging>
+		<dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20,50,100]"></dxo-pager>
+
+		<dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+		<dxo-remote-operations [filtering]="true" [sorting]="true" [paging]="true">
+		</dxo-remote-operations>
+	</dx-data-grid>
+	<md-menu #appMenuSent="mdMenu" xPosition="before" yPosition="below">
+		<button md-menu-item (click)="EditCommunicationTemplate()"> Edit Communication Template </button>
+		<button md-menu-item (click)="deleteCommunicationTemplate()"> Delete Comunication Template </button>
+	</md-menu>
+</div>
+
+<dx-popup title="Confirmation" [dragEnabled]="false" [closeOnOutsideClick]="true" class="popup" [width]="350" [height]="150"
+ [showTitle]="false" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupMailDeleteVisible">
+	<div *dxTemplate="let data of 'content'">
+		<p align="center">
+			Are you sure you want to delete this Communication Template?
+		</p>
+		<p align="center">
+			<dx-button text="Yes" type="danger" [useSubmitBehavior]="true" (onClick)="deleteCommTemplateYes()">
+			</dx-button>
+			<dx-button text="No" type="success" [useSubmitBehavior]="true" (onClick)="deleteCommTemplateNo()">
+			</dx-button>
+		</p>
+	</div>
+</dx-popup>

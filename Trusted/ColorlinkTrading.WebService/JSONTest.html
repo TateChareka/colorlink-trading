@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON TEST</title>
+    <script type="text/javascript" src="Scripts/jquery.js"></script>
+    <script type="text/javascript" src="Scripts/JSONTest.js"></script>
+    <style type="text/css">
+        .ErrorText {
+            color: red !important;
+        }
+
+        h5, h1 {
+            margin: 10px;
+        }
+
+        /* Dark Theme
+
+             body {
+            background-color:rgb(20,20,20);
+            color:rgb(150,150,150);
+            font-family:Arial;
+            text-align:center;
+        }
+
+        textarea
+        {
+            background-color:rgb(20,20,20);
+            color:rgb(150,150,150);
+            border:1px  dashed rgb(150,150,150);
+            font-size:16px;
+        }
+
+        button
+        {
+            background-color:rgb(150,150,150);
+            color:rgb(20,20,20);
+            border:1px  dashed rgb(150,150,150);
+            padding:5px;
+            min-width:200px;
+            font-size:20px;
+
+        }
+
+        select
+        {
+            background-color:rgb(150,150,150);
+            color:rgb(20,20,20);
+            border:1px  dashed rgb(150,150,150);
+            padding:20px;
+            min-width:200px;
+            font-size:20px;
+        }
+
+
+        */
+
+        /* Light Theme */
+        body {
+            background-color: white;
+            color: darkblue;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        textarea {
+            background-color: rgb(240,240,240);
+            color: darkblue;
+            border: 1px dashed darkblue;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            padding: 5px;
+            min-width: 200px;
+            font-size: 20px;
+        }
+
+        select {
+            background-color: white;
+            color: darkblue;
+            border: 1px dashed darkblue;
+            padding: 20px;
+            min-width: 200px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON TEST</h1>
+    <h5 id="hVersion"></h5>
+    <select onchange="loadTest()" id="ddlTests"></select>
+    <br />
+    <i id="testComments"></i>
+    <div style="width: 100%;">
+        <button onclick="testJSON()" type="button">SEND DATA</button>
+    </div>
+    <div style="width: 45%; display: inline-block; float: left;">
+        <h2>Request</h2>
+        <textarea id="txtRequest" style="width:100%; height:500px;"> </textarea>
+    </div>
+    <div style="width: 45%; display: inline-block">
+        <h2>Response</h2>
+        <textarea id="txtResponse" style="width:100%; height:500px;"> </textarea>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var testsDropdown = document.getElementById("ddlTests");
+
+        $(document).ready(function () {
+            document.getElementById("hVersion").innerHTML = "Update " + VERSION;
+            testsDropdown.innerHTML = "";
+            for (var x = 0; x < testData.length; x++) {
+                var opt = document.createElement("option");
+                opt.value = x;
+                opt.innerHTML = testData[x].url;
+                testsDropdown.appendChild(opt);
+            }
+            loadTest();
+        });
+
+        var currentURL = "";
+
+        function loadTest() {
+            var testIndex = parseInt(ddlTests.value);
+            currentURL = APIBaseURL + "/" + testData[testIndex].url;
+            txtRequest.value = JSON.stringify(testData[testIndex].dataToSend, null, 3);
+            txtResponse.value = "";
+            document.getElementById("testComments").innerHTML = "";
+            if (testData[testIndex].comments) {
+                document.getElementById("testComments").innerHTML = testData[testIndex].comments;
+            }
+        }
+
+        var isTransacting = false;
+        var txtRequest = document.getElementById("txtRequest");
+        var txtResponse = document.getElementById("txtResponse");
+
+        function testJSON() {
+            txtResponse.className = "";
+            txtResponse.value = "working...";
+            isTransacting = true;
+            setTimeout(showLoading, 500);
+            $.ajax({
+                url: currentURL,
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: txtRequest.value,
+                crossDomain: false,
+                headers: HeaderData
+            })
+              .done(handleResponse).fail(handleError);
+        }
+
+        function showLoading() {
+            if (isTransacting) {
+                txtResponse.value += ".";
+                setTimeout(showLoading, 200);
+            }
+        }
+
+        function handleResponse(data) {
+            txtResponse.value = (JSON.stringify(data, null, 4));
+            if (data.HasError) {
+                txtResponse.className = "ErrorText";
+            }
+            isTransacting = false;
+        }
+
+        function handleError(data) {
+            txtResponse.value = (JSON.stringify(data));
+            txtResponse.className = "ErrorText";
+            isTransacting = false;
+        }
+
+
+    </script>
+
+</body>
+</html>

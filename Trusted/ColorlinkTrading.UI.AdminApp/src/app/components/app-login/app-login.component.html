@@ -1,0 +1,21 @@
+<div class="page-container">
+    <div class="login-panel-container">
+        <md-card class="login-panel">
+            <md-card-header class="login-header">
+                <md-card-title>School-Days<sup>&reg;</sup> GENIE Login</md-card-title>
+                <md-card-subtitle>Use your School-Days<sup>&reg;</sup> credentials to log in to the GENIE portal</md-card-subtitle>
+            </md-card-header>
+            <md-card-content>
+                <md-form-field class="form-field">
+                    <input mdInput placeholder="School-Days&reg; Card Number / ID Number" [(ngModel)]="UserIdentifier" required>
+                </md-form-field>
+                <md-form-field class="form-field">
+                    <input mdInput type="password" placeholder="Password" [(ngModel)]="UserPassword" required>
+                </md-form-field>
+            </md-card-content>
+            <md-card-actions>
+                <button md-button [disabled]="!isValidForm()" (click)="login()">LOGIN</button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

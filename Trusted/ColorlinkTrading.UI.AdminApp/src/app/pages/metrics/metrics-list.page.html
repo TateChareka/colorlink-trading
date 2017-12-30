@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+	<dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+	 [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+		<dxi-column dataField="MetricDescription" caption="Metric Description" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<dxi-column dataField="SelectedMonth" [caption]="formatDate(currentMonth)" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<dxi-column dataField="VariancePercent" caption="Variance Percent" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<dxi-column dataField="Prev3MonthsAverage" caption="Previous 3 Months Average" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<dxi-column dataField="PrevMonth1" [caption]="formatDate(previousMonth1)" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<dxi-column dataField="PrevMonth2" [caption]="formatDate(previousMonth2)" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<dxi-column dataField="PrevMonth3" [caption]="formatDate(previousMonth3)" headerCellTemplate="headerTemplate" [allowSorting]="false"></dxi-column>
+		<div *dxTemplate="let data of 'periodLabel'">
+			<h3 class="period-dropdown-label" style="display: none">Metric Month</h3>
+		</div>
+		<div *dxTemplate="let info of 'headerTemplate'">
+			<span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+		</div>
+		<div *dxTemplate="let data of 'MonthsDropDown'">
+			<dx-select-box [items]="metricMonthsList" placeholder="Metric month" [value]="metricMonthsList[0]" width="200" style="display: none"></dx-select-box>
+		</div>
+	</dx-data-grid>
+</div>

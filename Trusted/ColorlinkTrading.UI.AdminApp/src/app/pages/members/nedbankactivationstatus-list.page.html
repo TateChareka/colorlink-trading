@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="full-width">
+
+    <dx-data-grid id="gridContainer" [dataSource]="gridData" [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true"
+        [rowAlternationEnabled]="true" [showBorders]="true" (onToolbarPreparing)="onToolbarPreparing($event)">
+        <dxo-filter-row [visible]="showFilterRow" [applyFilter]="auto"></dxo-filter-row>
+        <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+
+        <dxi-column dataField="PersonId" caption="Id" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="CardNumber" caption="Card Number" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="Title" caption="Title" [hidingPriority]="07" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="FirstName" caption="First Name" [hidingPriority]="11" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="LastName" caption="Last Name" [hidingPriority]="10" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="Gender" caption="Gender" [hidingPriority]="06" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="Email" caption="Email Address" [hidingPriority]="08" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="MobileNumber" caption="Mobile Number" [hidingPriority]="05" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="IdentificationType" caption="Identification Type" [hidingPriority]="04" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="IdentificationNumber" caption="Identification Number" [hidingPriority]="04" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="DateOfBirth" caption="Date Of Birth" [hidingPriority]="09" headerCellTemplate="headerTemplate" [customizeText]="formatDateColumn"></dxi-column>
+        <dxi-column dataField="RegistrationSource" caption="Registration Source" [hidingPriority]="02" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="RequestDate" caption="Request Date" [hidingPriority]="09" headerCellTemplate="headerTemplate" [customizeText]="formatDateColumn"></dxi-column>
+        <dxi-column dataField="Requested" caption="Requested" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="Confirmed" caption="Confirmed" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+        <dxi-column dataField="Activated" caption="Activated" [hidingPriority]="12" headerCellTemplate="headerTemplate"></dxi-column>
+
+        <div *dxTemplate="let info of 'headerTemplate'">
+            <span style="word-wrap: break-word; white-space: normal;">{{info.column.caption}}</span>
+        </div>
+
+        <dxo-search-panel [visible]="false" [width]="240" placeholder="Search..." [highlightSearchText]="true"></dxo-search-panel>
+        <div *dxTemplate="let data of 'totalItemCount'">
+            <div class="informer">
+                <h2 class="count">{{totalCount}}</h2>
+                <span class="name">Total Count</span>
+            </div>
+        </div>
+        <div *dxTemplate="let data of 'periodLabel'">
+            <h3 class="period-dropdown-label">Request Date</h3>
+        </div>
+        <div *dxTemplate="let d of 'highlightCellTemplate'" [innerHTML]="(d | gridTextHighlight: SearchText)"></div>
+
+        <dxo-paging [pageSize]="20"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[20,50,100]"></dxo-pager>
+
+        <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+        <dxo-remote-operations [filtering]="true" [sorting]="true" [paging]="true">
+        </dxo-remote-operations>
+    </dx-data-grid>
+
+</div>

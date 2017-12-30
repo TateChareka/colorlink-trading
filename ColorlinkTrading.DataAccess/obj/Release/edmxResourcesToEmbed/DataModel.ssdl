@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="500" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="100" />
+    <Property Name="VatRegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="150" />
+    <Property Name="OtherDetails" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="DeliveryNote">
+    <Key>
+      <PropertyRef Name="DnoteId" />
+    </Key>
+    <Property Name="DnoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="250" />
+    <Property Name="DnoteDate" Type="datetime" />
+    <Property Name="ExtraDetails" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="FileUpload">
+    <Key>
+      <PropertyRef Name="FileUploadId" />
+    </Key>
+    <Property Name="FileUploadId" Type="int" Nullable="false" />
+    <Property Name="FileUploadTypeId" Type="int" Nullable="false" />
+    <Property Name="PersonId" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="150" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="50" />
+    <Property Name="FileGUID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="InvoiceNonVat">
+    <Key>
+      <PropertyRef Name="InvoiceNumber" />
+    </Key>
+    <Property Name="InvoiceNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+    <Property Name="Reference" Type="varchar" MaxLength="500" />
+    <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
+    <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="InvoicesVat">
+    <Key>
+      <PropertyRef Name="InvoiceNumber" />
+    </Key>
+    <Property Name="InvoiceNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+    <Property Name="Reference" Type="varchar" MaxLength="500" />
+    <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
+    <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'colorlinkTrading.dbo.InvoicesVatV1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="InvoicesVatV1">
+    <Key>
+      <PropertyRef Name="column1" />
+      <PropertyRef Name="column2" />
+      <PropertyRef Name="column3" />
+      <PropertyRef Name="column4" />
+      <PropertyRef Name="column5" />
+      <PropertyRef Name="column6" />
+      <PropertyRef Name="column7" />
+      <PropertyRef Name="column8" />
+      <PropertyRef Name="column9" />
+      <PropertyRef Name="column10" />
+    </Key>
+    <Property Name="column1" Type="int" Nullable="false" />
+    <Property Name="column2" Type="int" Nullable="false" />
+    <Property Name="column3" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column4" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column5" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column6" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column7" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column8" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column9" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="column10" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Letters">
+    <Key>
+      <PropertyRef Name="LetterId" />
+    </Key>
+    <Property Name="LetterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LetterRecipient" Type="varchar" MaxLength="100" />
+    <Property Name="LetterContent" Type="varchar" MaxLength="5000" />
+    <Property Name="LetterDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="MediaFile">
+    <Key>
+      <PropertyRef Name="MediaFileId" />
+    </Key>
+    <Property Name="MediaFileId" Type="int" Nullable="false" />
+    <Property Name="MediaGUID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MediaDescription" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="int" Nullable="false" />
+    <Property Name="PaymentDate" Type="datetime" />
+    <Property Name="StartInvoice" Type="int" />
+    <Property Name="EndInvoice" Type="int" />
+    <Property Name="BalanceAfterPayment" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="100" />
+    <Property Name="RandPricePreVat" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="RandPricePostVat" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="RandPricePostMarkup" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CashPrice" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="PriceIncVat" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CompetitorPrice" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Comments" Type="varchar" MaxLength="100" />
+    <Property Name="CompetitorDetails" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ProductDnote">
+    <Key>
+      <PropertyRef Name="ProductDnoteId" />
+    </Key>
+    <Property Name="ProductDnoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DnoteNo" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ProdId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ProductInvoiceNonVat">
+    <Key>
+      <PropertyRef Name="ProductInvoiceNonVatId" />
+    </Key>
+    <Property Name="ProductInvoiceNonVatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ProdId" Type="int" />
+    <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ProductInvoiceVat">
+    <Key>
+      <PropertyRef Name="ProductInvoiceVatId" />
+    </Key>
+    <Property Name="ProductInvoiceVatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNo" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ProdId" Type="int" />
+    <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ProductQoute">
+    <Key>
+      <PropertyRef Name="ProductQouteId" />
+    </Key>
+    <Property Name="ProductQouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QouteNo" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ProdId" Type="int" />
+    <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'colorlinkTrading.dbo.Qoutation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Qoutation">
+    <Key>
+      <PropertyRef Name="QouteNumber" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="InvoiceDate" />
+    </Key>
+    <Property Name="QouteNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+    <Property Name="Reference" Type="varchar" MaxLength="500" />
+    <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
+    <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SYSLOGRequestHistory">
+    <Key>
+      <PropertyRef Name="LoginHistoryId" />
+    </Key>
+    <Property Name="LoginHistoryId" Type="int" Nullable="false" />
+    <Property Name="SystemUserGUID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="UserAgent" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="URL" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="QueryString" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="TotalBytes" Type="int" Nullable="false" />
+    <Property Name="HTTPMethod" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FormParameters" Type="varchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'colorlinkTrading.dbo.SystemUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SystemUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="UserGUID" />
+      <PropertyRef Name="PersonId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="EncryptedPassword" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="CreatedByUserName" />
+      <PropertyRef Name="UpdatedDate" />
+      <PropertyRef Name="UpdatedByUserName" />
+      <PropertyRef Name="FailedPasswordAttempts" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserGUID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="EncryptedPassword" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="LastPasswordChangeDate" Type="datetime" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="FailedLoginAttempts" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="TermsAndConditionsAcceptDate" Type="datetime" />
+    <Property Name="RequestGuid" Type="uniqueidentifier" />
+    <Property Name="IsRequestGuidExpired" Type="bit" />
+    <Property Name="RequestGuidExpiryDate" Type="datetime" />
+    <Property Name="FailedPasswordAttempts" Type="int" Nullable="false" />
+    <Property Name="AccountLockoutDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserLoginGUID">
+    <Key>
+      <PropertyRef Name="UserLoginGUIDId" />
+    </Key>
+    <Property Name="UserLoginGUIDId" Type="int" Nullable="false" />
+    <Property Name="UserGUID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginGUID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateGenerated" Type="datetime" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryNote" EntityType="Self.DeliveryNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileUpload" EntityType="Self.FileUpload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoiceNonVat" EntityType="Self.InvoiceNonVat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoicesVat" EntityType="Self.InvoicesVat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Letters" EntityType="Self.Letters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MediaFile" EntityType="Self.MediaFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductDnote" EntityType="Self.ProductDnote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductInvoiceNonVat" EntityType="Self.ProductInvoiceNonVat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductInvoiceVat" EntityType="Self.ProductInvoiceVat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductQoute" EntityType="Self.ProductQoute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYSLOGRequestHistory" EntityType="Self.SYSLOGRequestHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLoginGUID" EntityType="Self.UserLoginGUID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoicesVatV1" EntityType="Self.InvoicesVatV1" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [InvoicesVatV1].[column1] AS [column1], 
+    [InvoicesVatV1].[column2] AS [column2], 
+    [InvoicesVatV1].[column3] AS [column3], 
+    [InvoicesVatV1].[column4] AS [column4], 
+    [InvoicesVatV1].[column5] AS [column5], 
+    [InvoicesVatV1].[column6] AS [column6], 
+    [InvoicesVatV1].[column7] AS [column7], 
+    [InvoicesVatV1].[column8] AS [column8], 
+    [InvoicesVatV1].[column9] AS [column9], 
+    [InvoicesVatV1].[column10] AS [column10]
+    FROM [dbo].[InvoicesVatV1] AS [InvoicesVatV1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Qoutation" EntityType="Self.Qoutation" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Qoutation].[QouteNumber] AS [QouteNumber], 
+    [Qoutation].[CustomerId] AS [CustomerId], 
+    [Qoutation].[InvoiceDate] AS [InvoiceDate], 
+    [Qoutation].[Reference] AS [Reference], 
+    [Qoutation].[Discount] AS [Discount], 
+    [Qoutation].[SubTotal] AS [SubTotal], 
+    [Qoutation].[VatAmount] AS [VatAmount], 
+    [Qoutation].[TotalAmount] AS [TotalAmount], 
+    [Qoutation].[DisplayValue] AS [DisplayValue], 
+    [Qoutation].[ExtraDetails] AS [ExtraDetails], 
+    [Qoutation].[CreatedDate] AS [CreatedDate], 
+    [Qoutation].[CreatedByUserName] AS [CreatedByUserName], 
+    [Qoutation].[UpdatedDate] AS [UpdatedDate], 
+    [Qoutation].[UpdatedByUserName] AS [UpdatedByUserName]
+    FROM [dbo].[Qoutation] AS [Qoutation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SystemUser" EntityType="Self.SystemUser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SystemUser].[UserId] AS [UserId], 
+    [SystemUser].[UserGUID] AS [UserGUID], 
+    [SystemUser].[PersonId] AS [PersonId], 
+    [SystemUser].[FirstName] AS [FirstName], 
+    [SystemUser].[LastName] AS [LastName], 
+    [SystemUser].[UserName] AS [UserName], 
+    [SystemUser].[Email] AS [Email], 
+    [SystemUser].[EncryptedPassword] AS [EncryptedPassword], 
+    [SystemUser].[LastPasswordChangeDate] AS [LastPasswordChangeDate], 
+    [SystemUser].[LastLoginDate] AS [LastLoginDate], 
+    [SystemUser].[FailedLoginAttempts] AS [FailedLoginAttempts], 
+    [SystemUser].[CreatedDate] AS [CreatedDate], 
+    [SystemUser].[CreatedByUserName] AS [CreatedByUserName], 
+    [SystemUser].[UpdatedDate] AS [UpdatedDate], 
+    [SystemUser].[UpdatedByUserName] AS [UpdatedByUserName], 
+    [SystemUser].[TermsAndConditionsAcceptDate] AS [TermsAndConditionsAcceptDate], 
+    [SystemUser].[RequestGuid] AS [RequestGuid], 
+    [SystemUser].[IsRequestGuidExpired] AS [IsRequestGuidExpired], 
+    [SystemUser].[RequestGuidExpiryDate] AS [RequestGuidExpiryDate], 
+    [SystemUser].[FailedPasswordAttempts] AS [FailedPasswordAttempts], 
+    [SystemUser].[AccountLockoutDate] AS [AccountLockoutDate]
+    FROM [dbo].[SystemUser] AS [SystemUser]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

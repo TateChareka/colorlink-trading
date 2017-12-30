@@ -1,0 +1,79 @@
+.filter-container {
+  background-color: rgba(191, 191, 191, 0.15);
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.dx-filterbuilder {
+  padding: 10px;
+}
+
+.Filter-Button {
+  width: 100%;  
+}
+
+.dx-texteditor-input {
+  text-align: center;  
+}
+.centerForm {
+  max-width: 1000px;
+}
+.communicationGridTable {
+  width: 100%;
+  max-width: 1200px;
+}
+.communicationGridTable thead th {
+  font-weight: bold;
+  background-color: rgb(63, 81, 181);
+  color: #fff;
+  padding: 7px;
+}
+.communicationGridTable tbody tr {
+  border-bottom: #666 solid 1px;
+}
+.communicationGridTable tbody tr td {
+  padding: 7px;
+}
+.communicationGridTable tbody tr.template-selected td {
+  font-weight: bold;
+}
+.communicationGridTable tbody tr.mailchimp-selected td {
+  font-weight: bold;
+}
+.communicationGridTable tbody tr.template-selected td .template-button-selected {
+  display: none;
+}
+.communicationGridTable tbody tr td span {
+  display: none
+}
+.communicationGridTable tbody tr.template-selected td span {
+  display: inline
+}
+.communicationGridTable tbody tr.mailchimp-selected td .mailchimp-button-selected {
+  display: none
+}
+.communicationGridTable tbody tr.mailchimp-selected td span {
+  display: inline
+}
+.emailsLoading {
+  text-align: center;
+}
+.mailHTMLViewerClass {
+  width: 100%;
+  height: 100%;
+}
+.mailHTMLViewerClassDiv {
+  background-color: #333;
+  padding: 20px;
+  height: 600px;
+}
+.showIFrame {
+  display: block;
+}
+.noIFrame {
+  display: none;
+}
+.linkReplacementTextBox {
+  min-width: 200px;
+}
