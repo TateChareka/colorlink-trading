@@ -66,6 +66,7 @@
             this.ColProdName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColUnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ColAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ProductId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.prodid = new System.Windows.Forms.TextBox();
@@ -73,7 +74,6 @@
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
             this.addbtn = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.ProductId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GroupBox10.SuspendLayout();
             this.GroupBox8.SuspendLayout();
             this.GroupBox15.SuspendLayout();
@@ -189,10 +189,10 @@
             // GroupBox15
             // 
             this.GroupBox15.Controls.Add(this.discotxt);
-            this.GroupBox15.Location = new System.Drawing.Point(84, 10);
+            this.GroupBox15.Location = new System.Drawing.Point(84, 45);
             this.GroupBox15.Name = "GroupBox15";
             this.GroupBox15.Size = new System.Drawing.Size(81, 35);
-            this.GroupBox15.TabIndex = 38;
+            this.GroupBox15.TabIndex = 41;
             this.GroupBox15.TabStop = false;
             this.GroupBox15.Text = "Percentage";
             // 
@@ -202,17 +202,16 @@
             this.discotxt.Name = "discotxt";
             this.discotxt.Size = new System.Drawing.Size(69, 20);
             this.discotxt.TabIndex = 0;
-            this.discotxt.TextChanged += new System.EventHandler(this.discotxt_TextChanged);
-            this.discotxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.discotxt_KeyUp);
+            this.discotxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.discotxt_KeyUp_1);
             // 
             // Label4
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(6, 19);
+            this.Label4.Location = new System.Drawing.Point(6, 54);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(72, 20);
-            this.Label4.TabIndex = 37;
+            this.Label4.TabIndex = 40;
             this.Label4.Text = "Discount";
             // 
             // txtdiscount
@@ -221,11 +220,11 @@
             this.txtdiscount.Enabled = false;
             this.txtdiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdiscount.ForeColor = System.Drawing.Color.Blue;
-            this.txtdiscount.Location = new System.Drawing.Point(171, 16);
+            this.txtdiscount.Location = new System.Drawing.Point(171, 51);
             this.txtdiscount.Name = "txtdiscount";
             this.txtdiscount.ReadOnly = true;
             this.txtdiscount.Size = new System.Drawing.Size(140, 26);
-            this.txtdiscount.TabIndex = 36;
+            this.txtdiscount.TabIndex = 39;
             this.txtdiscount.Text = "Discount";
             this.txtdiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -253,7 +252,7 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(6, 54);
+            this.Label1.Location = new System.Drawing.Point(6, 22);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(77, 20);
             this.Label1.TabIndex = 33;
@@ -293,7 +292,7 @@
             this.txtsubtot.Enabled = false;
             this.txtsubtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsubtot.ForeColor = System.Drawing.Color.Red;
-            this.txtsubtot.Location = new System.Drawing.Point(171, 51);
+            this.txtsubtot.Location = new System.Drawing.Point(171, 19);
             this.txtsubtot.Name = "txtsubtot";
             this.txtsubtot.ReadOnly = true;
             this.txtsubtot.Size = new System.Drawing.Size(140, 26);
@@ -308,6 +307,7 @@
             this.txtprice.Size = new System.Drawing.Size(93, 20);
             this.txtprice.TabIndex = 2;
             this.txtprice.TextChanged += new System.EventHandler(this.txtprice_TextChanged);
+            this.txtprice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtprice_KeyUp);
             // 
             // GroupBox7
             // 
@@ -422,6 +422,7 @@
             this.txtqty.Size = new System.Drawing.Size(92, 20);
             this.txtqty.TabIndex = 0;
             this.txtqty.TextChanged += new System.EventHandler(this.txtqty_TextChanged);
+            this.txtqty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtqty_KeyUp);
             // 
             // GroupBox4
             // 
@@ -471,6 +472,10 @@
             this.ColAmount.Text = "Amount ($)";
             this.ColAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ColAmount.Width = 100;
+            // 
+            // ProductId
+            // 
+            this.ProductId.Width = 0;
             // 
             // GroupBox5
             // 
@@ -561,17 +566,13 @@
             this.GroupBox1.TabIndex = 2;
             this.GroupBox1.TabStop = false;
             // 
-            // ProductId
-            // 
-            this.ProductId.Width = 0;
-            // 
             // NewInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 599);
             this.Controls.Add(this.GroupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NewInvoice";
             this.Text = "NewInvoice";
             this.Load += new System.EventHandler(this.NewInvoice_Load);
@@ -610,10 +611,6 @@
         internal System.Windows.Forms.TextBox INVnO;
         internal System.Windows.Forms.ListBox prodList;
         internal System.Windows.Forms.GroupBox GroupBox8;
-        internal System.Windows.Forms.GroupBox GroupBox15;
-        internal System.Windows.Forms.TextBox discotxt;
-        internal System.Windows.Forms.Label Label4;
-        internal System.Windows.Forms.TextBox txtdiscount;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
@@ -647,5 +644,9 @@
         internal System.Windows.Forms.TextBox custid;
         internal System.Windows.Forms.TextBox prodid;
         private System.Windows.Forms.ColumnHeader ProductId;
+        internal System.Windows.Forms.GroupBox GroupBox15;
+        internal System.Windows.Forms.TextBox discotxt;
+        internal System.Windows.Forms.Label Label4;
+        internal System.Windows.Forms.TextBox txtdiscount;
     }
 }

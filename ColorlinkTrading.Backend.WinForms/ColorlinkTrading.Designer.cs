@@ -203,6 +203,7 @@
             this.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem";
             this.CreateToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.CreateToolStripMenuItem.Text = "&Create";
+            this.CreateToolStripMenuItem.Click += new System.EventHandler(this.CreateToolStripMenuItem_Click);
             // 
             // EditProductToolStripMenuItem
             // 

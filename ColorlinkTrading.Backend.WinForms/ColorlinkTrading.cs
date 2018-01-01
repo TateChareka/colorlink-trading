@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ColorlinkTrading.Models;
 using ColorlinkTrading.Logic;
 using ColorlinkTrading.Backend.WinForms.Product;
+using ColorlinkTrading.Backend.WinForms.VATInvoice;
 
 namespace ColorlinkTrading.Backend.WinForms
 {
@@ -114,6 +115,12 @@ namespace ColorlinkTrading.Backend.WinForms
             {
                 MessageBox.Show("No Products Exist on the current system", "Edit Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void CreateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewInvoice newInv = new NewInvoice();
+            newInv.Show();
         }
     }
 }

@@ -65,13 +65,16 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         private void prodlist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            prodid.Text = "";
-            txtprice.Text = "";
-            proddescr.Text = "";
-            var product = products.Products.Where(b => b.ProductName == prodList.SelectedItem.ToString()).FirstOrDefault();
-            prodid.Text = product.ProductId + "";
-            txtprice.Text = product.CashPrice + "";
-            proddescr.Text = product.ProductName;
+            if (prodList.SelectedIndex != -1)
+            {
+                prodid.Text = "";
+                txtprice.Text = "";
+                proddescr.Text = "";
+                var product = products.Products.Where(b => b.ProductName == prodList.SelectedItem.ToString()).FirstOrDefault();
+                prodid.Text = product.ProductId + "";
+                txtprice.Text = product.CashPrice + "";
+                proddescr.Text = product.ProductName;
+            }
         }
 
         private void TextBox1_Click(object sender, EventArgs e)
@@ -88,16 +91,9 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
             if (txtSearch.Text != "")
             {
-                products = ProductLogic.SearchProductList(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "CustomerId",
-                    PageNumber = 1,
-                    PageSize = 1000,
-                    SearchCriteria = txtSearch.Text
-                });
-                foreach (var item in products.Products)
+                var SearchProducts = products.Products.Where(b => b.ProductName.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+
+                foreach (var item in SearchProducts)
                 {
                     prodList.Items.Add(item.ProductName);
                 }
@@ -171,7 +167,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
             foreach (ListViewItem item in invoiceProducts.Items)
             {
-                subtot += double.Parse(item.SubItems[5].Text);
+                subtot += double.Parse(item.SubItems[3].Text);
             }
             txtsubtot.Text = subtot + "";
 
@@ -184,7 +180,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             {
                 discountPc = double.Parse(discotxt.Text);
             }
-            discount = Math.Round(subtot * discountPc, 2);
+            discount = Math.Round(subtot * (discountPc / 100), 2);
             txtdiscount.Text = discount + "";
             subtot = Math.Round(subtot - discount, 2);
             vat = Math.Round(subtot * 0.15, 2);
@@ -195,14 +191,13 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         private void rmvbtn_Click(object sender, EventArgs e)
         {
-            if (invoiceProducts.Items.Count > 0 || invoiceProducts.SelectedItems.Count > 0)
+            if (invoiceProducts.SelectedItems.Count > 0)
             {
                 foreach (ListViewItem item in invoiceProducts.Items)
                 {
                     if (item.SubItems[1].Text == invoiceProducts.SelectedItems[0].SubItems[1].Text)
                     {
                         invoiceProducts.Items.Remove(item);
-                        int InvIndex = invoiceProducts.SelectedItems[0].Index;
                         var prod = ProductLogic.GetProduct(
                             new ProductRequestModel()
                             {
@@ -219,7 +214,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             }
             else
             {
-                MessageBox.Show("No Products to Remove", "Removing Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No Product to Remove Selected", "Removing Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -229,26 +224,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         }
 
-        private void discotxt_KeyUp(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                Double r = Double.Parse(discotxt.Text);
-                if (r > 50 || r < 0)
-                {
-                    MessageBox.Show("Discount Percentage should be Between 0 and 50", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    discotxt.Text = "0";
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Only Digits are allowed", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                discotxt.Text = "0";
-                return;
-            }
-        }
-
+       
         private void cancbtn_Click(object sender, EventArgs e)
         {
             Close();
@@ -325,7 +301,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 CustomerName = custList.Text,
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
-                 CreditValidation=0,
+                CreditValidation = 0,
                 ExtraDetails = "",
                 InvoiceDate = invdate.Value,
                 NumberOfProducts = invoiceProducts.Items.Count,
@@ -360,31 +336,75 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         private void txtprice_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Double r = Double.Parse(txtprice.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Only Digits are allowed", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtprice.Clear();
-                txtprice.Focus();
-                return;
-            }
+
         }
 
         private void txtqty_TextChanged(object sender, EventArgs e)
         {
-            try
+
+        }
+
+        private void txtprice_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtprice.Text != "")
             {
-                Double r = Double.Parse(txtqty.Text);
+                try
+                {
+                    Double r = Double.Parse(txtprice.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Only Digits are allowed", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtprice.Clear();
+                    txtprice.Focus();
+                    return;
+                }
             }
-            catch (Exception ex)
+        }
+
+        private void txtqty_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtqty.Text != "")
             {
-                MessageBox.Show("Only Digits are allowed", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtqty.Clear();
-                txtqty.Focus();
-                return;
+                try
+                {
+                    Double r = Double.Parse(txtqty.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Only Digits are allowed", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtqty.Clear();
+                    txtqty.Focus();
+                    return;
+                }
+            }
+        }
+
+        private void discotxt_KeyUp_1(object sender, KeyEventArgs e)
+        {
+            if (discotxt.Text != "")
+            {
+                try
+                {
+                    Double r = Double.Parse(discotxt.Text);
+                    if (r > 50 || r < 0)
+                    {
+                        MessageBox.Show("Discount Percentage should be Between 0 and 50", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        discotxt.Text = "0";
+                        return;
+                    }
+                    else
+                    {
+                        calculate();
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Only Digits are allowed", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    discotxt.Text = "0";
+                    return;
+                }
             }
         }
     }
