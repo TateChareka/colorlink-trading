@@ -59,9 +59,11 @@
           <Property Name="Reference" Type="varchar" MaxLength="500" />
           <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
           <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+          <Property Name="CreditValidation" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
           <Property Name="UpdatedDate" Type="datetime" />
@@ -73,44 +75,19 @@
           </Key>
           <Property Name="InvoiceNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
-          <Property Name="Reference" Type="varchar" MaxLength="500" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="Reference" Type="varchar" MaxLength="600" />
           <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
           <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
-          <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+          <Property Name="ExtraDetails" Type="varchar" MaxLength="600" />
+          <Property Name="CreditValidation" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'colorlinkTrading.dbo.InvoicesVatV1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="InvoicesVatV1">
-          <Key>
-            <PropertyRef Name="column1" />
-            <PropertyRef Name="column2" />
-            <PropertyRef Name="column3" />
-            <PropertyRef Name="column4" />
-            <PropertyRef Name="column5" />
-            <PropertyRef Name="column6" />
-            <PropertyRef Name="column7" />
-            <PropertyRef Name="column8" />
-            <PropertyRef Name="column9" />
-            <PropertyRef Name="column10" />
-          </Key>
-          <Property Name="column1" Type="int" Nullable="false" />
-          <Property Name="column2" Type="int" Nullable="false" />
-          <Property Name="column3" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column4" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column5" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column6" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column7" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column8" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column9" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="column10" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Letters">
           <Key>
@@ -158,7 +135,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.InvoicesVatV1' does not have 
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductName" Type="varchar" MaxLength="100" />
+          <Property Name="ProductName" Type="varchar" MaxLength="300" />
           <Property Name="RandPricePreVat" Type="decimal" Precision="30" Scale="2" />
           <Property Name="RandPricePostVat" Type="decimal" Precision="30" Scale="2" />
           <Property Name="RandPricePostMarkup" Type="decimal" Precision="30" Scale="2" />
@@ -373,25 +350,21 @@ warning 6002: The table/view 'colorlinkTrading.dbo.SystemUser' does not have a p
 warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="view_NonVatInvoices">
           <Key>
+            <PropertyRef Name="InvoiceNumber" />
             <PropertyRef Name="InvoiceDate" />
             <PropertyRef Name="CustomerName" />
-            <PropertyRef Name="InvoiceNumber" />
-            <PropertyRef Name="ProductInvoiceNonVatId" />
           </Key>
-          <Property Name="ProductName" Type="varchar" MaxLength="100" />
+          <Property Name="InvoiceNumber" Type="int" Nullable="false" />
           <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
           <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="Reference" Type="varchar" MaxLength="500" />
           <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Reference" Type="varchar" MaxLength="500" />
           <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
           <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
-          <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
-          <Property Name="InvoiceNumber" Type="int" Nullable="false" />
-          <Property Name="ProductInvoiceNonVatId" Type="int" Nullable="false" />
-          <Property Name="InvoiceNo" Type="int" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="ProdId" Type="int" />
+          <Property Name="ProductName" Type="varchar" MaxLength="100" />
           <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
           <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
         </EntityType>
@@ -415,20 +388,6 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <EntitySet Name="SYSLOGRequestHistory" EntityType="Self.SYSLOGRequestHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLoginGUID" EntityType="Self.UserLoginGUID" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VATDeductions" EntityType="Self.VATDeductions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="InvoicesVatV1" EntityType="Self.InvoicesVatV1" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [InvoicesVatV1].[column1] AS [column1], 
-    [InvoicesVatV1].[column2] AS [column2], 
-    [InvoicesVatV1].[column3] AS [column3], 
-    [InvoicesVatV1].[column4] AS [column4], 
-    [InvoicesVatV1].[column5] AS [column5], 
-    [InvoicesVatV1].[column6] AS [column6], 
-    [InvoicesVatV1].[column7] AS [column7], 
-    [InvoicesVatV1].[column8] AS [column8], 
-    [InvoicesVatV1].[column9] AS [column9], 
-    [InvoicesVatV1].[column10] AS [column10]
-    FROM [dbo].[InvoicesVatV1] AS [InvoicesVatV1]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="SystemUser" EntityType="Self.SystemUser" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [SystemUser].[UserId] AS [UserId], 
@@ -456,20 +415,17 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           </EntitySet>
           <EntitySet Name="view_NonVatInvoices" EntityType="Self.view_NonVatInvoices" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [view_NonVatInvoices].[ProductName] AS [ProductName], 
+    [view_NonVatInvoices].[InvoiceNumber] AS [InvoiceNumber], 
     [view_NonVatInvoices].[InvoiceDate] AS [InvoiceDate], 
     [view_NonVatInvoices].[CustomerName] AS [CustomerName], 
-    [view_NonVatInvoices].[Reference] AS [Reference], 
     [view_NonVatInvoices].[Discount] AS [Discount], 
     [view_NonVatInvoices].[SubTotal] AS [SubTotal], 
+    [view_NonVatInvoices].[TotalAmount] AS [TotalAmount], 
+    [view_NonVatInvoices].[Reference] AS [Reference], 
     [view_NonVatInvoices].[ExtraDetails] AS [ExtraDetails], 
     [view_NonVatInvoices].[DisplayValue] AS [DisplayValue], 
-    [view_NonVatInvoices].[TotalAmount] AS [TotalAmount], 
-    [view_NonVatInvoices].[InvoiceNumber] AS [InvoiceNumber], 
-    [view_NonVatInvoices].[ProductInvoiceNonVatId] AS [ProductInvoiceNonVatId], 
-    [view_NonVatInvoices].[InvoiceNo] AS [InvoiceNo], 
     [view_NonVatInvoices].[Quantity] AS [Quantity], 
-    [view_NonVatInvoices].[ProdId] AS [ProdId], 
+    [view_NonVatInvoices].[ProductName] AS [ProductName], 
     [view_NonVatInvoices].[UnitPrice] AS [UnitPrice], 
     [view_NonVatInvoices].[Amount] AS [Amount]
     FROM [dbo].[view_NonVatInvoices] AS [view_NonVatInvoices]</DefiningQuery>
@@ -479,12 +435,35 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="DataModel.Customer" />
+          <EntitySet Name="DeliveryNotes" EntityType="DataModel.DeliveryNote" />
+          <EntitySet Name="FileUploads" EntityType="DataModel.FileUpload" />
+          <EntitySet Name="InvoiceNonVats" EntityType="DataModel.InvoiceNonVat" />
+          <EntitySet Name="InvoicesVats" EntityType="DataModel.InvoicesVat" />
+          <EntitySet Name="Letters" EntityType="DataModel.Letter" />
+          <EntitySet Name="MediaFiles" EntityType="DataModel.MediaFile" />
+          <EntitySet Name="Payments" EntityType="DataModel.Payment" />
+          <EntitySet Name="Products" EntityType="DataModel.Product" />
+          <EntitySet Name="ProductDnotes" EntityType="DataModel.ProductDnote" />
+          <EntitySet Name="ProductInvoiceNonVats" EntityType="DataModel.ProductInvoiceNonVat" />
+          <EntitySet Name="ProductInvoiceVats" EntityType="DataModel.ProductInvoiceVat" />
+          <EntitySet Name="ProductProformas" EntityType="DataModel.ProductProforma" />
+          <EntitySet Name="ProductQoutes" EntityType="DataModel.ProductQoute" />
+          <EntitySet Name="ProformaInvoices" EntityType="DataModel.ProformaInvoice" />
+          <EntitySet Name="Qoutations" EntityType="DataModel.Qoutation" />
+          <EntitySet Name="SYSLOGRequestHistories" EntityType="DataModel.SYSLOGRequestHistory" />
+          <EntitySet Name="UserLoginGUIDs" EntityType="DataModel.UserLoginGUID" />
+          <EntitySet Name="VATDeductions" EntityType="DataModel.VATDeduction" />
+          <EntitySet Name="SystemUsers" EntityType="DataModel.SystemUser" />
+          <EntitySet Name="view_NonVatInvoices" EntityType="DataModel.view_NonVatInvoices" />
+        </EntityContainer>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
           </Key>
           <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="CustomerAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="VatRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -516,7 +495,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <Property Name="FileUploadId" Type="Int32" Nullable="false" />
           <Property Name="FileUploadTypeId" Type="Int32" Nullable="false" />
           <Property Name="PersonId" Type="Int32" Nullable="false" />
-          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -533,9 +512,11 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Discount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="VatAmount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="DisplayValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ExtraDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreditValidation" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -547,14 +528,15 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           </Key>
           <Property Name="InvoiceNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="Reference" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
           <Property Name="Discount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="VatAmount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="DisplayValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="ExtraDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ExtraDetails" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="CreditValidation" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -578,12 +560,12 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
             <PropertyRef Name="MediaFileId" />
           </Key>
           <Property Name="MediaFileId" Type="Int32" Nullable="false" />
-          <Property Name="MediaGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MediaDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MediaGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MediaDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -606,7 +588,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="RandPricePreVat" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="RandPricePostVat" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="RandPricePostMarkup" Type="Decimal" Precision="30" Scale="2" />
@@ -739,31 +721,31 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
             <PropertyRef Name="LoginHistoryId" />
           </Key>
           <Property Name="LoginHistoryId" Type="Int32" Nullable="false" />
-          <Property Name="SystemUserGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IPAddress" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserAgent" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="QueryString" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SystemUserGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UserAgent" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="QueryString" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="TotalBytes" Type="Int32" Nullable="false" />
-          <Property Name="HTTPMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FormParameters" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HTTPMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FormParameters" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserLoginGUID">
           <Key>
             <PropertyRef Name="UserLoginGUIDId" />
           </Key>
           <Property Name="UserLoginGUIDId" Type="Int32" Nullable="false" />
-          <Property Name="UserGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LoginGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateGenerated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VATDeduction">
           <Key>
@@ -777,30 +759,6 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="InvoicesVatV1">
-          <Key>
-            <PropertyRef Name="column1" />
-            <PropertyRef Name="column2" />
-            <PropertyRef Name="column3" />
-            <PropertyRef Name="column4" />
-            <PropertyRef Name="column5" />
-            <PropertyRef Name="column6" />
-            <PropertyRef Name="column7" />
-            <PropertyRef Name="column8" />
-            <PropertyRef Name="column9" />
-            <PropertyRef Name="column10" />
-          </Key>
-          <Property Name="column1" Type="Int32" Nullable="false" />
-          <Property Name="column2" Type="Int32" Nullable="false" />
-          <Property Name="column3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="column10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="SystemUser">
           <Key>
@@ -818,20 +776,20 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
             <PropertyRef Name="FailedPasswordAttempts" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="UserGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PersonId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="EncryptedPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EncryptedPassword" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="LastPasswordChangeDate" Type="DateTime" Precision="3" />
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <Property Name="FailedLoginAttempts" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="TermsAndConditionsAcceptDate" Type="DateTime" Precision="3" />
           <Property Name="RequestGuid" Type="Guid" />
           <Property Name="IsRequestGuidExpired" Type="Boolean" />
@@ -841,52 +799,24 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
         </EntityType>
         <EntityType Name="view_NonVatInvoices">
           <Key>
+            <PropertyRef Name="InvoiceNumber" />
             <PropertyRef Name="InvoiceDate" />
             <PropertyRef Name="CustomerName" />
-            <PropertyRef Name="InvoiceNumber" />
-            <PropertyRef Name="ProductInvoiceNonVatId" />
           </Key>
-          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
           <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Discount" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ExtraDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="DisplayValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
-          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
-          <Property Name="ProductInvoiceNonVatId" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceNo" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="ProdId" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
         </EntityType>
-        <EntityContainer Name="DataModelEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="DeliveryNotes" EntityType="Self.DeliveryNote" />
-          <EntitySet Name="FileUploads" EntityType="Self.FileUpload" />
-          <EntitySet Name="InvoiceNonVats" EntityType="Self.InvoiceNonVat" />
-          <EntitySet Name="InvoicesVats" EntityType="Self.InvoicesVat" />
-          <EntitySet Name="Letters" EntityType="Self.Letter" />
-          <EntitySet Name="MediaFiles" EntityType="Self.MediaFile" />
-          <EntitySet Name="Payments" EntityType="Self.Payment" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="ProductDnotes" EntityType="Self.ProductDnote" />
-          <EntitySet Name="ProductInvoiceNonVats" EntityType="Self.ProductInvoiceNonVat" />
-          <EntitySet Name="ProductInvoiceVats" EntityType="Self.ProductInvoiceVat" />
-          <EntitySet Name="ProductProformas" EntityType="Self.ProductProforma" />
-          <EntitySet Name="ProductQoutes" EntityType="Self.ProductQoute" />
-          <EntitySet Name="ProformaInvoices" EntityType="Self.ProformaInvoice" />
-          <EntitySet Name="Qoutations" EntityType="Self.Qoutation" />
-          <EntitySet Name="SYSLOGRequestHistories" EntityType="Self.SYSLOGRequestHistory" />
-          <EntitySet Name="UserLoginGUIDs" EntityType="Self.UserLoginGUID" />
-          <EntitySet Name="VATDeductions" EntityType="Self.VATDeduction" />
-          <EntitySet Name="InvoicesVatV1" EntityType="Self.InvoicesVatV1" />
-          <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
-          <EntitySet Name="view_NonVatInvoices" EntityType="Self.view_NonVatInvoices" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -896,383 +826,367 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="DataModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="VatRegistrationNumber" ColumnName="VatRegistrationNumber" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="VatRegistrationNumber" ColumnName="VatRegistrationNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DeliveryNotes">
             <EntityTypeMapping TypeName="DataModel.DeliveryNote">
               <MappingFragment StoreEntitySet="DeliveryNote">
-                <ScalarProperty Name="DnoteId" ColumnName="DnoteId" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="DnoteDate" ColumnName="DnoteDate" />
-                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+                <ScalarProperty Name="DnoteDate" ColumnName="DnoteDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="DnoteId" ColumnName="DnoteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FileUploads">
             <EntityTypeMapping TypeName="DataModel.FileUpload">
               <MappingFragment StoreEntitySet="FileUpload">
-                <ScalarProperty Name="FileUploadId" ColumnName="FileUploadId" />
-                <ScalarProperty Name="FileUploadTypeId" ColumnName="FileUploadTypeId" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
                 <ScalarProperty Name="FileGUID" ColumnName="FileGUID" />
+                <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="FileUploadTypeId" ColumnName="FileUploadTypeId" />
+                <ScalarProperty Name="FileUploadId" ColumnName="FileUploadId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InvoiceNonVats">
             <EntityTypeMapping TypeName="DataModel.InvoiceNonVat">
               <MappingFragment StoreEntitySet="InvoiceNonVat">
-                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
-                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreditValidation" ColumnName="CreditValidation" />
+                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InvoicesVats">
             <EntityTypeMapping TypeName="DataModel.InvoicesVat">
               <MappingFragment StoreEntitySet="InvoicesVat">
-                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
-                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreditValidation" ColumnName="CreditValidation" />
+                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Letters">
             <EntityTypeMapping TypeName="DataModel.Letter">
               <MappingFragment StoreEntitySet="Letters">
-                <ScalarProperty Name="LetterId" ColumnName="LetterId" />
-                <ScalarProperty Name="LetterRecipient" ColumnName="LetterRecipient" />
-                <ScalarProperty Name="LetterContent" ColumnName="LetterContent" />
-                <ScalarProperty Name="LetterDate" ColumnName="LetterDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LetterDate" ColumnName="LetterDate" />
+                <ScalarProperty Name="LetterContent" ColumnName="LetterContent" />
+                <ScalarProperty Name="LetterRecipient" ColumnName="LetterRecipient" />
+                <ScalarProperty Name="LetterId" ColumnName="LetterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MediaFiles">
             <EntityTypeMapping TypeName="DataModel.MediaFile">
               <MappingFragment StoreEntitySet="MediaFile">
-                <ScalarProperty Name="MediaFileId" ColumnName="MediaFileId" />
-                <ScalarProperty Name="MediaGUID" ColumnName="MediaGUID" />
-                <ScalarProperty Name="MediaDescription" ColumnName="MediaDescription" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MediaDescription" ColumnName="MediaDescription" />
+                <ScalarProperty Name="MediaGUID" ColumnName="MediaGUID" />
+                <ScalarProperty Name="MediaFileId" ColumnName="MediaFileId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="DataModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
-                <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
-                <ScalarProperty Name="StartInvoice" ColumnName="StartInvoice" />
-                <ScalarProperty Name="EndInvoice" ColumnName="EndInvoice" />
-                <ScalarProperty Name="BalanceAfterPayment" ColumnName="BalanceAfterPayment" />
-                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="BalanceAfterPayment" ColumnName="BalanceAfterPayment" />
+                <ScalarProperty Name="EndInvoice" ColumnName="EndInvoice" />
+                <ScalarProperty Name="StartInvoice" ColumnName="StartInvoice" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DataModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="RandPricePreVat" ColumnName="RandPricePreVat" />
-                <ScalarProperty Name="RandPricePostVat" ColumnName="RandPricePostVat" />
-                <ScalarProperty Name="RandPricePostMarkup" ColumnName="RandPricePostMarkup" />
-                <ScalarProperty Name="CashPrice" ColumnName="CashPrice" />
-                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
-                <ScalarProperty Name="PriceIncVat" ColumnName="PriceIncVat" />
-                <ScalarProperty Name="CompetitorPrice" ColumnName="CompetitorPrice" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="CompetitorDetails" ColumnName="CompetitorDetails" />
-                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
-                <ScalarProperty Name="MarkUpPercentage" ColumnName="MarkUpPercentage" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MarkUpPercentage" ColumnName="MarkUpPercentage" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="CompetitorDetails" ColumnName="CompetitorDetails" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CompetitorPrice" ColumnName="CompetitorPrice" />
+                <ScalarProperty Name="PriceIncVat" ColumnName="PriceIncVat" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="CashPrice" ColumnName="CashPrice" />
+                <ScalarProperty Name="RandPricePostMarkup" ColumnName="RandPricePostMarkup" />
+                <ScalarProperty Name="RandPricePostVat" ColumnName="RandPricePostVat" />
+                <ScalarProperty Name="RandPricePreVat" ColumnName="RandPricePreVat" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductDnotes">
             <EntityTypeMapping TypeName="DataModel.ProductDnote">
               <MappingFragment StoreEntitySet="ProductDnote">
-                <ScalarProperty Name="ProductDnoteId" ColumnName="ProductDnoteId" />
-                <ScalarProperty Name="DnoteNo" ColumnName="DnoteNo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DnoteNo" ColumnName="DnoteNo" />
+                <ScalarProperty Name="ProductDnoteId" ColumnName="ProductDnoteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductInvoiceNonVats">
             <EntityTypeMapping TypeName="DataModel.ProductInvoiceNonVat">
               <MappingFragment StoreEntitySet="ProductInvoiceNonVat">
-                <ScalarProperty Name="ProductInvoiceNonVatId" ColumnName="ProductInvoiceNonVatId" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="ProductInvoiceNonVatId" ColumnName="ProductInvoiceNonVatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductInvoiceVats">
             <EntityTypeMapping TypeName="DataModel.ProductInvoiceVat">
               <MappingFragment StoreEntitySet="ProductInvoiceVat">
-                <ScalarProperty Name="ProductInvoiceVatId" ColumnName="ProductInvoiceVatId" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="ProductInvoiceVatId" ColumnName="ProductInvoiceVatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductProformas">
             <EntityTypeMapping TypeName="DataModel.ProductProforma">
               <MappingFragment StoreEntitySet="ProductProforma">
-                <ScalarProperty Name="ProductProformaId" ColumnName="ProductProformaId" />
-                <ScalarProperty Name="ProfornaNo" ColumnName="ProfornaNo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProfornaNo" ColumnName="ProfornaNo" />
+                <ScalarProperty Name="ProductProformaId" ColumnName="ProductProformaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductQoutes">
             <EntityTypeMapping TypeName="DataModel.ProductQoute">
               <MappingFragment StoreEntitySet="ProductQoute">
-                <ScalarProperty Name="ProductQouteId" ColumnName="ProductQouteId" />
-                <ScalarProperty Name="QouteNo" ColumnName="QouteNo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="QouteNo" ColumnName="QouteNo" />
+                <ScalarProperty Name="ProductQouteId" ColumnName="ProductQouteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProformaInvoices">
             <EntityTypeMapping TypeName="DataModel.ProformaInvoice">
               <MappingFragment StoreEntitySet="ProformaInvoice">
-                <ScalarProperty Name="ProformaNumber" ColumnName="ProformaNumber" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="ProformaDate" ColumnName="ProformaDate" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
-                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="ProformaDate" ColumnName="ProformaDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProformaNumber" ColumnName="ProformaNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Qoutations">
             <EntityTypeMapping TypeName="DataModel.Qoutation">
               <MappingFragment StoreEntitySet="Qoutation">
-                <ScalarProperty Name="QouteNumber" ColumnName="QouteNumber" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
-                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="QouteNumber" ColumnName="QouteNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SYSLOGRequestHistories">
             <EntityTypeMapping TypeName="DataModel.SYSLOGRequestHistory">
               <MappingFragment StoreEntitySet="SYSLOGRequestHistory">
-                <ScalarProperty Name="LoginHistoryId" ColumnName="LoginHistoryId" />
-                <ScalarProperty Name="SystemUserGUID" ColumnName="SystemUserGUID" />
-                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
-                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
-                <ScalarProperty Name="QueryString" ColumnName="QueryString" />
-                <ScalarProperty Name="TotalBytes" ColumnName="TotalBytes" />
-                <ScalarProperty Name="HTTPMethod" ColumnName="HTTPMethod" />
-                <ScalarProperty Name="FormParameters" ColumnName="FormParameters" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FormParameters" ColumnName="FormParameters" />
+                <ScalarProperty Name="HTTPMethod" ColumnName="HTTPMethod" />
+                <ScalarProperty Name="TotalBytes" ColumnName="TotalBytes" />
+                <ScalarProperty Name="QueryString" ColumnName="QueryString" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="SystemUserGUID" ColumnName="SystemUserGUID" />
+                <ScalarProperty Name="LoginHistoryId" ColumnName="LoginHistoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserLoginGUIDs">
             <EntityTypeMapping TypeName="DataModel.UserLoginGUID">
               <MappingFragment StoreEntitySet="UserLoginGUID">
-                <ScalarProperty Name="UserLoginGUIDId" ColumnName="UserLoginGUIDId" />
-                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
-                <ScalarProperty Name="LoginGUID" ColumnName="LoginGUID" />
-                <ScalarProperty Name="DateGenerated" ColumnName="DateGenerated" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DateGenerated" ColumnName="DateGenerated" />
+                <ScalarProperty Name="LoginGUID" ColumnName="LoginGUID" />
+                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+                <ScalarProperty Name="UserLoginGUIDId" ColumnName="UserLoginGUIDId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VATDeductions">
             <EntityTypeMapping TypeName="DataModel.VATDeduction">
               <MappingFragment StoreEntitySet="VATDeductions">
-                <ScalarProperty Name="VATDeductionId" ColumnName="VATDeductionId" />
-                <ScalarProperty Name="VATDeductionDescription" ColumnName="VATDeductionDescription" />
-                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InvoicesVatV1">
-            <EntityTypeMapping TypeName="DataModel.InvoicesVatV1">
-              <MappingFragment StoreEntitySet="InvoicesVatV1">
-                <ScalarProperty Name="column1" ColumnName="column1" />
-                <ScalarProperty Name="column2" ColumnName="column2" />
-                <ScalarProperty Name="column3" ColumnName="column3" />
-                <ScalarProperty Name="column4" ColumnName="column4" />
-                <ScalarProperty Name="column5" ColumnName="column5" />
-                <ScalarProperty Name="column6" ColumnName="column6" />
-                <ScalarProperty Name="column7" ColumnName="column7" />
-                <ScalarProperty Name="column8" ColumnName="column8" />
-                <ScalarProperty Name="column9" ColumnName="column9" />
-                <ScalarProperty Name="column10" ColumnName="column10" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="VatAmount" ColumnName="VatAmount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="VATDeductionDescription" ColumnName="VATDeductionDescription" />
+                <ScalarProperty Name="VATDeductionId" ColumnName="VATDeductionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SystemUsers">
             <EntityTypeMapping TypeName="DataModel.SystemUser">
               <MappingFragment StoreEntitySet="SystemUser">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EncryptedPassword" ColumnName="EncryptedPassword" />
-                <ScalarProperty Name="LastPasswordChangeDate" ColumnName="LastPasswordChangeDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="FailedLoginAttempts" ColumnName="FailedLoginAttempts" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
-                <ScalarProperty Name="TermsAndConditionsAcceptDate" ColumnName="TermsAndConditionsAcceptDate" />
-                <ScalarProperty Name="RequestGuid" ColumnName="RequestGuid" />
-                <ScalarProperty Name="IsRequestGuidExpired" ColumnName="IsRequestGuidExpired" />
-                <ScalarProperty Name="RequestGuidExpiryDate" ColumnName="RequestGuidExpiryDate" />
-                <ScalarProperty Name="FailedPasswordAttempts" ColumnName="FailedPasswordAttempts" />
                 <ScalarProperty Name="AccountLockoutDate" ColumnName="AccountLockoutDate" />
+                <ScalarProperty Name="FailedPasswordAttempts" ColumnName="FailedPasswordAttempts" />
+                <ScalarProperty Name="RequestGuidExpiryDate" ColumnName="RequestGuidExpiryDate" />
+                <ScalarProperty Name="IsRequestGuidExpired" ColumnName="IsRequestGuidExpired" />
+                <ScalarProperty Name="RequestGuid" ColumnName="RequestGuid" />
+                <ScalarProperty Name="TermsAndConditionsAcceptDate" ColumnName="TermsAndConditionsAcceptDate" />
+                <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FailedLoginAttempts" ColumnName="FailedLoginAttempts" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastPasswordChangeDate" ColumnName="LastPasswordChangeDate" />
+                <ScalarProperty Name="EncryptedPassword" ColumnName="EncryptedPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="view_NonVatInvoices">
             <EntityTypeMapping TypeName="DataModel.view_NonVatInvoices">
               <MappingFragment StoreEntitySet="view_NonVatInvoices">
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
-                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
-                <ScalarProperty Name="ProductInvoiceNonVatId" ColumnName="ProductInvoiceNonVatId" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProdId" ColumnName="ProdId" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DisplayValue" ColumnName="DisplayValue" />
+                <ScalarProperty Name="ExtraDetails" ColumnName="ExtraDetails" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

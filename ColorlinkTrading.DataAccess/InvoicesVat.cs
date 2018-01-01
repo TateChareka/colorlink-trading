@@ -16,7 +16,7 @@ namespace ColorlinkTrading.DataAccess
     {
         public int InvoiceNumber { get; set; }
         public int CustomerId { get; set; }
-        public System.DateTime InvoiceDate { get; set; }
+        public Nullable<System.DateTime> InvoiceDate { get; set; }
         public string Reference { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
@@ -24,6 +24,7 @@ namespace ColorlinkTrading.DataAccess
         public Nullable<decimal> TotalAmount { get; set; }
         public string DisplayValue { get; set; }
         public string ExtraDetails { get; set; }
+        public Nullable<int> CreditValidation { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }

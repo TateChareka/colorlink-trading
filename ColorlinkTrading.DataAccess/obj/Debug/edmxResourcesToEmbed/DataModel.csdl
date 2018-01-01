@@ -1,11 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DataModelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="DataModel.Customer" />
+    <EntitySet Name="DeliveryNotes" EntityType="DataModel.DeliveryNote" />
+    <EntitySet Name="FileUploads" EntityType="DataModel.FileUpload" />
+    <EntitySet Name="InvoiceNonVats" EntityType="DataModel.InvoiceNonVat" />
+    <EntitySet Name="InvoicesVats" EntityType="DataModel.InvoicesVat" />
+    <EntitySet Name="Letters" EntityType="DataModel.Letter" />
+    <EntitySet Name="MediaFiles" EntityType="DataModel.MediaFile" />
+    <EntitySet Name="Payments" EntityType="DataModel.Payment" />
+    <EntitySet Name="Products" EntityType="DataModel.Product" />
+    <EntitySet Name="ProductDnotes" EntityType="DataModel.ProductDnote" />
+    <EntitySet Name="ProductInvoiceNonVats" EntityType="DataModel.ProductInvoiceNonVat" />
+    <EntitySet Name="ProductInvoiceVats" EntityType="DataModel.ProductInvoiceVat" />
+    <EntitySet Name="ProductProformas" EntityType="DataModel.ProductProforma" />
+    <EntitySet Name="ProductQoutes" EntityType="DataModel.ProductQoute" />
+    <EntitySet Name="ProformaInvoices" EntityType="DataModel.ProformaInvoice" />
+    <EntitySet Name="Qoutations" EntityType="DataModel.Qoutation" />
+    <EntitySet Name="SYSLOGRequestHistories" EntityType="DataModel.SYSLOGRequestHistory" />
+    <EntitySet Name="UserLoginGUIDs" EntityType="DataModel.UserLoginGUID" />
+    <EntitySet Name="VATDeductions" EntityType="DataModel.VATDeduction" />
+    <EntitySet Name="SystemUsers" EntityType="DataModel.SystemUser" />
+    <EntitySet Name="view_NonVatInvoices" EntityType="DataModel.view_NonVatInvoices" />
+  </EntityContainer>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="CustomerId" />
     </Key>
     <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="CustomerAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="VatRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -37,7 +60,7 @@
     <Property Name="FileUploadId" Type="Int32" Nullable="false" />
     <Property Name="FileUploadTypeId" Type="Int32" Nullable="false" />
     <Property Name="PersonId" Type="Int32" Nullable="false" />
-    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -54,9 +77,11 @@
     <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Discount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="DisplayValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="ExtraDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreditValidation" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -68,14 +93,15 @@
     </Key>
     <Property Name="InvoiceNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CustomerId" Type="Int32" Nullable="false" />
-    <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+    <Property Name="Reference" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
     <Property Name="Discount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="VatAmount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="DisplayValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="ExtraDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ExtraDetails" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+    <Property Name="CreditValidation" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -99,12 +125,12 @@
       <PropertyRef Name="MediaFileId" />
     </Key>
     <Property Name="MediaFileId" Type="Int32" Nullable="false" />
-    <Property Name="MediaGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MediaDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MediaGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MediaDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>
@@ -127,7 +153,7 @@
       <PropertyRef Name="ProductId" />
     </Key>
     <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
     <Property Name="RandPricePreVat" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="RandPricePostVat" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="RandPricePostMarkup" Type="Decimal" Precision="30" Scale="2" />
@@ -260,31 +286,31 @@
       <PropertyRef Name="LoginHistoryId" />
     </Key>
     <Property Name="LoginHistoryId" Type="Int32" Nullable="false" />
-    <Property Name="SystemUserGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="IPAddress" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UserAgent" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="QueryString" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SystemUserGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="UserAgent" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="URL" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="QueryString" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="TotalBytes" Type="Int32" Nullable="false" />
-    <Property Name="HTTPMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FormParameters" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HTTPMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FormParameters" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="UserLoginGUID">
     <Key>
       <PropertyRef Name="UserLoginGUIDId" />
     </Key>
     <Property Name="UserLoginGUIDId" Type="Int32" Nullable="false" />
-    <Property Name="UserGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LoginGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoginGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DateGenerated" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="VATDeduction">
     <Key>
@@ -298,30 +324,6 @@
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="UpdatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="InvoicesVatV1">
-    <Key>
-      <PropertyRef Name="column1" />
-      <PropertyRef Name="column2" />
-      <PropertyRef Name="column3" />
-      <PropertyRef Name="column4" />
-      <PropertyRef Name="column5" />
-      <PropertyRef Name="column6" />
-      <PropertyRef Name="column7" />
-      <PropertyRef Name="column8" />
-      <PropertyRef Name="column9" />
-      <PropertyRef Name="column10" />
-    </Key>
-    <Property Name="column1" Type="Int32" Nullable="false" />
-    <Property Name="column2" Type="Int32" Nullable="false" />
-    <Property Name="column3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="column10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="SystemUser">
     <Key>
@@ -339,20 +341,20 @@
       <PropertyRef Name="FailedPasswordAttempts" />
     </Key>
     <Property Name="UserId" Type="Int32" Nullable="false" />
-    <Property Name="UserGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserGUID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PersonId" Type="Int32" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="EncryptedPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EncryptedPassword" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="LastPasswordChangeDate" Type="DateTime" Precision="3" />
     <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
     <Property Name="FailedLoginAttempts" Type="Int32" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdatedByUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="TermsAndConditionsAcceptDate" Type="DateTime" Precision="3" />
     <Property Name="RequestGuid" Type="Guid" />
     <Property Name="IsRequestGuidExpired" Type="Boolean" />
@@ -362,50 +364,22 @@
   </EntityType>
   <EntityType Name="view_NonVatInvoices">
     <Key>
+      <PropertyRef Name="InvoiceNumber" />
       <PropertyRef Name="InvoiceDate" />
       <PropertyRef Name="CustomerName" />
-      <PropertyRef Name="InvoiceNumber" />
-      <PropertyRef Name="ProductInvoiceNonVatId" />
     </Key>
-    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
     <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Discount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="ExtraDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="DisplayValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
-    <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
-    <Property Name="ProductInvoiceNonVatId" Type="Int32" Nullable="false" />
-    <Property Name="InvoiceNo" Type="Int32" />
     <Property Name="Quantity" Type="Int32" />
-    <Property Name="ProdId" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
   </EntityType>
-  <EntityContainer Name="DataModelEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="DeliveryNotes" EntityType="Self.DeliveryNote" />
-    <EntitySet Name="FileUploads" EntityType="Self.FileUpload" />
-    <EntitySet Name="InvoiceNonVats" EntityType="Self.InvoiceNonVat" />
-    <EntitySet Name="InvoicesVats" EntityType="Self.InvoicesVat" />
-    <EntitySet Name="Letters" EntityType="Self.Letter" />
-    <EntitySet Name="MediaFiles" EntityType="Self.MediaFile" />
-    <EntitySet Name="Payments" EntityType="Self.Payment" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
-    <EntitySet Name="ProductDnotes" EntityType="Self.ProductDnote" />
-    <EntitySet Name="ProductInvoiceNonVats" EntityType="Self.ProductInvoiceNonVat" />
-    <EntitySet Name="ProductInvoiceVats" EntityType="Self.ProductInvoiceVat" />
-    <EntitySet Name="ProductProformas" EntityType="Self.ProductProforma" />
-    <EntitySet Name="ProductQoutes" EntityType="Self.ProductQoute" />
-    <EntitySet Name="ProformaInvoices" EntityType="Self.ProformaInvoice" />
-    <EntitySet Name="Qoutations" EntityType="Self.Qoutation" />
-    <EntitySet Name="SYSLOGRequestHistories" EntityType="Self.SYSLOGRequestHistory" />
-    <EntitySet Name="UserLoginGUIDs" EntityType="Self.UserLoginGUID" />
-    <EntitySet Name="VATDeductions" EntityType="Self.VATDeduction" />
-    <EntitySet Name="InvoicesVatV1" EntityType="Self.InvoicesVatV1" />
-    <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
-    <EntitySet Name="view_NonVatInvoices" EntityType="Self.view_NonVatInvoices" />
-  </EntityContainer>
 </Schema>

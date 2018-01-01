@@ -87,9 +87,6 @@
     <Compile Include="InvoicesVat.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="InvoicesVatV1.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Letter.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

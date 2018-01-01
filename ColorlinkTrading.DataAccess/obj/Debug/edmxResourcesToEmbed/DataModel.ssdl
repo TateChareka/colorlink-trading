@@ -54,9 +54,11 @@
     <Property Name="Reference" Type="varchar" MaxLength="500" />
     <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
     <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+    <Property Name="CreditValidation" Type="int" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -68,44 +70,19 @@
     </Key>
     <Property Name="InvoiceNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
-    <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
-    <Property Name="Reference" Type="varchar" MaxLength="500" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="Reference" Type="varchar" MaxLength="600" />
     <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
     <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
-    <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
+    <Property Name="ExtraDetails" Type="varchar" MaxLength="600" />
+    <Property Name="CreditValidation" Type="int" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'colorlinkTrading.dbo.InvoicesVatV1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="InvoicesVatV1">
-    <Key>
-      <PropertyRef Name="column1" />
-      <PropertyRef Name="column2" />
-      <PropertyRef Name="column3" />
-      <PropertyRef Name="column4" />
-      <PropertyRef Name="column5" />
-      <PropertyRef Name="column6" />
-      <PropertyRef Name="column7" />
-      <PropertyRef Name="column8" />
-      <PropertyRef Name="column9" />
-      <PropertyRef Name="column10" />
-    </Key>
-    <Property Name="column1" Type="int" Nullable="false" />
-    <Property Name="column2" Type="int" Nullable="false" />
-    <Property Name="column3" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column4" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column5" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column6" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column7" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column8" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column9" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="column10" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Letters">
     <Key>
@@ -153,7 +130,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.InvoicesVatV1' does not have 
       <PropertyRef Name="ProductId" />
     </Key>
     <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductName" Type="varchar" MaxLength="100" />
+    <Property Name="ProductName" Type="varchar" MaxLength="300" />
     <Property Name="RandPricePreVat" Type="decimal" Precision="30" Scale="2" />
     <Property Name="RandPricePostVat" Type="decimal" Precision="30" Scale="2" />
     <Property Name="RandPricePostMarkup" Type="decimal" Precision="30" Scale="2" />
@@ -368,25 +345,21 @@ warning 6002: The table/view 'colorlinkTrading.dbo.SystemUser' does not have a p
 warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="view_NonVatInvoices">
     <Key>
+      <PropertyRef Name="InvoiceNumber" />
       <PropertyRef Name="InvoiceDate" />
       <PropertyRef Name="CustomerName" />
-      <PropertyRef Name="InvoiceNumber" />
-      <PropertyRef Name="ProductInvoiceNonVatId" />
     </Key>
-    <Property Name="ProductName" Type="varchar" MaxLength="100" />
+    <Property Name="InvoiceNumber" Type="int" Nullable="false" />
     <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
     <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="Reference" Type="varchar" MaxLength="500" />
     <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Reference" Type="varchar" MaxLength="500" />
     <Property Name="ExtraDetails" Type="varchar" MaxLength="500" />
     <Property Name="DisplayValue" Type="varchar" MaxLength="500" />
-    <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
-    <Property Name="InvoiceNumber" Type="int" Nullable="false" />
-    <Property Name="ProductInvoiceNonVatId" Type="int" Nullable="false" />
-    <Property Name="InvoiceNo" Type="int" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="ProdId" Type="int" />
+    <Property Name="ProductName" Type="varchar" MaxLength="100" />
     <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
   </EntityType>
@@ -410,20 +383,6 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
     <EntitySet Name="SYSLOGRequestHistory" EntityType="Self.SYSLOGRequestHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLoginGUID" EntityType="Self.UserLoginGUID" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VATDeductions" EntityType="Self.VATDeductions" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="InvoicesVatV1" EntityType="Self.InvoicesVatV1" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [InvoicesVatV1].[column1] AS [column1], 
-    [InvoicesVatV1].[column2] AS [column2], 
-    [InvoicesVatV1].[column3] AS [column3], 
-    [InvoicesVatV1].[column4] AS [column4], 
-    [InvoicesVatV1].[column5] AS [column5], 
-    [InvoicesVatV1].[column6] AS [column6], 
-    [InvoicesVatV1].[column7] AS [column7], 
-    [InvoicesVatV1].[column8] AS [column8], 
-    [InvoicesVatV1].[column9] AS [column9], 
-    [InvoicesVatV1].[column10] AS [column10]
-    FROM [dbo].[InvoicesVatV1] AS [InvoicesVatV1]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="SystemUser" EntityType="Self.SystemUser" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [SystemUser].[UserId] AS [UserId], 
@@ -451,20 +410,17 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
     </EntitySet>
     <EntitySet Name="view_NonVatInvoices" EntityType="Self.view_NonVatInvoices" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [view_NonVatInvoices].[ProductName] AS [ProductName], 
+    [view_NonVatInvoices].[InvoiceNumber] AS [InvoiceNumber], 
     [view_NonVatInvoices].[InvoiceDate] AS [InvoiceDate], 
     [view_NonVatInvoices].[CustomerName] AS [CustomerName], 
-    [view_NonVatInvoices].[Reference] AS [Reference], 
     [view_NonVatInvoices].[Discount] AS [Discount], 
     [view_NonVatInvoices].[SubTotal] AS [SubTotal], 
+    [view_NonVatInvoices].[TotalAmount] AS [TotalAmount], 
+    [view_NonVatInvoices].[Reference] AS [Reference], 
     [view_NonVatInvoices].[ExtraDetails] AS [ExtraDetails], 
     [view_NonVatInvoices].[DisplayValue] AS [DisplayValue], 
-    [view_NonVatInvoices].[TotalAmount] AS [TotalAmount], 
-    [view_NonVatInvoices].[InvoiceNumber] AS [InvoiceNumber], 
-    [view_NonVatInvoices].[ProductInvoiceNonVatId] AS [ProductInvoiceNonVatId], 
-    [view_NonVatInvoices].[InvoiceNo] AS [InvoiceNo], 
     [view_NonVatInvoices].[Quantity] AS [Quantity], 
-    [view_NonVatInvoices].[ProdId] AS [ProdId], 
+    [view_NonVatInvoices].[ProductName] AS [ProductName], 
     [view_NonVatInvoices].[UnitPrice] AS [UnitPrice], 
     [view_NonVatInvoices].[Amount] AS [Amount]
     FROM [dbo].[view_NonVatInvoices] AS [view_NonVatInvoices]</DefiningQuery>

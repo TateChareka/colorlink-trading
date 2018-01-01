@@ -20,6 +20,7 @@ namespace ColorlinkTrading.Models
         public decimal? VatAmount { get; set; }
         public decimal? TotalAmount { get; set; }
         public string DisplayValue { get; set; }
+        public int? CreditValidation { get; set; }
         public string ExtraDetails { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }

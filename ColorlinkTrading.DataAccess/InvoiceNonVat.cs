@@ -20,9 +20,11 @@ namespace ColorlinkTrading.DataAccess
         public string Reference { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
+        public Nullable<decimal> VatAmount { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
         public string DisplayValue { get; set; }
         public string ExtraDetails { get; set; }
+        public Nullable<int> CreditValidation { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }

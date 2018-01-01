@@ -105,6 +105,7 @@ namespace ColorlinkTrading.Logic
                             CustomerName = customers.Where(b => b.CustomerId == item.CustomerId).FirstOrDefault().CustomerName,
                             DisplayValue = item.DisplayValue,
                             Discount = item.Discount,
+                            CreditValidation = item.CreditValidation,
                             ExtraDetails = item.ExtraDetails,
                             InvoiceDate = item.InvoiceDate,
                             InvoiceNumber = item.InvoiceNumber,
@@ -181,6 +182,7 @@ namespace ColorlinkTrading.Logic
                     result.CustomerId = data.CustomerId;
                     result.DisplayValue = data.DisplayValue;
                     result.Discount = data.Discount;
+                    result.CreditValidation = data.CreditValidation;
                     result.ExtraDetails = data.ExtraDetails;
                     result.InvoiceDate = data.InvoiceDate;
                     result.InvoiceNumber = data.InvoiceNumber;
@@ -267,6 +269,7 @@ namespace ColorlinkTrading.Logic
                     data.InvoiceNumber = request.InvoiceNumber;
                     data.Reference = request.Reference;
                     data.SubTotal = request.SubTotal;
+                    data.CreditValidation = request.CreditValidation;
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
 

@@ -5,28 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7f9552ed44814d40a0eb06c814745b1f" Name="Diagram1">
-        <EntityTypeShape EntityType="DataModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.DeliveryNote" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.FileUpload" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.InvoiceNonVat" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.InvoicesVat" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Letter" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.MediaFile" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Payment" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Product" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ProductDnote" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ProductInvoiceNonVat" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ProductInvoiceVat" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ProductProforma" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ProductQoute" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.ProformaInvoice" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Qoutation" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.SYSLOGRequestHistory" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.UserLoginGUID" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.VATDeduction" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.InvoicesVatV1" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.SystemUser" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.view_NonVatInvoices" Width="1.5" PointX="10.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.DeliveryNote" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.FileUpload" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.InvoiceNonVat" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.InvoicesVat" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.Letter" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.MediaFile" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.Payment" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.Product" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.ProductDnote" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DataModel.ProductInvoiceNonVat" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DataModel.ProductInvoiceVat" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DataModel.ProductProforma" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.ProductQoute" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.ProformaInvoice" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DataModel.Qoutation" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DataModel.SYSLOGRequestHistory" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.UserLoginGUID" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DataModel.VATDeduction" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DataModel.SystemUser" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DataModel.view_NonVatInvoices" Width="1.5" PointX="8.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

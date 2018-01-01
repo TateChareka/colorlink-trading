@@ -44,7 +44,6 @@ namespace ColorlinkTrading.DataAccess
         public virtual DbSet<SYSLOGRequestHistory> SYSLOGRequestHistories { get; set; }
         public virtual DbSet<UserLoginGUID> UserLoginGUIDs { get; set; }
         public virtual DbSet<VATDeduction> VATDeductions { get; set; }
-        public virtual DbSet<InvoicesVatV1> InvoicesVatV1 { get; set; }
         public virtual DbSet<SystemUser> SystemUsers { get; set; }
         public virtual DbSet<view_NonVatInvoices> view_NonVatInvoices { get; set; }
     }

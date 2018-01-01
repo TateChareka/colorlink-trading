@@ -14,20 +14,17 @@ namespace ColorlinkTrading.DataAccess
     
     public partial class view_NonVatInvoices
     {
-        public string ProductName { get; set; }
+        public int InvoiceNumber { get; set; }
         public System.DateTime InvoiceDate { get; set; }
         public string CustomerName { get; set; }
-        public string Reference { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
+        public string Reference { get; set; }
         public string ExtraDetails { get; set; }
         public string DisplayValue { get; set; }
-        public Nullable<decimal> TotalAmount { get; set; }
-        public int InvoiceNumber { get; set; }
-        public int ProductInvoiceNonVatId { get; set; }
-        public Nullable<int> InvoiceNo { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<int> ProdId { get; set; }
+        public string ProductName { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<decimal> Amount { get; set; }
     }
