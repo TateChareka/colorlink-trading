@@ -817,7 +817,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

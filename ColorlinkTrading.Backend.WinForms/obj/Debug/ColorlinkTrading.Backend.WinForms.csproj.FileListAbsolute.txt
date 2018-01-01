@@ -108,3 +108,5 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\log4net
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.pdb
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgilityPack.xml
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Payments.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.VATDeduction.VATDeduction.resources

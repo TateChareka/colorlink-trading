@@ -302,7 +302,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
                 CreditValidation = 0,
-                ExtraDetails = "",
+                ExtraDetails = "",                
                 InvoiceDate = invdate.Value,
                 NumberOfProducts = invoiceProducts.Items.Count,
                 Reference = txtponumber.Text,
