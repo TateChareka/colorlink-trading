@@ -37,69 +37,22 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void EditToolStripMenuItem1_ClickOLD(object sender, EventArgs e)
         {
-            if (CustomerLogic.CustomerCount(userLoggedIn) != 0)
-            {
-                EditCustomer editCust = new EditCustomer();
-                editCust.Show();
-            }
-            else
-            {
-                MessageBox.Show("No Customers Exist on the current system", "Edit Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+
         }
 
         private void ViewToolStripMenuItem_ClickOLD(object sender, EventArgs e)
         {
-            if (CustomerLogic.CustomerCount(userLoggedIn) != 0)
-            {
-                EditCustomer editCust = new EditCustomer();
-                editCust.Text = "View Customers";
-                editCust.txtaddress.Enabled = false;
-                editCust.txtContactNo.Enabled = false;
-                editCust.txtcustId.Enabled = false;
-                editCust.txtdetails.Enabled = false;
-                editCust.txtemail.Enabled = false;
-                editCust.txtname.Enabled = false;
-                editCust.txtvagregNo.Enabled = false;
-                editCust.editbtn.Visible = false;
-                editCust.Show();
-            }
-            else
-            {
-                MessageBox.Show("No Customers Exist on the current system", "View Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+
         }
 
         private void AddToolStripMenuItem_ClickOLD(object sender, EventArgs e)
         {
-            NewProduct addProd = new NewProduct();
-            addProd.Show();
+
         }
 
         private void ViewToolStripMenuItem1_ClickOLD(object sender, EventArgs e)
         {
-            if (ProductLogic.ProductCount(userLoggedIn) != 0)
-            {
-                Product.EditProduct editProd = new Product.EditProduct();
-                editProd.Enabled = false;
-                editProd.txtAfter15pcVatUS.Enabled = false;
-                editProd.txtComments.Enabled = false;
-                editProd.txtCompetitorDetails.Enabled = false;
-                editProd.txtCompetitorPrice.Enabled = false;
-                editProd.txtExchangeRate.Enabled = false;
-                editProd.txtFinalPrice.Enabled = false;
-                editProd.txtmarkupPc.Enabled = false;
-                editProd.txtName.Enabled = false;
-                editProd.txtPriceAfter14Vat.Enabled = false;
-                editProd.txtPriceAfterMarkup.Enabled = false;
-                editProd.txtRand.Enabled = false;
-                editProd.txtUSValue.Enabled = false;
-                editProd.btnAdd.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("No Products Exist on the current system", "View Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+
         }
 
         private void EditToolStripMenuItem_ClickOLD(object sender, EventArgs e)
@@ -117,8 +70,7 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void CreateToolStripMenuItem_ClickOLD(object sender, EventArgs e)
         {
-            VATInvoice.NewInvoice newInv = new VATInvoice.NewInvoice();
-            newInv.Show();
+
         }
 
         private void PaymentToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -318,17 +270,43 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void AddCustomerToolStripMenuItem_Click_2(object sender, EventArgs e)
         {
-            AddCustomerToolStripMenuItem_ClickOLD(sender, e);
+            AddCustomer addCust = new AddCustomer();
+            addCust.Show();
         }
 
         private void ViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ViewToolStripMenuItem1_ClickOLD(sender, e);
+            if (CustomerLogic.CustomerCount(userLoggedIn) != 0)
+            {
+                EditCustomer editCust = new EditCustomer();
+                editCust.Text = "View Customers";
+                editCust.txtaddress.Enabled = false;
+                editCust.txtContactNo.Enabled = false;
+                editCust.txtcustId.Enabled = false;
+                editCust.txtdetails.Enabled = false;
+                editCust.txtemail.Enabled = false;
+                editCust.txtname.Enabled = false;
+                editCust.txtvagregNo.Enabled = false;
+                editCust.editbtn.Visible = false;
+                editCust.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Customers Exist on the current system", "View Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void EditToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            EditToolStripMenuItem1_ClickOLD(sender, e);
+            if (CustomerLogic.CustomerCount(userLoggedIn) != 0)
+            {
+                EditCustomer editCust = new EditCustomer();
+                editCust.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Customers Exist on the current system", "Edit Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void PaymentToolStripMenuItem2_Click_1(object sender, EventArgs e)
@@ -339,22 +317,45 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void AddToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            AddToolStripMenuItem_ClickOLD(sender, e);
+            NewProduct addProd = new NewProduct();
+            addProd.Show();
         }
 
         private void ViewToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            ViewToolStripMenuItem1_ClickOLD(sender, e);
+
         }
 
         private void EditToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            EditToolStripMenuItem1_ClickOLD(sender, e);
+            if (ProductLogic.ProductCount(userLoggedIn) != 0)
+            {
+                Product.EditProduct editProd = new Product.EditProduct();
+                editProd.Enabled = false;
+                editProd.txtAfter15pcVatUS.Enabled = false;
+                editProd.txtComments.Enabled = false;
+                editProd.txtCompetitorDetails.Enabled = false;
+                editProd.txtCompetitorPrice.Enabled = false;
+                editProd.txtExchangeRate.Enabled = false;
+                editProd.txtFinalPrice.Enabled = false;
+                editProd.txtmarkupPc.Enabled = false;
+                editProd.txtName.Enabled = false;
+                editProd.txtPriceAfter14Vat.Enabled = false;
+                editProd.txtPriceAfterMarkup.Enabled = false;
+                editProd.txtRand.Enabled = false;
+                editProd.txtUSValue.Enabled = false;
+                editProd.btnAdd.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("No Products Exist on the current system", "View Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void CreateToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            CreateToolStripMenuItem_ClickOLD(sender, e);
+            VATInvoice.NewInvoice newInv = new VATInvoice.NewInvoice();
+            newInv.Show();
         }
 
         private void vATDeductionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -365,7 +366,30 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void NewToolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
+            Customer.Statements newStatement = new Customer.Statements();
+            newStatement.Show();
+        }
 
+        private void ViewToolStripMenuItem3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConvertToInvoiceToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PrintToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VATInvoice.PrintVatInvoice printInvoice = new VATInvoice.PrintVatInvoice();
+            printInvoice.Show();
+        }
+
+        private void EditInvoiceToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            VATInvoice.editInvoice editInvoice = new VATInvoice.editInvoice();
+            editInvoice.Show();
         }
     }
 }

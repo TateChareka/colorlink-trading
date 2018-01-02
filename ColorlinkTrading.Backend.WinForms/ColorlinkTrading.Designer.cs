@@ -268,8 +268,9 @@
             // ViewToolStripMenuItem3
             // 
             this.ViewToolStripMenuItem3.Name = "ViewToolStripMenuItem3";
-            this.ViewToolStripMenuItem3.Size = new System.Drawing.Size(99, 22);
+            this.ViewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.ViewToolStripMenuItem3.Text = "&View";
+            this.ViewToolStripMenuItem3.Click += new System.EventHandler(this.ViewToolStripMenuItem3_Click_1);
             // 
             // AddProductToolStripMenuItem
             // 
@@ -332,13 +333,14 @@
             this.PrintToolStripMenuItem1.Name = "PrintToolStripMenuItem1";
             this.PrintToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
             this.PrintToolStripMenuItem1.Text = "&Print";
+            this.PrintToolStripMenuItem1.Click += new System.EventHandler(this.PrintToolStripMenuItem1_Click);
             // 
             // EditInvoiceToolStripMenuItem
             // 
             this.EditInvoiceToolStripMenuItem.Name = "EditInvoiceToolStripMenuItem";
             this.EditInvoiceToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.EditInvoiceToolStripMenuItem.Text = "&Edit Invoice";
-            this.EditInvoiceToolStripMenuItem.Visible = false;
+            this.EditInvoiceToolStripMenuItem.Click += new System.EventHandler(this.EditInvoiceToolStripMenuItem_Click_1);
             // 
             // VatCalculationsToolStripMenuItem
             // 
@@ -417,6 +419,7 @@
             this.ConvertToInvoiceToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.ConvertToInvoiceToolStripMenuItem.Text = "&Convert to VAT Invoice";
             this.ConvertToInvoiceToolStripMenuItem.Visible = false;
+            this.ConvertToInvoiceToolStripMenuItem.Click += new System.EventHandler(this.ConvertToInvoiceToolStripMenuItem_Click_1);
             // 
             // ConvertToCashInvoiceToolStripMenuItem
             // 

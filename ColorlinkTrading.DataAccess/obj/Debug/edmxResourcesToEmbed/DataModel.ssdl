@@ -16,6 +16,37 @@
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="CustomerStatements">
+    <Key>
+      <PropertyRef Name="StatementId" />
+    </Key>
+    <Property Name="StatementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="AmountDue" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="BalanceBroughtForward" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CustomerStatementsDetails">
+    <Key>
+      <PropertyRef Name="CustomerStatementId" />
+    </Key>
+    <Property Name="CustomerStatementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatementId" Type="int" />
+    <Property Name="TransactionDate" Type="datetime" />
+    <Property Name="StatementReference" Type="varchar" MaxLength="200" />
+    <Property Name="StatementDescription" Type="varchar" MaxLength="200" />
+    <Property Name="StatementAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="StatementBalance" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="DeliveryNote">
     <Key>
       <PropertyRef Name="DnoteId" />
@@ -340,6 +371,33 @@ warning 6002: The table/view 'colorlinkTrading.dbo.SystemUser' does not have a p
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="ZimraStatements">
+    <Key>
+      <PropertyRef Name="StatementId" />
+    </Key>
+    <Property Name="StatementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="AmountDue" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ZimraStatementsDetails">
+    <Key>
+      <PropertyRef Name="ZimraStatementId" />
+    </Key>
+    <Property Name="ZimraStatementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatementId" Type="int" />
+    <Property Name="TransactionDate" Type="datetime" />
+    <Property Name="StatementDescription" Type="varchar" MaxLength="200" />
+    <Property Name="StatementAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedByUserName" Type="varchar" MaxLength="255" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="view_NonVatInvoices">
@@ -362,8 +420,31 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
     <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_VATInvoices">
+    <Key>
+      <PropertyRef Name="InvoiceNumber" />
+      <PropertyRef Name="CustomerName" />
+    </Key>
+    <Property Name="InvoiceNumber" Type="int" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="Reference" Type="varchar" MaxLength="600" />
+    <Property Name="ExtraDetails" Type="varchar" MaxLength="600" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ProductName" Type="varchar" MaxLength="300" />
+    <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="Discount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="SubTotal" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="VatAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="30" Scale="2" />
+  </EntityType>
   <EntityContainer Name="DataModelStoreContainer">
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerStatements" EntityType="Self.CustomerStatements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerStatementsDetails" EntityType="Self.CustomerStatementsDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DeliveryNote" EntityType="Self.DeliveryNote" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FileUpload" EntityType="Self.FileUpload" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InvoiceNonVat" EntityType="Self.InvoiceNonVat" Schema="dbo" store:Type="Tables" />
@@ -382,6 +463,8 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
     <EntitySet Name="SYSLOGRequestHistory" EntityType="Self.SYSLOGRequestHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLoginGUID" EntityType="Self.UserLoginGUID" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VATDeductions" EntityType="Self.VATDeductions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZimraStatements" EntityType="Self.ZimraStatements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZimraStatementsDetails" EntityType="Self.ZimraStatementsDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SystemUser" EntityType="Self.SystemUser" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [SystemUser].[UserId] AS [UserId], 
@@ -423,6 +506,23 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
     [view_NonVatInvoices].[UnitPrice] AS [UnitPrice], 
     [view_NonVatInvoices].[Amount] AS [Amount]
     FROM [dbo].[view_NonVatInvoices] AS [view_NonVatInvoices]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_VATInvoices" EntityType="Self.View_VATInvoices" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_VATInvoices].[InvoiceNumber] AS [InvoiceNumber], 
+    [View_VATInvoices].[CustomerName] AS [CustomerName], 
+    [View_VATInvoices].[InvoiceDate] AS [InvoiceDate], 
+    [View_VATInvoices].[Reference] AS [Reference], 
+    [View_VATInvoices].[ExtraDetails] AS [ExtraDetails], 
+    [View_VATInvoices].[Quantity] AS [Quantity], 
+    [View_VATInvoices].[ProductName] AS [ProductName], 
+    [View_VATInvoices].[UnitPrice] AS [UnitPrice], 
+    [View_VATInvoices].[Amount] AS [Amount], 
+    [View_VATInvoices].[Discount] AS [Discount], 
+    [View_VATInvoices].[SubTotal] AS [SubTotal], 
+    [View_VATInvoices].[VatAmount] AS [VatAmount], 
+    [View_VATInvoices].[TotalAmount] AS [TotalAmount]
+    FROM [dbo].[View_VATInvoices] AS [View_VATInvoices]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

@@ -111,3 +111,5 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\bin\Debug\HtmlAgi
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Payments.resources
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.VATDeduction.VATDeduction.resources
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Customer.Statements.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.VATInvoice.PrintVatInvoice.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.VATInvoice.editInvoice.resources

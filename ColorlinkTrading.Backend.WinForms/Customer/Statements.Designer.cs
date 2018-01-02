@@ -367,7 +367,7 @@
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.GroupBox2);
             this.Name = "Statements";
-            this.Text = "Statements";
+            this.Text = "0";
             this.Load += new System.EventHandler(this.Statements_Load);
             this.GroupBox4.ResumeLayout(false);
             this.GroupBox4.PerformLayout();

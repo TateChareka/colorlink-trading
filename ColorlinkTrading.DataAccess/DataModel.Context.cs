@@ -26,12 +26,14 @@ namespace ColorlinkTrading.DataAccess
         }
     
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerStatementsDetail> CustomerStatementsDetails { get; set; }
         public virtual DbSet<DeliveryNote> DeliveryNotes { get; set; }
         public virtual DbSet<FileUpload> FileUploads { get; set; }
         public virtual DbSet<InvoiceNonVat> InvoiceNonVats { get; set; }
         public virtual DbSet<InvoicesVat> InvoicesVats { get; set; }
         public virtual DbSet<Letter> Letters { get; set; }
         public virtual DbSet<MediaFile> MediaFiles { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductDnote> ProductDnotes { get; set; }
         public virtual DbSet<ProductInvoiceNonVat> ProductInvoiceNonVats { get; set; }
@@ -43,8 +45,11 @@ namespace ColorlinkTrading.DataAccess
         public virtual DbSet<SYSLOGRequestHistory> SYSLOGRequestHistories { get; set; }
         public virtual DbSet<UserLoginGUID> UserLoginGUIDs { get; set; }
         public virtual DbSet<VATDeduction> VATDeductions { get; set; }
+        public virtual DbSet<ZimraStatement> ZimraStatements { get; set; }
+        public virtual DbSet<ZimraStatementsDetail> ZimraStatementsDetails { get; set; }
         public virtual DbSet<SystemUser> SystemUsers { get; set; }
         public virtual DbSet<view_NonVatInvoices> view_NonVatInvoices { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<View_VATInvoices> View_VATInvoices { get; set; }
+        public virtual DbSet<CustomerStatement> CustomerStatements { get; set; }
     }
 }
