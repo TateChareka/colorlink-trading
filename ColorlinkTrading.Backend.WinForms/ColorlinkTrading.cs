@@ -362,5 +362,10 @@ namespace ColorlinkTrading.Backend.WinForms
             VATDeduction.VATDeduction newVAT = new VATDeduction.VATDeduction();
             newVAT.Show();
         }
+
+        private void NewToolStripMenuItem3_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

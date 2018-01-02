@@ -119,10 +119,9 @@
             <PropertyRef Name="PaymentId" />
           </Key>
           <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
           <Property Name="PaymentDescription" Type="varchar" MaxLength="100" />
           <Property Name="PaymentDate" Type="datetime" />
-          <Property Name="StartInvoice" Type="int" />
-          <Property Name="EndInvoice" Type="int" />
           <Property Name="BalanceAfterPayment" Type="decimal" Precision="30" Scale="2" />
           <Property Name="PaymentAmount" Type="decimal" Precision="30" Scale="2" />
           <Property Name="CreatedDate" Type="datetime" />
@@ -443,7 +442,6 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <EntitySet Name="InvoicesVats" EntityType="DataModel.InvoicesVat" />
           <EntitySet Name="Letters" EntityType="DataModel.Letter" />
           <EntitySet Name="MediaFiles" EntityType="DataModel.MediaFile" />
-          <EntitySet Name="Payments" EntityType="DataModel.Payment" />
           <EntitySet Name="Products" EntityType="DataModel.Product" />
           <EntitySet Name="ProductDnotes" EntityType="DataModel.ProductDnote" />
           <EntitySet Name="ProductInvoiceNonVats" EntityType="DataModel.ProductInvoiceNonVat" />
@@ -457,6 +455,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <EntitySet Name="VATDeductions" EntityType="DataModel.VATDeduction" />
           <EntitySet Name="SystemUsers" EntityType="DataModel.SystemUser" />
           <EntitySet Name="view_NonVatInvoices" EntityType="DataModel.view_NonVatInvoices" />
+          <EntitySet Name="Payments" EntityType="DataModel.Payment" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -566,22 +565,6 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <Property Name="CreatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedByUserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Payment">
-          <Key>
-            <PropertyRef Name="PaymentId" />
-          </Key>
-          <Property Name="PaymentId" Type="Int32" Nullable="false" />
-          <Property Name="PaymentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
-          <Property Name="StartInvoice" Type="Int32" />
-          <Property Name="EndInvoice" Type="Int32" />
-          <Property Name="BalanceAfterPayment" Type="Decimal" Precision="30" Scale="2" />
-          <Property Name="PaymentAmount" Type="Decimal" Precision="30" Scale="2" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -817,6 +800,21 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
           <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="PaymentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="BalanceAfterPayment" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -936,23 +934,6 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
                 <ScalarProperty Name="MediaDescription" ColumnName="MediaDescription" />
                 <ScalarProperty Name="MediaGUID" ColumnName="MediaGUID" />
                 <ScalarProperty Name="MediaFileId" ColumnName="MediaFileId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="DataModel.Payment">
-              <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
-                <ScalarProperty Name="BalanceAfterPayment" ColumnName="BalanceAfterPayment" />
-                <ScalarProperty Name="EndInvoice" ColumnName="EndInvoice" />
-                <ScalarProperty Name="StartInvoice" ColumnName="StartInvoice" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
-                <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
-                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1187,6 +1168,22 @@ warning 6002: The table/view 'colorlinkTrading.dbo.view_NonVatInvoices' does not
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
                 <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="DataModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="BalanceAfterPayment" ColumnName="BalanceAfterPayment" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

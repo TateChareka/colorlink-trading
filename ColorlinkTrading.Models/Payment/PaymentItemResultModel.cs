@@ -13,8 +13,7 @@ namespace ColorlinkTrading.Models
         public int? PaymentId { get; set; }
         public string PaymentDescription { get; set; }
         public DateTime? PaymentDate { get; set; }
-        public int? StartInvoice { get; set; }
-        public int? EndInvoice { get; set; }
+        public int? CustomerId { get; set; }
         public decimal? BalanceAfterPayment { get; set; }
         public decimal? PaymentAmount { get; set; }
         public DateTime? CreatedDate { get; set; }

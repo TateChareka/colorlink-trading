@@ -15,10 +15,9 @@ namespace ColorlinkTrading.DataAccess
     public partial class Payment
     {
         public int PaymentId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
         public string PaymentDescription { get; set; }
         public Nullable<System.DateTime> PaymentDate { get; set; }
-        public Nullable<int> StartInvoice { get; set; }
-        public Nullable<int> EndInvoice { get; set; }
         public Nullable<decimal> BalanceAfterPayment { get; set; }
         public Nullable<decimal> PaymentAmount { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

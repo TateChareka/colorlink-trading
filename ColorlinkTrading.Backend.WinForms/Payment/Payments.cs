@@ -139,7 +139,8 @@ namespace ColorlinkTrading.Backend.WinForms
             {
                 PaymentAmount = decimal.Parse(txtAmount.Text),
                 PaymentDescription = txtReference.Text,
-                PaymentDate = paymentDate.Value
+                PaymentDate = paymentDate.Value,
+                CustomerId = Int32.Parse(custid.Text)
             };
 
             GenericItemResultModel state = PaymentLogic.WritePayment(newPayment);

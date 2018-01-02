@@ -100,8 +100,7 @@ namespace ColorlinkTrading.Logic
                             PaymentDate = item.PaymentDate,
                             PaymentDescription = item.PaymentDescription,
                             PaymentId = item.PaymentId,
-                            StartInvoice = item.StartInvoice,
-                            EndInvoice = item.EndInvoice,
+                            CustomerId=item.CustomerId,
                             PaymentAmount = item.PaymentAmount,
                             CreatedByUserName = item.CreatedByUserName,
                             CreatedDate = item.CreatedDate,
@@ -152,8 +151,7 @@ namespace ColorlinkTrading.Logic
                     result.PaymentDate = data.PaymentDate;
                     result.PaymentDescription = data.PaymentDescription;
                     result.PaymentId = data.PaymentId;
-                    result.StartInvoice = data.StartInvoice;
-                    result.EndInvoice = data.EndInvoice;
+                    result.CustomerId = data.CustomerId;
                     result.PaymentAmount = data.PaymentAmount;
 
 
@@ -210,8 +208,7 @@ namespace ColorlinkTrading.Logic
                     data.PaymentDate = request.PaymentDate;
                     data.PaymentDescription = request.PaymentDescription;
                     data.PaymentId = request.PaymentId;
-                    data.StartInvoice = request.StartInvoice;
-                    data.EndInvoice = request.EndInvoice;
+                    data.CustomerId = request.CustomerId;
                     data.PaymentAmount = request.PaymentAmount;
 
 

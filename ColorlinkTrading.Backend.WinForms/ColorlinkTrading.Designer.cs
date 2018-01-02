@@ -83,6 +83,10 @@
             this.PaymentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.StatementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vATDeductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
@@ -94,7 +98,7 @@
             this.ToolStripStatusLabel});
             this.StatusStrip.Location = new System.Drawing.Point(0, 431);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(632, 22);
+            this.StatusStrip.Size = new System.Drawing.Size(728, 22);
             this.StatusStrip.TabIndex = 10;
             this.StatusStrip.Text = "StatusStrip";
             // 
@@ -196,10 +200,11 @@
             this.QoutationToolStripMenuItem,
             this.PriceListToolStripMenuItem,
             this.SuppliersToolStripMenuItem,
-            this.vATDeductionToolStripMenuItem});
+            this.vATDeductionToolStripMenuItem,
+            this.toolStripMenuItem4});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(632, 24);
+            this.MenuStrip.Size = new System.Drawing.Size(728, 24);
             this.MenuStrip.TabIndex = 12;
             this.MenuStrip.Text = "MenuStrip";
             // 
@@ -218,14 +223,14 @@
             // AddCustomerToolStripMenuItem
             // 
             this.AddCustomerToolStripMenuItem.Name = "AddCustomerToolStripMenuItem";
-            this.AddCustomerToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.AddCustomerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AddCustomerToolStripMenuItem.Text = "&Add";
             this.AddCustomerToolStripMenuItem.Click += new System.EventHandler(this.AddCustomerToolStripMenuItem_Click_2);
             // 
             // ViewToolStripMenuItem
             // 
             this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
-            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ViewToolStripMenuItem.Text = "&View";
             this.ViewToolStripMenuItem.Visible = false;
             this.ViewToolStripMenuItem.Click += new System.EventHandler(this.ViewToolStripMenuItem_Click);
@@ -233,14 +238,14 @@
             // EditToolStripMenuItem1
             // 
             this.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1";
-            this.EditToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.EditToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.EditToolStripMenuItem1.Text = "&Edit";
             this.EditToolStripMenuItem1.Click += new System.EventHandler(this.EditToolStripMenuItem1_Click_1);
             // 
             // PaymentToolStripMenuItem2
             // 
             this.PaymentToolStripMenuItem2.Name = "PaymentToolStripMenuItem2";
-            this.PaymentToolStripMenuItem2.Size = new System.Drawing.Size(128, 22);
+            this.PaymentToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.PaymentToolStripMenuItem2.Text = "&Payment";
             this.PaymentToolStripMenuItem2.Click += new System.EventHandler(this.PaymentToolStripMenuItem2_Click_1);
             // 
@@ -250,14 +255,15 @@
             this.NewToolStripMenuItem3,
             this.ViewToolStripMenuItem3});
             this.StatementToolStripMenuItem1.Name = "StatementToolStripMenuItem1";
-            this.StatementToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.StatementToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.StatementToolStripMenuItem1.Text = "&Statement";
             // 
             // NewToolStripMenuItem3
             // 
             this.NewToolStripMenuItem3.Name = "NewToolStripMenuItem3";
-            this.NewToolStripMenuItem3.Size = new System.Drawing.Size(99, 22);
+            this.NewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.NewToolStripMenuItem3.Text = "&New";
+            this.NewToolStripMenuItem3.Click += new System.EventHandler(this.NewToolStripMenuItem3_Click_1);
             // 
             // ViewToolStripMenuItem3
             // 
@@ -274,7 +280,7 @@
             this.SearchToolStripMenuItem1});
             this.AddProductToolStripMenuItem.Name = "AddProductToolStripMenuItem";
             this.AddProductToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.AddProductToolStripMenuItem.Text = "Products";
+            this.AddProductToolStripMenuItem.Text = "P&roducts";
             // 
             // AddToolStripMenuItem
             // 
@@ -332,6 +338,7 @@
             this.EditInvoiceToolStripMenuItem.Name = "EditInvoiceToolStripMenuItem";
             this.EditInvoiceToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.EditInvoiceToolStripMenuItem.Text = "&Edit Invoice";
+            this.EditInvoiceToolStripMenuItem.Visible = false;
             // 
             // VatCalculationsToolStripMenuItem
             // 
@@ -429,7 +436,7 @@
             // CreateToolStripMenuItem1
             // 
             this.CreateToolStripMenuItem1.Name = "CreateToolStripMenuItem1";
-            this.CreateToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
+            this.CreateToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.CreateToolStripMenuItem1.Text = "&Create";
             // 
             // SuppliersToolStripMenuItem
@@ -450,7 +457,7 @@
             this.NewToolStripMenuItem1,
             this.EditToolStripMenuItem4});
             this.NewOrderToolStripMenuItem.Name = "NewOrderToolStripMenuItem";
-            this.NewOrderToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.NewOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.NewOrderToolStripMenuItem.Text = "&Order";
             // 
             // NewToolStripMenuItem1
@@ -468,25 +475,25 @@
             // NewSupplierToolStripMenuItem
             // 
             this.NewSupplierToolStripMenuItem.Name = "NewSupplierToolStripMenuItem";
-            this.NewSupplierToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.NewSupplierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.NewSupplierToolStripMenuItem.Text = "New S&upplier";
             // 
             // EditToolStripMenuItem5
             // 
             this.EditToolStripMenuItem5.Name = "EditToolStripMenuItem5";
-            this.EditToolStripMenuItem5.Size = new System.Drawing.Size(144, 22);
+            this.EditToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
             this.EditToolStripMenuItem5.Text = "&Edit";
             // 
             // PaymentToolStripMenuItem1
             // 
             this.PaymentToolStripMenuItem1.Name = "PaymentToolStripMenuItem1";
-            this.PaymentToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.PaymentToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.PaymentToolStripMenuItem1.Text = "&Payment";
             // 
             // StatementToolStripMenuItem
             // 
             this.StatementToolStripMenuItem.Name = "StatementToolStripMenuItem";
-            this.StatementToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.StatementToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.StatementToolStripMenuItem.Text = "&Statement";
             // 
             // vATDeductionToolStripMenuItem
@@ -496,11 +503,40 @@
             this.vATDeductionToolStripMenuItem.Text = "VAT Deduction";
             this.vATDeductionToolStripMenuItem.Click += new System.EventHandler(this.vATDeductionToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(69, 20);
+            this.toolStripMenuItem4.Text = "&Proforma";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem5.Text = "&Create";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem6.Text = "&Print";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem7.Text = "&Edit Invoice";
+            this.toolStripMenuItem7.Visible = false;
+            // 
             // ColorlinkTrading
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(728, 453);
             this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.ToolStrip);
@@ -574,6 +610,10 @@
         internal System.Windows.Forms.ToolStripMenuItem PaymentToolStripMenuItem1;
         internal System.Windows.Forms.ToolStripMenuItem StatementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vATDeductionToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
     }
 }
 

@@ -32,7 +32,6 @@ namespace ColorlinkTrading.DataAccess
         public virtual DbSet<InvoicesVat> InvoicesVats { get; set; }
         public virtual DbSet<Letter> Letters { get; set; }
         public virtual DbSet<MediaFile> MediaFiles { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductDnote> ProductDnotes { get; set; }
         public virtual DbSet<ProductInvoiceNonVat> ProductInvoiceNonVats { get; set; }
@@ -46,5 +45,6 @@ namespace ColorlinkTrading.DataAccess
         public virtual DbSet<VATDeduction> VATDeductions { get; set; }
         public virtual DbSet<SystemUser> SystemUsers { get; set; }
         public virtual DbSet<view_NonVatInvoices> view_NonVatInvoices { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
     }
 }

@@ -114,10 +114,9 @@
       <PropertyRef Name="PaymentId" />
     </Key>
     <Property Name="PaymentId" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
     <Property Name="PaymentDescription" Type="varchar" MaxLength="100" />
     <Property Name="PaymentDate" Type="datetime" />
-    <Property Name="StartInvoice" Type="int" />
-    <Property Name="EndInvoice" Type="int" />
     <Property Name="BalanceAfterPayment" Type="decimal" Precision="30" Scale="2" />
     <Property Name="PaymentAmount" Type="decimal" Precision="30" Scale="2" />
     <Property Name="CreatedDate" Type="datetime" />
