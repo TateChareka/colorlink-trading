@@ -323,15 +323,9 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void ViewToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void EditToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
             if (ProductLogic.ProductCount(userLoggedIn) != 0)
             {
-                Product.EditProduct editProd = new Product.EditProduct();
-                editProd.Enabled = false;
+                Product.EditProduct editProd = new Product.EditProduct();               
                 editProd.txtAfter15pcVatUS.Enabled = false;
                 editProd.txtComments.Enabled = false;
                 editProd.txtCompetitorDetails.Enabled = false;
@@ -345,11 +339,19 @@ namespace ColorlinkTrading.Backend.WinForms
                 editProd.txtRand.Enabled = false;
                 editProd.txtUSValue.Enabled = false;
                 editProd.btnAdd.Visible = false;
+                editProd.Text = "View Product";
+                editProd.Show();
             }
             else
             {
                 MessageBox.Show("No Products Exist on the current system", "View Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void EditToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Product.EditProduct editProd = new Product.EditProduct();
+            editProd.Show();
         }
 
         private void CreateToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -390,6 +392,11 @@ namespace ColorlinkTrading.Backend.WinForms
         {
             VATInvoice.editInvoice editInvoice = new VATInvoice.editInvoice();
             editInvoice.Show();
+        }
+
+        private void VatCalculationsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

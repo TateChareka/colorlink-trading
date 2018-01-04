@@ -139,7 +139,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     return;
                 }
             }
-            invoiceProducts.Items.Add(new ListViewItem(new[] { txtqty.Text, prodList.Text, Math.Round(Decimal.Parse(txtprice.Text), 2) + "", Math.Round((Decimal.Parse(txtprice.Text) * Decimal.Parse(txtqty.Text)), 2) + "", prodid.Text }));
+            invoiceProducts.Items.Add(new ListViewItem(new[] { txtqty.Text, prodList.Text, Math.Round(Decimal.Parse(txtprice.Text), 2) + "", Math.Round((Decimal.Parse(txtprice.Text) * Decimal.Parse(txtqty.Text)), 2) + "", prodid.Text, 0 + "" }));
             prodList.Items.Remove(prodList.Text);
             prodid.Clear();
             txtprice.Clear();

@@ -27,6 +27,57 @@ namespace ColorlinkTrading.Logic
             }
         }
 
+        public static PaymentListResultModel PaymentList(GenericSearchRequestModel request)
+        {
+            var result = new PaymentListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                Payments = new List<PaymentItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+                    
+                    var data = dm.Payments.ToList();
+                    
+                    foreach (var item in data)
+                    {
+                        PaymentItemResultModel payment = new PaymentItemResultModel
+                        {
+                            BalanceAfterPayment = item.BalanceAfterPayment,
+                            PaymentDate = item.PaymentDate,
+                            PaymentDescription = item.PaymentDescription,
+                            PaymentId = item.PaymentId,
+                            CustomerId = item.CustomerId,
+                            PaymentAmount = item.PaymentAmount,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate
+                        };
+                        result.Payments.Add(payment);
+                    }                    
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
+
         public static PaymentListResultModel SearchPaymentList(GenericSearchRequestModel request)
         {
             var result = new PaymentListResultModel

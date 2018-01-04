@@ -15,6 +15,8 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
     public partial class Statements : Form
     {
         private CustomerListResultModel customers;
+        private PaymentListResultModel payments;
+        private VatInvoiceListResultModel Invoices;
         private decimal AmountDue = 0, Debit = 0, Credit = 0;
         private int DebitTotal = 0, CreditTotal = 0;
         public Statements()
@@ -29,6 +31,7 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
 
         private void Statements_Load(object sender, EventArgs e)
         {
+            Width = 614; Height = 647;
             custList.Items.Clear();
             customers = CustomerLogic.SearchCustomerList(
                 new GenericSearchRequestModel()
@@ -42,6 +45,8 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
             {
                 custList.Items.Add(item.CustomerName);
             }
+            payments = PaymentLogic.PaymentList(new GenericSearchRequestModel() { });
+            Invoices = VatInvoiceLogic.VATInvoiceList(new GenericSearchRequestModel() { });
         }
 
         private void custList_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,34 +88,18 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
             displayView.Items.Clear();
             hiddenView.Items.Clear();
 
-            VatInvoiceListResultModel Invoices = VatInvoiceLogic.SearchVatInvoiceList(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "InvoiceDate",
-                    DateFrom = dateFrom.Value,
-                    DateTo = dateTo.Value
-                });
             var custId = Int32.Parse(custid.Text);
-            var statementInvoices = Invoices.VatInvoices.Where(b => b.CustomerId == custId).ToList();
+
+            var statementInvoices = Invoices.VatInvoices.Where(b => b.CustomerId == custId && b.InvoiceDate >= dateFrom.Value && b.InvoiceDate <= dateTo.Value).ToList();
             foreach (var invoice in statementInvoices)
             {
-                hiddenView.Items.Add(new ListViewItem(new[] { invoice.InvoiceDate + "", invoice.InvoiceNumber + "", "INVOICE", invoice.TotalAmount + "", "", "" }));
+                hiddenView.Items.Add(new ListViewItem(new[] { String.Format("{0:dd/MM/yyyy}", invoice.InvoiceDate), invoice.InvoiceNumber + "", "INVOICE", invoice.TotalAmount + "", "", "" }));
             }
 
-            PaymentListResultModel payments = PaymentLogic.SearchPaymentList(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "PaymentDate",
-                    DateFrom = dateFrom.Value,
-                    DateTo = dateTo.Value
-                });
-
-            var statementPayments = payments.Payments.Where(b => b.CustomerId == custId).ToList();
+            var statementPayments = payments.Payments.Where(b => b.CustomerId == custId && b.PaymentDate >= dateFrom.Value && b.PaymentDate <= dateTo.Value).ToList();
             foreach (var payment in statementPayments)
             {
-                hiddenView.Items.Add(new ListViewItem(new[] { payment.PaymentDate + "", payment.PaymentDescription, "PAYMENT", "", payment.PaymentAmount + "", "" }));
+                hiddenView.Items.Add(new ListViewItem(new[] { String.Format("{0:dd/MM/yyyy}", payment.PaymentDate), payment.PaymentDescription, "PAYMENT", "", payment.PaymentAmount + "", "" }));
             }
             balanceSheet();
         }
@@ -126,28 +115,14 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
                     AmountDue += decimal.Parse(item.SubItems[3].Text);
                     Debit += decimal.Parse(item.SubItems[3].Text);
                     DebitTotal += 1;
-                    //if (AmountDue < 0)
-                    //{
-                    //    displayView.Items.Add(new ListViewItem(new[] { (item.SubItems[0].Text), (item.SubItems[1].Text), "INVOICE", item.SubItems[3].Text, "", Math.Round(1 * 0.0, 2) + "" }));
-                    //}
-                    //else
-                    //{
                     displayView.Items.Add(new ListViewItem(new[] { (item.SubItems[0].Text), (item.SubItems[1].Text), "INVOICE", (item.SubItems[3].Text), "", Math.Round(1 * AmountDue, 2) + "" }));
-                    //}
                 }
                 else
                 {
                     AmountDue -= decimal.Parse(item.SubItems[4].Text);
                     Credit += decimal.Parse(item.SubItems[4].Text);
                     CreditTotal += 1;
-                    //if (AmountDue < 0)
-                    //{
-                    //    displayView.Items.Add(new ListViewItem(new[] { item.SubItems[0].Text, (item.SubItems[1].Text), "PAYMENT", "", (item.SubItems[4].Text), Math.Round(1 * 0.00, 2) + "" }));
-                    //}
-                    //else
-                    //{
                     displayView.Items.Add(new ListViewItem(new[] { item.SubItems[0].Text, (item.SubItems[1].Text), "PAYMENT", "", (item.SubItems[4].Text), Math.Round(1 * AmountDue, 2) + "" }));
-                    //}
                 }
             }
             TextBox1.Clear();

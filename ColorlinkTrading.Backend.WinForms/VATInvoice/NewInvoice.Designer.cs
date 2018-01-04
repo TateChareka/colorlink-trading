@@ -74,6 +74,7 @@
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
             this.addbtn = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.productVatInvoice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GroupBox10.SuspendLayout();
             this.GroupBox8.SuspendLayout();
             this.GroupBox15.SuspendLayout();
@@ -441,7 +442,8 @@
             this.ColProdName,
             this.ColUnitPrice,
             this.ColAmount,
-            this.ProductId});
+            this.ProductId,
+            this.productVatInvoice});
             this.invoiceProducts.FullRowSelect = true;
             this.invoiceProducts.GridLines = true;
             this.invoiceProducts.Location = new System.Drawing.Point(233, 240);
@@ -566,6 +568,10 @@
             this.GroupBox1.TabIndex = 2;
             this.GroupBox1.TabStop = false;
             // 
+            // productVatInvoice
+            // 
+            this.productVatInvoice.Width = 0;
+            // 
             // NewInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,5 +654,6 @@
         internal System.Windows.Forms.TextBox discotxt;
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.TextBox txtdiscount;
+        private System.Windows.Forms.ColumnHeader productVatInvoice;
     }
 }

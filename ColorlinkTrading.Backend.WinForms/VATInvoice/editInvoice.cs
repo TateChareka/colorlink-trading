@@ -20,7 +20,6 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
         }
         private CustomerListResultModel customers;
         private ProductListResultModel products;
-        private VatInvoiceListResultModel VatInvoices;
         private int invoiceCount = 0;
 
         private void cancbtn_Click(object sender, EventArgs e)
@@ -51,14 +50,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     PageNumber = 1,
                     PageSize = 1000
                 });
-            VatInvoices = VatInvoiceLogic.SearchVatInvoiceList(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "InvoiceNumber",
-                    PageNumber = 1,
-                    PageSize = 1000
-                });
+
             foreach (var item in products.Products)
             {
                 prodList.Items.Add(item.ProductName);
@@ -70,7 +62,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     OrderField = "InvoiceNumber",
                     PageNumber = 1,
                     PageSize = 1000
-                }) + 100);
+                }) + 101);
         }
 
         private void custList_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,7 +151,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     return;
                 }
             }
-            invoiceProducts.Items.Add(new ListViewItem(new[] { txtqty.Text, prodList.Text, Math.Round(Decimal.Parse(txtprice.Text), 2) + "", Math.Round((Decimal.Parse(txtprice.Text) * Decimal.Parse(txtqty.Text)), 2) + "", prodid.Text }));
+            invoiceProducts.Items.Add(new ListViewItem(new[] { txtqty.Text, prodList.Text, Math.Round(Decimal.Parse(txtprice.Text), 2) + "", Math.Round((Decimal.Parse(txtprice.Text) * Decimal.Parse(txtqty.Text)), 2) + "", prodid.Text, 0 + "" }));
             prodList.Items.Remove(prodList.Text);
             prodid.Clear();
             txtprice.Clear();
@@ -291,6 +283,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
         {
             VatInvoiceRequestModel invoiceNew = new VatInvoiceRequestModel()
             {
+                InvoiceNumber = Int32.Parse(INVnO.Text),
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
                 Discount = decimal.Parse(txtdiscount.Text),
@@ -316,6 +309,8 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     UnitPrice = decimal.Parse(item.SubItems[2].Text),
                     Amount = decimal.Parse(item.SubItems[3].Text),
                     ProdId = Int32.Parse(item.SubItems[4].Text),
+                    ProductInvoiceVatId = Int32.Parse(item.SubItems[5].Text),
+                     
                 };
                 invoiceNew.ProductVat.Add(invoiceProduct);
             }
@@ -399,13 +394,6 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 try
                 {
                     Int32 r = Int32.Parse(TextBox1.Text);
-                    if (r < 100 || r > invoiceCount)
-                    {
-                        MessageBox.Show("Invoice Number should be between 101 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        TextBox1.Clear();
-                        TextBox1.Focus();
-                        return;
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -419,28 +407,58 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            Width = 991;
-            Height = 735;
-            invoiceProducts.Items.Clear();
-            txtsubtot.Clear();
-            txttotam.Clear();
-            txtvat.Clear();
-            txtdiscount.Clear();
-            txtponumber.Clear();
 
             if (TextBox1.Text != "")
             {
+                Int32 r = Int32.Parse(TextBox1.Text);
+                if (r < 100 || r > invoiceCount)
+                {
+                    MessageBox.Show("Invoice Number should be between 101 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TextBox1.Clear();
+                    TextBox1.Focus();
+                    return;
+                }
                 int invNo = Int32.Parse(TextBox1.Text);
-                var invoice = VatInvoices.VatInvoices.Where(b => b.InvoiceNumber == invNo).FirstOrDefault();
 
+                var invoice = VatInvoiceLogic.GetVatInvoice(
+                    new VatInvoiceRequestModel()
+                    {
+                        InvoiceNumber = invNo
+                    });
+
+                if (invoice == null)
+                {
+                    MessageBox.Show("Invoice not found" + Environment.NewLine + "Please ensure you have entered the correct invoice number", "Invalid Invoice Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TextBox1.Clear();
+                    TextBox1.Focus();
+                    return;
+                }
+
+                Width = 991;
+                Height = 735;
+                invoiceProducts.Items.Clear();
+                txtsubtot.Clear();
+                txttotam.Clear();
+                txtvat.Clear();
+                txtdiscount.Clear();
+                txtponumber.Clear();
                 custid.Text = invoice.CustomerId + "";
                 custList.SelectedItem = (invoice.CustomerName);
-                //DateTime d= invoice.InvoiceDate;
-                //invdate.Value = d;
-
+                DateTime d;
+                if (invoice.InvoiceDate != null)
+                {
+                    d = DateTime.Parse(invoice.InvoiceDate + "");
+                }
+                else
+                {
+                    d = DateTime.Now;
+                }
+                INVnO.Text = TextBox1.Text;
+                invdate.Value = d;
+                txtponumber.Text = invoice.Reference;
                 foreach (var item in invoice.ProductVat)
                 {
-                    invoiceProducts.Items.Add(new ListViewItem(new[] { item.Quantity + "", item.ProductName, item.UnitPrice + "", item.Amount + "", item.ProdId + "" }));
+                    invoiceProducts.Items.Add(new ListViewItem(new[] { item.Quantity + "", item.ProductName, item.UnitPrice + "", item.Amount + "", item.ProdId + "", item.ProductInvoiceVatId + "" }));
                 }
                 prodList.Items.Remove(prodList.Text);
                 prodid.Clear();
@@ -452,8 +470,6 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 txtvat.Clear();
                 txtSearch.Clear();
                 calculate();
-
-
             }
         }
     }

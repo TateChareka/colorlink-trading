@@ -18,6 +18,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CustomerStatements">
+      <EntityTypeMapping TypeName="DataModel.CustomerStatement">
+        <MappingFragment StoreEntitySet="CustomerStatements">
+          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="BalanceBroughtForward" ColumnName="BalanceBroughtForward" />
+          <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="StatementId" ColumnName="StatementId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CustomerStatementsDetails">
       <EntityTypeMapping TypeName="DataModel.CustomerStatementsDetail">
         <MappingFragment StoreEntitySet="CustomerStatementsDetails">
@@ -194,6 +210,7 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OLDNo" ColumnName="OLDNo" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="ProdId" ColumnName="ProdId" />
@@ -210,6 +227,7 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OLDNo" ColumnName="OLDNo" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="ProdId" ColumnName="ProdId" />
@@ -226,6 +244,7 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OLDNo" ColumnName="OLDNo" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="ProdId" ColumnName="ProdId" />
@@ -242,6 +261,7 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OLDNo" ColumnName="OLDNo" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="ProdId" ColumnName="ProdId" />
@@ -429,22 +449,6 @@
           <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
           <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CustomerStatements">
-      <EntityTypeMapping TypeName="DataModel.CustomerStatement">
-        <MappingFragment StoreEntitySet="CustomerStatements">
-          <ScalarProperty Name="UpdatedByUserName" ColumnName="UpdatedByUserName" />
-          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-          <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="BalanceBroughtForward" ColumnName="BalanceBroughtForward" />
-          <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="StatementId" ColumnName="StatementId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

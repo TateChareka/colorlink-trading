@@ -115,6 +115,7 @@
             // 
             // TextBox5
             // 
+            this.TextBox5.BackColor = System.Drawing.SystemColors.Control;
             this.TextBox5.Location = new System.Drawing.Point(309, 471);
             this.TextBox5.Name = "TextBox5";
             this.TextBox5.Size = new System.Drawing.Size(78, 20);
@@ -123,6 +124,7 @@
             // 
             // TextBox4
             // 
+            this.TextBox4.BackColor = System.Drawing.SystemColors.Control;
             this.TextBox4.Location = new System.Drawing.Point(391, 471);
             this.TextBox4.Name = "TextBox4";
             this.TextBox4.Size = new System.Drawing.Size(78, 20);
@@ -205,6 +207,8 @@
             // 
             // TextBox3
             // 
+            this.TextBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextBox3.Location = new System.Drawing.Point(309, 445);
             this.TextBox3.Name = "TextBox3";
             this.TextBox3.Size = new System.Drawing.Size(78, 20);
@@ -213,6 +217,7 @@
             // 
             // TextBox2
             // 
+            this.TextBox2.BackColor = System.Drawing.SystemColors.Control;
             this.TextBox2.Location = new System.Drawing.Point(391, 445);
             this.TextBox2.Name = "TextBox2";
             this.TextBox2.Size = new System.Drawing.Size(78, 20);
@@ -358,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 605);
+            this.ClientSize = new System.Drawing.Size(598, 608);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.hiddenView);
             this.Controls.Add(this.Button1);
@@ -366,8 +371,9 @@
             this.Controls.Add(this.GroupBox3);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.GroupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Statements";
-            this.Text = "0";
+            this.Text = "Statements";
             this.Load += new System.EventHandler(this.Statements_Load);
             this.GroupBox4.ResumeLayout(false);
             this.GroupBox4.PerformLayout();

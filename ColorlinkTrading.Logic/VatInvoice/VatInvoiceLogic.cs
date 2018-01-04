@@ -27,6 +27,115 @@ namespace ColorlinkTrading.Logic
             }
         }
 
+        public static VatInvoiceListResultModel VATInvoiceList(GenericSearchRequestModel request)
+        {
+            var result = new VatInvoiceListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                VatInvoices = new List<VatInvoiceItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var searchCriteria = request.SearchCriteria;
+                    var dateFrom = request.DateFrom;
+                    var dateTo = request.DateTo;
+
+                    //var pageNumber = request.PageNumber;
+                    //var pageSize = request.PageSize;
+                    //var orderingBy = request.OrderField + " " + request.OrderDirection;
+
+
+                    //var count = dm.InvoicesVats
+                    //            .Where(b =>
+                    //            //search criteria
+                    //            (searchCriteria == null ||
+                    //                                      (
+                    //                                        b.InvoiceNumber.Equals(searchCriteria)
+                    //                                      )
+                    //            )
+                    //            //date from
+                    //            && (dateFrom == null || b.InvoiceDate >= dateFrom)
+                    //            //date to
+                    //            && (dateTo == null || b.InvoiceDate <= dateTo)
+                    //           ).OrderBy(orderingBy)
+                    //     .Count();
+
+
+                    //var pages = Convert.ToInt32(Math.Floor((decimal)count / (decimal)pageSize));
+                    //if ((pages * pageSize) < count)
+                    //{
+                    //    pages++;
+                    //}
+
+                    //var data = dm.InvoicesVats
+                    //            .Where(b =>
+                    //            //search criteria
+                    //            (searchCriteria == null ||
+                    //                                      (
+                    //                                        b.InvoiceNumber.Equals(searchCriteria)
+                    //                                      )
+                    //            )
+                    //            //date from
+                    //            && (dateFrom == null || b.InvoiceDate >= dateFrom)
+                    //            //date to
+                    //            && (dateTo == null || b.InvoiceDate <= dateTo)
+                    //           ).OrderBy(orderingBy)
+                    //    .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+                    var data = dm.InvoicesVats.ToList();
+                    var customers = dm.Customers.ToList();
+                    var products = dm.Products.ToList();
+
+
+                    foreach (var item in data)
+                    {
+
+                        VatInvoiceItemResultModel vatinvoice = new VatInvoiceItemResultModel
+                        {
+                            ProductVat = new List<VatInvoiceProductItemResultModel>(),
+                            CustomerId = item.CustomerId,
+                            CustomerName = customers.Where(b => b.CustomerId == item.CustomerId).FirstOrDefault().CustomerName,
+                            DisplayValue = item.DisplayValue,
+                            Discount = item.Discount,
+                            CreditValidation = item.CreditValidation,
+                            ExtraDetails = item.ExtraDetails,
+                            InvoiceDate = item.InvoiceDate,
+                            InvoiceNumber = item.InvoiceNumber,
+                            Reference = item.Reference,
+                            SubTotal = item.SubTotal,
+                            TotalAmount = item.TotalAmount,
+                            VatAmount = item.VatAmount,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate,
+                        };
+                        result.VatInvoices.Add(vatinvoice);
+                    }
+                    // result.NumberOfRecords = count;
+                    // result.NumberOfPages = pages;
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
         public static VatInvoiceListResultModel SearchVatInvoiceList(GenericSearchRequestModel request)
         {
             var result = new VatInvoiceListResultModel
@@ -49,48 +158,49 @@ namespace ColorlinkTrading.Logic
                     var dateFrom = request.DateFrom;
                     var dateTo = request.DateTo;
 
-                    var pageNumber = request.PageNumber;
-                    var pageSize = request.PageSize;
-                    var orderingBy = request.OrderField + " " + request.OrderDirection;
+                    //var pageNumber = request.PageNumber;
+                    //var pageSize = request.PageSize;
+                    //var orderingBy = request.OrderField + " " + request.OrderDirection;
 
 
-                    var count = dm.InvoicesVats
-                                .Where(b =>
-                                //search criteria
-                                (searchCriteria == null ||
-                                                          (
-                                                            b.DisplayValue.Contains(searchCriteria)
-                                                          )
-                                )
-                                //date from
-                                && (dateFrom == null || b.InvoiceDate >= dateFrom)
-                                //date to
-                                && (dateTo == null || b.InvoiceDate <= dateTo)
-                               ).OrderBy(orderingBy)
-                         .Count();
+                    //var count = dm.InvoicesVats
+                    //            .Where(b =>
+                    //            //search criteria
+                    //            (searchCriteria == null ||
+                    //                                      (
+                    //                                        b.InvoiceNumber.Equals(searchCriteria)
+                    //                                      )
+                    //            )
+                    //            //date from
+                    //            && (dateFrom == null || b.InvoiceDate >= dateFrom)
+                    //            //date to
+                    //            && (dateTo == null || b.InvoiceDate <= dateTo)
+                    //           ).OrderBy(orderingBy)
+                    //     .Count();
 
 
-                    var pages = Convert.ToInt32(Math.Floor((decimal)count / (decimal)pageSize));
-                    if ((pages * pageSize) < count)
-                    {
-                        pages++;
-                    }
+                    //var pages = Convert.ToInt32(Math.Floor((decimal)count / (decimal)pageSize));
+                    //if ((pages * pageSize) < count)
+                    //{
+                    //    pages++;
+                    //}
 
-                    var data = dm.InvoicesVats
-                                .Where(b =>
-                                //search criteria
-                                (searchCriteria == null ||
-                                                          (
-                                                            b.DisplayValue.Contains(searchCriteria)
-                                                          )
-                                )
-                                //date from
-                                && (dateFrom == null || b.InvoiceDate >= dateFrom)
-                                //date to
-                                && (dateTo == null || b.InvoiceDate <= dateTo)
-                               ).OrderBy(orderingBy)
-                        .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                    //var data = dm.InvoicesVats
+                    //            .Where(b =>
+                    //            //search criteria
+                    //            (searchCriteria == null ||
+                    //                                      (
+                    //                                        b.InvoiceNumber.Equals(searchCriteria)
+                    //                                      )
+                    //            )
+                    //            //date from
+                    //            && (dateFrom == null || b.InvoiceDate >= dateFrom)
+                    //            //date to
+                    //            && (dateTo == null || b.InvoiceDate <= dateTo)
+                    //           ).OrderBy(orderingBy)
+                    //    .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
+                    var data = dm.InvoicesVats.ToList();
                     var customers = dm.Customers.ToList();
                     var products = dm.Products.ToList();
 
@@ -128,6 +238,7 @@ namespace ColorlinkTrading.Logic
                                     Amount = vatproduct.Amount,
                                     CreatedByUserName = vatproduct.CreatedByUserName,
                                     CreatedDate = vatproduct.CreatedDate,
+                                    OldNumber = vatproduct.OLDNo,
                                     InvoiceNo = vatproduct.InvoiceNo,
                                     ProdId = vatproduct.ProdId,
                                     ProductName = products.Where(b => b.ProductId == vatproduct.ProdId).FirstOrDefault().ProductName,
@@ -140,8 +251,8 @@ namespace ColorlinkTrading.Logic
                         }
                         result.VatInvoices.Add(vatinvoice);
                     }
-                    result.NumberOfRecords = count;
-                    result.NumberOfPages = pages;
+                    // result.NumberOfRecords = count;
+                    // result.NumberOfPages = pages;
                     return result;
                 }
             }
@@ -202,6 +313,7 @@ namespace ColorlinkTrading.Logic
                                 CreatedByUserName = vatproduct.CreatedByUserName,
                                 CreatedDate = vatproduct.CreatedDate,
                                 InvoiceNo = vatproduct.InvoiceNo,
+                                OldNumber = vatproduct.OLDNo,
                                 ProdId = vatproduct.ProdId,
                                 ProductName = dm.Products.Where(b => b.ProductId == vatproduct.ProdId).FirstOrDefault().ProductName,
                                 ProductInvoiceVatId = vatproduct.ProductInvoiceVatId,
@@ -257,10 +369,6 @@ namespace ColorlinkTrading.Logic
                         result.Feedback = "Edit Invoice Successful";
                     }
 
-                    data.CreatedByUserName = request.CreatedByUserName;
-                    data.CreatedDate = request.CreatedDate;
-                    data.UpdatedByUserName = request.UpdatedByUserName;
-                    data.UpdatedDate = request.UpdatedDate;
                     data.CustomerId = request.CustomerId;
                     data.DisplayValue = request.DisplayValue;
                     data.Discount = request.Discount;
@@ -272,40 +380,13 @@ namespace ColorlinkTrading.Logic
                     data.CreditValidation = request.CreditValidation;
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
+                    resetVatProduct(request);
 
-                    foreach (var vatproduct in request.ProductVat)
+                    foreach (var item in request.ProductVat)
                     {
-                        var productV = (from a in dm.ProductInvoiceVats
-                                        where a.InvoiceNo == vatinvoiceid
-                                        select a).FirstOrDefault();
-                        if (productV == null)
-                        {
-                            productV = new ProductInvoiceVat();
-                            dm.ProductInvoiceVats.Add(productV);
-                        }
-
-                        if (vatproduct.Quantity == 0)
-                        {
-                            productV.InvoiceNo = 0;
-                            dm.ProductInvoiceVats.Remove(productV);
-                        }
-                        else
-                        {
-                            productV.InvoiceNo = vatproduct.InvoiceNo;
-                        }
-
-                        productV.Amount = vatproduct.Amount;
-                        productV.CreatedByUserName = vatproduct.CreatedByUserName;
-                        productV.CreatedDate = vatproduct.CreatedDate;
-                        productV.InvoiceNo = vatproduct.InvoiceNo;
-                        productV.ProdId = vatproduct.ProdId;
-                        productV.ProductInvoiceVatId = vatproduct.ProductInvoiceVatId;
-                        productV.Quantity = vatproduct.Quantity;
-                        productV.UnitPrice = vatproduct.UnitPrice;
-                        productV.UpdatedByUserName = vatproduct.UpdatedByUserName;
-                        productV.UpdatedDate = vatproduct.UpdatedDate;
-                        dm.SaveChanges();
+                        writeVatProduct(item, request);
                     }
+
 
                     dm.SaveChanges();
                     return result;
@@ -321,5 +402,45 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
+        private static void resetVatProduct(VatInvoiceRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductInvoiceVats
+                            where a.InvoiceNo == request.InvoiceNumber
+                            select a).ToList();
+                foreach (var item in data)
+                {
+                    item.OLDNo = item.InvoiceNo + "";
+                    item.InvoiceNo = 0;
+                    dm.SaveChanges();
+                }
+            }
+        }
+
+        private static void writeVatProduct(VatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductInvoiceVats
+                            where a.ProductInvoiceVatId == requestvatProducts.ProductInvoiceVatId
+                            select a).FirstOrDefault();
+
+                if (data == null)
+                {
+                    data = new ProductInvoiceVat();
+                    dm.ProductInvoiceVats.Add(data);
+                }
+
+                data.Amount = requestvatProducts.Amount;
+                data.InvoiceNo = requestvatProducts.InvoiceNo;
+                data.ProdId = requestvatProducts.ProdId;
+                data.ProductInvoiceVatId = requestvatProducts.ProductInvoiceVatId;
+                data.Quantity = requestvatProducts.Quantity;
+                data.UnitPrice = requestvatProducts.UnitPrice;
+                dm.SaveChanges();
+
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DataModelEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Customers" EntityType="DataModel.Customer" />
+    <EntitySet Name="CustomerStatements" EntityType="DataModel.CustomerStatement" />
     <EntitySet Name="CustomerStatementsDetails" EntityType="DataModel.CustomerStatementsDetail" />
     <EntitySet Name="DeliveryNotes" EntityType="DataModel.DeliveryNote" />
     <EntitySet Name="FileUploads" EntityType="DataModel.FileUpload" />
@@ -26,7 +27,6 @@
     <EntitySet Name="SystemUsers" EntityType="DataModel.SystemUser" />
     <EntitySet Name="view_NonVatInvoices" EntityType="DataModel.view_NonVatInvoices" />
     <EntitySet Name="View_VATInvoices" EntityType="DataModel.View_VATInvoices" />
-    <EntitySet Name="CustomerStatements" EntityType="DataModel.CustomerStatement" />
   </EntityContainer>
   <EntityType Name="Customer">
     <Key>
@@ -39,6 +39,21 @@
     <Property Name="VatRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="OtherDetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CustomerStatement">
+    <Key>
+      <PropertyRef Name="StatementId" />
+    </Key>
+    <Property Name="StatementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="AmountDue" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="BalanceBroughtForward" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -157,7 +172,7 @@
     <Key>
       <PropertyRef Name="PaymentId" />
     </Key>
-    <Property Name="PaymentId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CustomerId" Type="Int32" />
     <Property Name="PaymentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="PaymentDate" Type="DateTime" Precision="3" />
@@ -213,6 +228,7 @@
     <Property Name="ProdId" Type="Int32" />
     <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -228,6 +244,7 @@
     <Property Name="ProdId" Type="Int32" />
     <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -243,6 +260,7 @@
     <Property Name="ProdId" Type="Int32" />
     <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -258,6 +276,7 @@
     <Property Name="ProdId" Type="Int32" />
     <Property Name="UnitPrice" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="Decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -447,20 +466,5 @@
     <Property Name="SubTotal" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="VatAmount" Type="Decimal" Precision="30" Scale="2" />
     <Property Name="TotalAmount" Type="Decimal" Precision="30" Scale="2" />
-  </EntityType>
-  <EntityType Name="CustomerStatement">
-    <Key>
-      <PropertyRef Name="StatementId" />
-    </Key>
-    <Property Name="StatementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerId" Type="Int32" />
-    <Property Name="StartDate" Type="DateTime" Precision="3" />
-    <Property Name="EndDate" Type="DateTime" Precision="3" />
-    <Property Name="AmountDue" Type="Decimal" Precision="30" Scale="2" />
-    <Property Name="BalanceBroughtForward" Type="Decimal" Precision="30" Scale="2" />
-    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-    <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -26,6 +26,7 @@ namespace ColorlinkTrading.DataAccess
         }
     
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerStatement> CustomerStatements { get; set; }
         public virtual DbSet<CustomerStatementsDetail> CustomerStatementsDetails { get; set; }
         public virtual DbSet<DeliveryNote> DeliveryNotes { get; set; }
         public virtual DbSet<FileUpload> FileUploads { get; set; }
@@ -50,6 +51,5 @@ namespace ColorlinkTrading.DataAccess
         public virtual DbSet<SystemUser> SystemUsers { get; set; }
         public virtual DbSet<view_NonVatInvoices> view_NonVatInvoices { get; set; }
         public virtual DbSet<View_VATInvoices> View_VATInvoices { get; set; }
-        public virtual DbSet<CustomerStatement> CustomerStatements { get; set; }
     }
 }

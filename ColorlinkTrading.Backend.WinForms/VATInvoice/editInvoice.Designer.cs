@@ -62,7 +62,6 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.txttotam = new System.Windows.Forms.TextBox();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
-            this.cancbtn = new System.Windows.Forms.Button();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.prodList = new System.Windows.Forms.ListBox();
@@ -74,10 +73,12 @@
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
             this.invoiceProducts = new System.Windows.Forms.ListView();
             this.addbtn = new System.Windows.Forms.Button();
+            this.cancbtn = new System.Windows.Forms.Button();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.Button7 = new System.Windows.Forms.Button();
             this.TextBox1 = new System.Windows.Forms.TextBox();
             this.Label5 = new System.Windows.Forms.Label();
+            this.prodVatId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GroupBox1.SuspendLayout();
             this.GroupBox10.SuspendLayout();
             this.GroupBox8.SuspendLayout();
@@ -434,16 +435,6 @@
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "Select Date";
             // 
-            // cancbtn
-            // 
-            this.cancbtn.Location = new System.Drawing.Point(385, 31);
-            this.cancbtn.Name = "cancbtn";
-            this.cancbtn.Size = new System.Drawing.Size(75, 23);
-            this.cancbtn.TabIndex = 50;
-            this.cancbtn.Text = "&Cancel";
-            this.cancbtn.UseVisualStyleBackColor = true;
-            this.cancbtn.Click += new System.EventHandler(this.cancbtn_Click);
-            // 
             // GroupBox6
             // 
             this.GroupBox6.Controls.Add(this.custid);
@@ -545,7 +536,8 @@
             this.ColProdName,
             this.ColUnitPrice,
             this.ColAmount,
-            this.ProductId});
+            this.ProductId,
+            this.prodVatId});
             this.invoiceProducts.FullRowSelect = true;
             this.invoiceProducts.GridLines = true;
             this.invoiceProducts.Location = new System.Drawing.Point(233, 240);
@@ -565,6 +557,16 @@
             this.addbtn.Text = "&Add to Invoice";
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // cancbtn
+            // 
+            this.cancbtn.Location = new System.Drawing.Point(385, 31);
+            this.cancbtn.Name = "cancbtn";
+            this.cancbtn.Size = new System.Drawing.Size(75, 23);
+            this.cancbtn.TabIndex = 50;
+            this.cancbtn.Text = "&Cancel";
+            this.cancbtn.UseVisualStyleBackColor = true;
+            this.cancbtn.Click += new System.EventHandler(this.cancbtn_Click);
             // 
             // GroupBox11
             // 
@@ -603,6 +605,10 @@
             this.Label5.Size = new System.Drawing.Size(110, 13);
             this.Label5.TabIndex = 4;
             this.Label5.Text = "Enter Invoice Number";
+            // 
+            // prodVatId
+            // 
+            this.prodVatId.Width = 0;
             // 
             // editInvoice
             // 
@@ -694,5 +700,6 @@
         internal System.Windows.Forms.Button Button7;
         internal System.Windows.Forms.TextBox TextBox1;
         internal System.Windows.Forms.Label Label5;
+        private System.Windows.Forms.ColumnHeader prodVatId;
     }
 }

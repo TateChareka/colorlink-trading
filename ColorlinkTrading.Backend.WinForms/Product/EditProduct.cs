@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ColorlinkTrading.Backend.WinForms.Product
-{ 
+{
     public partial class EditProduct : Form
     {
         private ProductListResultModel productList;
@@ -62,6 +62,7 @@ namespace ColorlinkTrading.Backend.WinForms.Product
 
             ProductRequestModel newProduct = new ProductRequestModel()
             {
+                ProductId = Int32.Parse(txtprodid.Text),
                 CashPrice = Decimal.Parse(txtUSValue.Text),
                 Comments = txtComments.Text,
                 CompetitorDetails = txtCompetitorDetails.Text,
@@ -122,50 +123,51 @@ namespace ColorlinkTrading.Backend.WinForms.Product
         {
             var data = productList.Products.Where(b => b.ProductName == prodList.SelectedItem.ToString()).FirstOrDefault();
             txtName.Text = data.ProductName;
-            txtPriceAfter14Vat.Text = string.Format("#,###0.00", data.RandPricePostVat);
-            txtPriceAfterMarkup.Text = string.Format("#,###0.00", data.RandPricePostMarkup);
+            txtprodid.Text = data.ProductId + "";
+            txtPriceAfter14Vat.Text = data.RandPricePostVat + "";
+            txtPriceAfterMarkup.Text = data.RandPricePostMarkup + "";
             txtComments.Text = data.Comments;
             txtCompetitorDetails.Text = data.CompetitorDetails;
-            txtUSValue.Text = string.Format("#,###0.00", data.CashPrice);
-            txtCompetitorPrice.Text = string.Format("#,###0.00", data.CompetitorPrice);
-            txtExchangeRate.Text= string.Format("#,###0.00", data.ExchangeRate);
-            txtmarkupPc.Text= string.Format("#,###0.00", data.MarkUpPercentage);
-            txtFinalPrice.Text= string.Format("#,###0.00", data.PriceIncVat);
-            txtRand.Text= string.Format("#,###0.00", data.RandPricePreVat);
-            txtAfter15pcVatUS.Text= string.Format("#,###0.00", data.VatAmount);
+            txtUSValue.Text = data.CashPrice + "";
+            txtCompetitorPrice.Text = data.CompetitorPrice + "";
+            txtExchangeRate.Text = data.ExchangeRate + "";
+            txtmarkupPc.Text = data.MarkUpPercentage + "";
+            txtFinalPrice.Text = data.PriceIncVat + "";
+            txtRand.Text = data.RandPricePreVat + "";
+            txtAfter15pcVatUS.Text = data.VatAmount + "";
         }
 
         private void txtRand_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtUSValue_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtExchangeRate_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtmarkupPc_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtExchangeRate_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
-                Double r = Double.Parse(txtExchangeRate.Text);
-                txtPriceAfter14Vat.Text = Math.Round((1.14 * r), 2) + "";
-                txtPriceAfterMarkup.Text = Math.Round(Double.Parse(txtPriceAfter14Vat.Text) * ((100 + Double.Parse(txtmarkupPc.Text) / 100)), 2) + "";
-                txtUSValue.Text = Math.Round((Double.Parse(txtPriceAfterMarkup.Text)) / Double.Parse(txtExchangeRate.Text), 2) + "";
+                Double exchangeRate = Double.Parse(txtExchangeRate.Text);
+                Double rand = Double.Parse(txtRand.Text);
+                txtPriceAfter14Vat.Text = Math.Round((1.14 * rand), 2) + "";
+                txtPriceAfterMarkup.Text = Math.Round(Double.Parse(txtPriceAfter14Vat.Text) * (1 + (Double.Parse(txtmarkupPc.Text) / 100)), 2) + "";
+                txtUSValue.Text = Math.Round((Double.Parse(txtPriceAfterMarkup.Text)) / exchangeRate, 2) + "";
                 txtAfter15pcVatUS.Text = Math.Round(0.15 * Double.Parse(txtUSValue.Text), 2) + "";
                 txtFinalPrice.Text = Math.Round(1.15 * Double.Parse(txtUSValue.Text), 2) + "";
-                txtRand.Text = Math.Round((Double.Parse(txtPriceAfter14Vat.Text) / 1.14), 2) + "";
             }
             catch (Exception ex)
             {
@@ -179,19 +181,19 @@ namespace ColorlinkTrading.Backend.WinForms.Product
         {
             try
             {
-                Double r = Double.Parse(txtmarkupPc.Text);
-                if (r > 100 || r < 0)
+                Double markup = Double.Parse(txtmarkupPc.Text);
+                if (markup > 50 || markup < 0)
                 {
                     MessageBox.Show("Markup Percentage should be Between 0 and 100", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtmarkupPc.Text = "35";
                     return;
                 }
-                txtPriceAfter14Vat.Text = Math.Round((1.14 * r), 2) + "";
-                txtPriceAfterMarkup.Text = Math.Round(Double.Parse(txtPriceAfter14Vat.Text) * ((100 + Double.Parse(txtmarkupPc.Text) / 100)), 2) + "";
+                Double rand = Double.Parse(txtRand.Text);
+                txtPriceAfter14Vat.Text = Math.Round((1.14 * rand), 2) + "";
+                txtPriceAfterMarkup.Text = Math.Round(Double.Parse(txtPriceAfter14Vat.Text) * (1 + (markup / 100)), 2) + "";
                 txtUSValue.Text = Math.Round((Double.Parse(txtPriceAfterMarkup.Text)) / Double.Parse(txtExchangeRate.Text), 2) + "";
                 txtAfter15pcVatUS.Text = Math.Round(0.15 * Double.Parse(txtUSValue.Text), 2) + "";
                 txtFinalPrice.Text = Math.Round(1.15 * Double.Parse(txtUSValue.Text), 2) + "";
-                txtRand.Text = Math.Round((Double.Parse(txtPriceAfter14Vat.Text) / 1.14), 2) + "";
             }
             catch (Exception ex)
             {
@@ -209,7 +211,7 @@ namespace ColorlinkTrading.Backend.WinForms.Product
                 {
                     Double r = Double.Parse(txtRand.Text);
                     txtPriceAfter14Vat.Text = Math.Round((1.14 * r), 2) + "";
-                    txtPriceAfterMarkup.Text = Math.Round(Double.Parse(txtPriceAfter14Vat.Text) * ((100 + Double.Parse(txtmarkupPc.Text) / 100)), 2) + "";
+                    txtPriceAfterMarkup.Text = Math.Round(Double.Parse(txtPriceAfter14Vat.Text) * (1 + (Double.Parse(txtmarkupPc.Text) / 100)), 2) + "";
                     txtUSValue.Text = Math.Round((Double.Parse(txtPriceAfterMarkup.Text)) / Double.Parse(txtExchangeRate.Text), 2) + "";
                     txtAfter15pcVatUS.Text = Math.Round(0.15 * Double.Parse(txtUSValue.Text), 2) + "";
                     txtFinalPrice.Text = Math.Round(1.15 * Double.Parse(txtUSValue.Text), 2) + "";
@@ -239,11 +241,12 @@ namespace ColorlinkTrading.Backend.WinForms.Product
                 try
                 {
                     Double r = Double.Parse(txtUSValue.Text);
-                    txtAfter15pcVatUS.Text = Math.Round(0.15 * Double.Parse(txtUSValue.Text), 2) + "";
-                    txtFinalPrice.Text = Math.Round(1.15 * Double.Parse(txtUSValue.Text), 2) + "";
-                    txtPriceAfterMarkup.Text = Math.Round((Double.Parse(txtUSValue.Text)) * Double.Parse(txtExchangeRate.Text), 2) + "";
-                    txtPriceAfter14Vat.Text = Math.Round(Double.Parse(txtPriceAfterMarkup.Text) / ((100 + Double.Parse(txtmarkupPc.Text)) / 100), 2) + "";
-                    txtRand.Text = Math.Round((Double.Parse(txtPriceAfter14Vat.Text) / 1.14), 2) + "";
+                    txtAfter15pcVatUS.Text = Math.Round(0.15 * r, 2) + "";
+                    txtFinalPrice.Text = Math.Round(1.15 * r, 2) + "";
+
+                    txtPriceAfterMarkup.Text = Math.Round(r * Double.Parse(txtExchangeRate.Text), 2) + "";
+                    txtPriceAfter14Vat.Text = Math.Round(Double.Parse(txtPriceAfterMarkup.Text) * (1 - (Double.Parse(txtmarkupPc.Text) / 100)), 2) + "";
+                    txtRand.Text = Math.Round((Double.Parse(txtPriceAfter14Vat.Text) * 0.86), 2) + "";
                 }
                 catch (Exception ex)
                 {

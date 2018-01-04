@@ -144,7 +144,7 @@
     <Key>
       <PropertyRef Name="PaymentId" />
     </Key>
-    <Property Name="PaymentId" Type="int" Nullable="false" />
+    <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CustomerId" Type="int" />
     <Property Name="PaymentDescription" Type="varchar" MaxLength="100" />
     <Property Name="PaymentDate" Type="datetime" />
@@ -200,6 +200,7 @@
     <Property Name="ProdId" Type="int" />
     <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="varchar" MaxLength="255" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -215,6 +216,7 @@
     <Property Name="ProdId" Type="int" />
     <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="varchar" MaxLength="255" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -230,6 +232,7 @@
     <Property Name="ProdId" Type="int" />
     <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="varchar" MaxLength="255" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -245,6 +248,7 @@
     <Property Name="ProdId" Type="int" />
     <Property Name="UnitPrice" Type="decimal" Precision="30" Scale="2" />
     <Property Name="Amount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="OLDNo" Type="varchar" MaxLength="255" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />

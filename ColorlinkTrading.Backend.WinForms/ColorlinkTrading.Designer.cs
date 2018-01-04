@@ -309,6 +309,7 @@
             this.SearchToolStripMenuItem1.Name = "SearchToolStripMenuItem1";
             this.SearchToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.SearchToolStripMenuItem1.Text = "&Search";
+            this.SearchToolStripMenuItem1.Visible = false;
             // 
             // EditProductToolStripMenuItem
             // 
@@ -347,6 +348,8 @@
             this.VatCalculationsToolStripMenuItem.Name = "VatCalculationsToolStripMenuItem";
             this.VatCalculationsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.VatCalculationsToolStripMenuItem.Text = "&Vat Calculations";
+            this.VatCalculationsToolStripMenuItem.Visible = false;
+            this.VatCalculationsToolStripMenuItem.Click += new System.EventHandler(this.VatCalculationsToolStripMenuItem_Click_1);
             // 
             // ToolStripMenuItem1
             // 
@@ -358,6 +361,7 @@
             this.ToolStripMenuItem1.Name = "ToolStripMenuItem1";
             this.ToolStripMenuItem1.Size = new System.Drawing.Size(69, 20);
             this.ToolStripMenuItem1.Text = "C&ash Sale";
+            this.ToolStripMenuItem1.Visible = false;
             // 
             // ToolStripMenuItem2
             // 
@@ -394,6 +398,7 @@
             this.QoutationToolStripMenuItem.Name = "QoutationToolStripMenuItem";
             this.QoutationToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.QoutationToolStripMenuItem.Text = "&Qoutation";
+            this.QoutationToolStripMenuItem.Visible = false;
             // 
             // NewToolStripMenuItem2
             // 
@@ -435,11 +440,12 @@
             this.PriceListToolStripMenuItem.Name = "PriceListToolStripMenuItem";
             this.PriceListToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.PriceListToolStripMenuItem.Text = "&Price List";
+            this.PriceListToolStripMenuItem.Visible = false;
             // 
             // CreateToolStripMenuItem1
             // 
             this.CreateToolStripMenuItem1.Name = "CreateToolStripMenuItem1";
-            this.CreateToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.CreateToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
             this.CreateToolStripMenuItem1.Text = "&Create";
             // 
             // SuppliersToolStripMenuItem
@@ -453,6 +459,7 @@
             this.SuppliersToolStripMenuItem.Name = "SuppliersToolStripMenuItem";
             this.SuppliersToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.SuppliersToolStripMenuItem.Text = "&Suppliers";
+            this.SuppliersToolStripMenuItem.Visible = false;
             // 
             // NewOrderToolStripMenuItem
             // 
@@ -460,7 +467,7 @@
             this.NewToolStripMenuItem1,
             this.EditToolStripMenuItem4});
             this.NewOrderToolStripMenuItem.Name = "NewOrderToolStripMenuItem";
-            this.NewOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.NewOrderToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.NewOrderToolStripMenuItem.Text = "&Order";
             // 
             // NewToolStripMenuItem1
@@ -478,25 +485,25 @@
             // NewSupplierToolStripMenuItem
             // 
             this.NewSupplierToolStripMenuItem.Name = "NewSupplierToolStripMenuItem";
-            this.NewSupplierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.NewSupplierToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.NewSupplierToolStripMenuItem.Text = "New S&upplier";
             // 
             // EditToolStripMenuItem5
             // 
             this.EditToolStripMenuItem5.Name = "EditToolStripMenuItem5";
-            this.EditToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.EditToolStripMenuItem5.Size = new System.Drawing.Size(144, 22);
             this.EditToolStripMenuItem5.Text = "&Edit";
             // 
             // PaymentToolStripMenuItem1
             // 
             this.PaymentToolStripMenuItem1.Name = "PaymentToolStripMenuItem1";
-            this.PaymentToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.PaymentToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.PaymentToolStripMenuItem1.Text = "&Payment";
             // 
             // StatementToolStripMenuItem
             // 
             this.StatementToolStripMenuItem.Name = "StatementToolStripMenuItem";
-            this.StatementToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.StatementToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.StatementToolStripMenuItem.Text = "&Statement";
             // 
             // vATDeductionToolStripMenuItem
@@ -515,23 +522,24 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(69, 20);
             this.toolStripMenuItem4.Text = "&Proforma";
+            this.toolStripMenuItem4.Visible = false;
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(135, 22);
             this.toolStripMenuItem5.Text = "&Create";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(158, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(135, 22);
             this.toolStripMenuItem6.Text = "&Print";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(135, 22);
             this.toolStripMenuItem7.Text = "&Edit Invoice";
             this.toolStripMenuItem7.Visible = false;
             // 

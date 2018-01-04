@@ -49,12 +49,10 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             }
             ReportDocument newReport = new ReportDocument();
             newReport.Load(@"C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\Reports\ReportVatInvoice.rpt");
+            //ReportVatInvoice newReport = new ReportVatInvoice();
             newReport.SetParameterValue("InvoiceNumber", invoiceNumber);
             CrystalReportViewer1.ReportSource = newReport;
-            CrystalReportViewer1.Refresh();
-
-            string s=System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames().ToString();
-            MessageBox.Show(s);
+            CrystalReportViewer1.Refresh();            
         }
 
         private void PrintVatInvoice_Load(object sender, EventArgs e)

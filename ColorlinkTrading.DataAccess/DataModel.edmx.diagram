@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="7f9552ed44814d40a0eb06c814745b1f" Name="Diagram1">
         <EntityTypeShape EntityType="DataModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.CustomerStatement" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="DataModel.CustomerStatementsDetail" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="DataModel.DeliveryNote" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="DataModel.FileUpload" Width="1.5" PointX="2.75" PointY="4.75" />
@@ -30,7 +31,6 @@
         <EntityTypeShape EntityType="DataModel.SystemUser" Width="1.5" PointX="14.75" PointY="0.75" />
         <EntityTypeShape EntityType="DataModel.view_NonVatInvoices" Width="1.5" PointX="4.75" PointY="14.75" />
         <EntityTypeShape EntityType="DataModel.View_VATInvoices" Width="1.5" PointX="14.75" PointY="6.75" />
-        <EntityTypeShape EntityType="DataModel.CustomerStatement" Width="1.5" PointX="11.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
