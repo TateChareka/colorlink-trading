@@ -40,7 +40,8 @@
     <Property Name="TransactionDate" Type="datetime" />
     <Property Name="StatementReference" Type="varchar" MaxLength="200" />
     <Property Name="StatementDescription" Type="varchar" MaxLength="200" />
-    <Property Name="StatementAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="StatementCREDIT" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="StatementDEBIT" Type="decimal" Precision="30" Scale="2" />
     <Property Name="StatementBalance" Type="decimal" Precision="30" Scale="2" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
@@ -396,7 +397,9 @@ warning 6002: The table/view 'colorlinkTrading.dbo.SystemUser' does not have a p
     <Property Name="StatementId" Type="int" />
     <Property Name="TransactionDate" Type="datetime" />
     <Property Name="StatementDescription" Type="varchar" MaxLength="200" />
-    <Property Name="StatementAmount" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="StatementCREDIT" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="StatementDEBIT" Type="decimal" Precision="30" Scale="2" />
+    <Property Name="StatementBALANCE" Type="decimal" Precision="30" Scale="2" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />

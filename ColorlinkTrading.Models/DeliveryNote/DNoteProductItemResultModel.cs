@@ -15,6 +15,7 @@ namespace ColorlinkTrading.Models
         public int? Quantity { get; set; }
         public int? ProdId { get; set; }
         public string ProductName { get; set; }
+        public string OldNumber { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }
         public DateTime? UpdatedDate { get; set; }

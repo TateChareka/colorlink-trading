@@ -42,7 +42,8 @@
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="StatementBalance" ColumnName="StatementBalance" />
-          <ScalarProperty Name="StatementAmount" ColumnName="StatementAmount" />
+          <ScalarProperty Name="StatementDEBIT" ColumnName="StatementDEBIT" />
+          <ScalarProperty Name="StatementCREDIT" ColumnName="StatementCREDIT" />
           <ScalarProperty Name="StatementDescription" ColumnName="StatementDescription" />
           <ScalarProperty Name="StatementReference" ColumnName="StatementReference" />
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
@@ -379,7 +380,9 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="StatementAmount" ColumnName="StatementAmount" />
+          <ScalarProperty Name="StatementBALANCE" ColumnName="StatementBALANCE" />
+          <ScalarProperty Name="StatementDEBIT" ColumnName="StatementDEBIT" />
+          <ScalarProperty Name="StatementCREDIT" ColumnName="StatementCREDIT" />
           <ScalarProperty Name="StatementDescription" ColumnName="StatementDescription" />
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
           <ScalarProperty Name="StatementId" ColumnName="StatementId" />

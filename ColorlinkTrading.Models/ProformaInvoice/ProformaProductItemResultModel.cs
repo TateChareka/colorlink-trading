@@ -17,6 +17,7 @@ namespace ColorlinkTrading.Models
         public string ProductName { get; set; }
         public decimal? UnitPrice { get; set; }
         public decimal? Amount { get; set; }
+        public string OldNumber { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }
         public DateTime? UpdatedDate { get; set; }

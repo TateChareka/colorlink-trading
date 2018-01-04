@@ -223,6 +223,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportCustomerStatement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportCustomerStatement.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportDNote.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportDNote.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\ReportLetter.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -252,6 +264,12 @@
     </Compile>
     <Compile Include="VATDeduction\VATDeduction.Designer.cs">
       <DependentUpon>VATDeduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VATDeduction\VATStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VATDeduction\VATStatement.Designer.cs">
+      <DependentUpon>VATStatement.cs</DependentUpon>
     </Compile>
     <Compile Include="VATInvoice\editInvoice.cs">
       <SubType>Form</SubType>
@@ -310,6 +328,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportVatInvoice.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="Reports\ReportCustomerStatement.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportCustomerStatement.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportDNote.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportDNote.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportLetter.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportLetter.cs</LastGenOutput>
@@ -324,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VATDeduction\VATDeduction.resx">
       <DependentUpon>VATDeduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VATDeduction\VATStatement.resx">
+      <DependentUpon>VATStatement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VATInvoice\editInvoice.resx">
       <DependentUpon>editInvoice.cs</DependentUpon>

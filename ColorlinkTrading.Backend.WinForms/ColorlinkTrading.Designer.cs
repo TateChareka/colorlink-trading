@@ -223,14 +223,14 @@
             // AddCustomerToolStripMenuItem
             // 
             this.AddCustomerToolStripMenuItem.Name = "AddCustomerToolStripMenuItem";
-            this.AddCustomerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AddCustomerToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.AddCustomerToolStripMenuItem.Text = "&Add";
             this.AddCustomerToolStripMenuItem.Click += new System.EventHandler(this.AddCustomerToolStripMenuItem_Click_2);
             // 
             // ViewToolStripMenuItem
             // 
             this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
-            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.ViewToolStripMenuItem.Text = "&View";
             this.ViewToolStripMenuItem.Visible = false;
             this.ViewToolStripMenuItem.Click += new System.EventHandler(this.ViewToolStripMenuItem_Click);
@@ -238,14 +238,14 @@
             // EditToolStripMenuItem1
             // 
             this.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1";
-            this.EditToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.EditToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.EditToolStripMenuItem1.Text = "&Edit";
             this.EditToolStripMenuItem1.Click += new System.EventHandler(this.EditToolStripMenuItem1_Click_1);
             // 
             // PaymentToolStripMenuItem2
             // 
             this.PaymentToolStripMenuItem2.Name = "PaymentToolStripMenuItem2";
-            this.PaymentToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.PaymentToolStripMenuItem2.Size = new System.Drawing.Size(128, 22);
             this.PaymentToolStripMenuItem2.Text = "&Payment";
             this.PaymentToolStripMenuItem2.Click += new System.EventHandler(this.PaymentToolStripMenuItem2_Click_1);
             // 
@@ -261,7 +261,7 @@
             // NewToolStripMenuItem3
             // 
             this.NewToolStripMenuItem3.Name = "NewToolStripMenuItem3";
-            this.NewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.NewToolStripMenuItem3.Size = new System.Drawing.Size(99, 22);
             this.NewToolStripMenuItem3.Text = "&New";
             this.NewToolStripMenuItem3.Click += new System.EventHandler(this.NewToolStripMenuItem3_Click_1);
             // 
@@ -270,6 +270,7 @@
             this.ViewToolStripMenuItem3.Name = "ViewToolStripMenuItem3";
             this.ViewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.ViewToolStripMenuItem3.Text = "&View";
+            this.ViewToolStripMenuItem3.Visible = false;
             this.ViewToolStripMenuItem3.Click += new System.EventHandler(this.ViewToolStripMenuItem3_Click_1);
             // 
             // AddProductToolStripMenuItem
@@ -286,28 +287,28 @@
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.AddToolStripMenuItem.Text = "&Add";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click_1);
             // 
             // ViewToolStripMenuItem1
             // 
             this.ViewToolStripMenuItem1.Name = "ViewToolStripMenuItem1";
-            this.ViewToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.ViewToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
             this.ViewToolStripMenuItem1.Text = "&View";
             this.ViewToolStripMenuItem1.Click += new System.EventHandler(this.ViewToolStripMenuItem1_Click_1);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.EditToolStripMenuItem.Text = "&Edit";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click_1);
             // 
             // SearchToolStripMenuItem1
             // 
             this.SearchToolStripMenuItem1.Name = "SearchToolStripMenuItem1";
-            this.SearchToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.SearchToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
             this.SearchToolStripMenuItem1.Text = "&Search";
             this.SearchToolStripMenuItem1.Visible = false;
             // 
@@ -346,9 +347,8 @@
             // VatCalculationsToolStripMenuItem
             // 
             this.VatCalculationsToolStripMenuItem.Name = "VatCalculationsToolStripMenuItem";
-            this.VatCalculationsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.VatCalculationsToolStripMenuItem.Text = "&Vat Calculations";
-            this.VatCalculationsToolStripMenuItem.Visible = false;
+            this.VatCalculationsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.VatCalculationsToolStripMenuItem.Text = "&Vat Statement";
             this.VatCalculationsToolStripMenuItem.Click += new System.EventHandler(this.VatCalculationsToolStripMenuItem_Click_1);
             // 
             // ToolStripMenuItem1

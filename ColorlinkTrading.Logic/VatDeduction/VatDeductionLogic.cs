@@ -27,6 +27,54 @@ namespace ColorlinkTrading.Logic
             }
         }
 
+        public static VATDeductionListResultModel VatDeductionList(GenericSearchRequestModel request)
+        {
+            var result = new VATDeductionListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                VATDeductions = new List<VATDeductionItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+                    var data = dm.VATDeductions.ToList();
+
+                    foreach (var item in data)
+                    {
+                        VATDeductionItemResultModel vatdeduction = new VATDeductionItemResultModel
+                        {
+                            TransactionDate = item.TransactionDate,
+                            VatAmount = item.VatAmount,
+                            VATDeductionDescription = item.VATDeductionDescription,
+                            VATDeductionId = item.VATDeductionId,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate
+                        };
+                        result.VATDeductions.Add(vatdeduction);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
+
         public static VATDeductionListResultModel SearchVatDeductionList(GenericSearchRequestModel request)
         {
             var result = new VATDeductionListResultModel

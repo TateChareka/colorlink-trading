@@ -45,7 +45,8 @@
           <Property Name="TransactionDate" Type="datetime" />
           <Property Name="StatementReference" Type="varchar" MaxLength="200" />
           <Property Name="StatementDescription" Type="varchar" MaxLength="200" />
-          <Property Name="StatementAmount" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="StatementCREDIT" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="StatementDEBIT" Type="decimal" Precision="30" Scale="2" />
           <Property Name="StatementBalance" Type="decimal" Precision="30" Scale="2" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
@@ -401,7 +402,9 @@ warning 6002: The table/view 'colorlinkTrading.dbo.SystemUser' does not have a p
           <Property Name="StatementId" Type="int" />
           <Property Name="TransactionDate" Type="datetime" />
           <Property Name="StatementDescription" Type="varchar" MaxLength="200" />
-          <Property Name="StatementAmount" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="StatementCREDIT" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="StatementDEBIT" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="StatementBALANCE" Type="decimal" Precision="30" Scale="2" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
           <Property Name="UpdatedDate" Type="datetime" />
@@ -606,7 +609,8 @@ warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not ha
           <Property Name="TransactionDate" Type="DateTime" Precision="3" />
           <Property Name="StatementReference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="StatementDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="StatementAmount" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="StatementCREDIT" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="StatementDEBIT" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="StatementBalance" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -923,7 +927,9 @@ warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not ha
           <Property Name="StatementId" Type="Int32" />
           <Property Name="TransactionDate" Type="DateTime" Precision="3" />
           <Property Name="StatementDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="StatementAmount" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="StatementCREDIT" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="StatementDEBIT" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="StatementBALANCE" Type="Decimal" Precision="30" Scale="2" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -1052,7 +1058,8 @@ warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not ha
                 <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="StatementBalance" ColumnName="StatementBalance" />
-                <ScalarProperty Name="StatementAmount" ColumnName="StatementAmount" />
+                <ScalarProperty Name="StatementDEBIT" ColumnName="StatementDEBIT" />
+                <ScalarProperty Name="StatementCREDIT" ColumnName="StatementCREDIT" />
                 <ScalarProperty Name="StatementDescription" ColumnName="StatementDescription" />
                 <ScalarProperty Name="StatementReference" ColumnName="StatementReference" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
@@ -1389,7 +1396,9 @@ warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not ha
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="StatementAmount" ColumnName="StatementAmount" />
+                <ScalarProperty Name="StatementBALANCE" ColumnName="StatementBALANCE" />
+                <ScalarProperty Name="StatementDEBIT" ColumnName="StatementDEBIT" />
+                <ScalarProperty Name="StatementCREDIT" ColumnName="StatementCREDIT" />
                 <ScalarProperty Name="StatementDescription" ColumnName="StatementDescription" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="StatementId" ColumnName="StatementId" />

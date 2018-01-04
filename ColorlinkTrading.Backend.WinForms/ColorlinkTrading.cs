@@ -325,7 +325,7 @@ namespace ColorlinkTrading.Backend.WinForms
         {
             if (ProductLogic.ProductCount(userLoggedIn) != 0)
             {
-                Product.EditProduct editProd = new Product.EditProduct();               
+                Product.EditProduct editProd = new Product.EditProduct();
                 editProd.txtAfter15pcVatUS.Enabled = false;
                 editProd.txtComments.Enabled = false;
                 editProd.txtCompetitorDetails.Enabled = false;
@@ -396,7 +396,8 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void VatCalculationsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-
+            VATDeduction.VATStatement vatStatement = new VATDeduction.VATStatement();
+            vatStatement.Show();
         }
     }
 }

@@ -19,7 +19,8 @@ namespace ColorlinkTrading.DataAccess
         public Nullable<System.DateTime> TransactionDate { get; set; }
         public string StatementReference { get; set; }
         public string StatementDescription { get; set; }
-        public Nullable<decimal> StatementAmount { get; set; }
+        public Nullable<decimal> StatementCREDIT { get; set; }
+        public Nullable<decimal> StatementDEBIT { get; set; }
         public Nullable<decimal> StatementBalance { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }
