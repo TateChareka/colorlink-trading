@@ -269,5 +269,222 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
+        public static ZimraStatementListResultModel ZimraStatementList(GenericSearchRequestModel request)
+        {
+            var result = new ZimraStatementListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                ZimraStatement = new List<ZimraStatementItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var data = dm.ZimraStatements.ToList();
+                    var customers = dm.Customers.ToList();
+                    var statementDetails = dm.ZimraStatementsDetails.ToList();
+
+                    foreach (var item in data)
+                    {
+
+                        ZimraStatementItemResultModel zimraStatement = new ZimraStatementItemResultModel
+                        {
+                            AmountDue = item.AmountDue,
+                            EndDate = item.EndDate,                              
+                            StartDate = item.StartDate,
+                            StatementId = item.StatementId,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate,
+                            ZimraStatementDetails = new List<ZimraStateDetailsItemResultModel>()
+                        };
+                        var statements = statementDetails.Where(b => b.StatementId == zimraStatement.StatementId).ToList();
+                        foreach (var requestVatProduct in statements)
+                        {
+                            ZimraStateDetailsItemResultModel statementDet = new ZimraStateDetailsItemResultModel
+                            {
+                                CreatedByUserName = requestVatProduct.CreatedByUserName,
+                                CreatedDate = requestVatProduct.CreatedDate,
+                                UpdatedByUserName = requestVatProduct.UpdatedByUserName,
+                                UpdatedDate = requestVatProduct.UpdatedDate,
+                                TransactionDate = requestVatProduct.TransactionDate,
+                                StatementId = requestVatProduct.StatementId,
+                                StatementBalance = requestVatProduct.StatementBALANCE,
+                                StatementCREDIT = requestVatProduct.StatementCREDIT,
+                                StatementDEBIT = requestVatProduct.StatementDEBIT,
+                                StatementDescription = requestVatProduct.StatementDescription
+                            };
+                            zimraStatement.ZimraStatementDetails.Add(statementDet);
+                        }
+                        result.ZimraStatement.Add(zimraStatement);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
+        public static ZimraStatementItemResultModel GetZimraStatement(ZimraStatementRequestModel request)
+        {
+            var result = new ZimraStatementItemResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                ZimraStatementDetails = new List<ZimraStateDetailsItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var statementid = request.StatementId;
+
+                    var data = dm.ZimraStatements.Where(b => b.StatementId == statementid).FirstOrDefault();
+
+                    result.CreatedByUserName = data.CreatedByUserName;
+                    result.CreatedDate = data.CreatedDate;
+                    result.UpdatedByUserName = data.UpdatedByUserName;
+                    result.UpdatedDate = data.UpdatedDate;
+                    result.AmountDue = data.AmountDue;
+                    result.EndDate = data.EndDate;
+                    result.StartDate = data.StartDate;
+                    result.StatementId = data.StatementId;
+                    result.ZimraStatementDetails = new List<ZimraStateDetailsItemResultModel>();
+
+                    var statements = dm.ZimraStatementsDetails.Where(b => b.StatementId == statementid).ToList();
+                    foreach (var requestVatProduct in statements)
+                    {
+                        ZimraStateDetailsItemResultModel statementDet = new ZimraStateDetailsItemResultModel
+                        {
+                            CreatedByUserName = requestVatProduct.CreatedByUserName,
+                            CreatedDate = requestVatProduct.CreatedDate,
+                            UpdatedByUserName = requestVatProduct.UpdatedByUserName,
+                            UpdatedDate = requestVatProduct.UpdatedDate,
+                            TransactionDate = requestVatProduct.TransactionDate,
+                            StatementId = requestVatProduct.StatementId,
+                            ZimraStatementId = requestVatProduct.ZimraStatementId,
+                            StatementBalance = requestVatProduct.StatementBALANCE,
+                            StatementCREDIT = requestVatProduct.StatementCREDIT,
+                            StatementDEBIT = requestVatProduct.StatementDEBIT,
+                            StatementDescription = requestVatProduct.StatementDescription
+                        };
+                        result.ZimraStatementDetails.Add(statementDet);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
+        public static GenericItemResultModel WriteZimraStatement(ZimraStatementRequestModel request)
+        {
+            var result = new GenericItemResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var statementid = request.StatementId;
+
+                    var data = (from a in dm.ZimraStatements
+                                where a.StatementId == statementid
+                                select a).FirstOrDefault();
+
+                    if (data == null)
+                    {
+                        data = new ZimraStatement();
+                        dm.ZimraStatements.Add(data);
+                        result.Feedback = "Zimra Statement Successfully Added";
+                    }
+                    else
+                    {
+                        result.Feedback = "Edit Zimra Statement Successful";
+                    }
+
+                    data.CreatedByUserName = request.CreatedByUserName;
+                    data.CreatedDate = request.CreatedDate;
+                    data.UpdatedByUserName = request.UpdatedByUserName;
+                    data.UpdatedDate = request.UpdatedDate;
+                    data.AmountDue = request.AmountDue;
+                    data.EndDate = request.EndDate;
+                    data.StartDate = request.StartDate;
+                    data.StatementId = request.StatementId;
+
+                    foreach (var item in request.ZimraStatementDetails)
+                    {
+                        writeStatementDetails(item, request);
+                    }
+                    dm.SaveChanges();
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
+        private static void writeStatementDetails(ZimraStateDetailsItemResultModel requestVatProduct, GenericRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ZimraStatementsDetails
+                            where a.ZimraStatementId == requestVatProduct.ZimraStatementId
+                            select a).FirstOrDefault();
+
+                if (data == null)
+                {
+                    data = new ZimraStatementsDetail();
+                    dm.ZimraStatementsDetails.Add(data);
+                }
+
+                data.TransactionDate = requestVatProduct.TransactionDate;
+                data.StatementBALANCE = requestVatProduct.StatementBalance;
+                data.StatementCREDIT = requestVatProduct.StatementCREDIT;
+                data.StatementDEBIT = requestVatProduct.StatementDEBIT;
+                data.StatementId = requestVatProduct.StatementId;
+                data.ZimraStatementId = requestVatProduct.ZimraStatementId;
+                data.StatementDescription = requestVatProduct.StatementDescription;
+                dm.SaveChanges();
+
+            }
+        }
+
     }
 }

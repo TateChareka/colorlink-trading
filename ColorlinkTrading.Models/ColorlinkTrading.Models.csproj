@@ -79,11 +79,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer\CusStatementItemResultModel.cs" />
+    <Compile Include="Customer\CusStateDetailsItemResultModel.cs" />
+    <Compile Include="Customer\CustStatementListResultModel.cs" />
+    <Compile Include="Customer\CustomerStatementRequestModel.cs" />
     <Compile Include="DeliveryNote\DNoteProductItemResultModel.cs" />
     <Compile Include="NonVatInvoice\NonVatInvoiceItemResultModel.cs" />
     <Compile Include="NonVatInvoice\NonVatInvoiceListResultModel.cs" />
     <Compile Include="NonVatInvoice\NonVatInvoiceProductItemResultModel.cs" />
     <Compile Include="NonVatInvoice\NonVatInvoiceRequestModel.cs" />
+    <Compile Include="VATDeduction\ZimraStateDetailsItemResultModel.cs" />
+    <Compile Include="VATDeduction\ZimraStatementItemResultModel.cs" />
+    <Compile Include="VATDeduction\ZimraStatementRequestModel.cs" />
+    <Compile Include="VATDeduction\ZimraStatementListResultModel.cs" />
     <Compile Include="VATDeduction\VATDeductionItemResultModel.cs" />
     <Compile Include="VATDeduction\VATDeductionListResultModel.cs" />
     <Compile Include="VATDeduction\VATDeductionRequestModel.cs" />
