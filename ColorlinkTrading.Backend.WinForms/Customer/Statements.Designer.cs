@@ -85,6 +85,7 @@
             this.Button2.TabIndex = 15;
             this.Button2.Text = "G&enerate PrintOut";
             this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Label3
             // 

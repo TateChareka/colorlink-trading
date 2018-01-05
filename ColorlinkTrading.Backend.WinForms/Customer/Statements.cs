@@ -17,7 +17,7 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
         private CustomerListResultModel customers;
         private PaymentListResultModel payments;
         private VatInvoiceListResultModel Invoices;
-        private decimal AmountDue = 0, Debit = 0, Credit = 0;
+        private decimal AmountDue = 0, Debit = 0, Credit = 0, BalanceBForward = 0;
         private int DebitTotal = 0, CreditTotal = 0;
         public Statements()
         {
@@ -47,6 +47,62 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
             }
             payments = PaymentLogic.PaymentList(new GenericSearchRequestModel() { });
             Invoices = VatInvoiceLogic.VATInvoiceList(new GenericSearchRequestModel() { });
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (displayView.Items.Count > 0)
+            {
+                DialogResult a = MessageBox.Show("Are you sure you want to generate this statement?", "Customer Statement Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (a == DialogResult.Yes)
+                {
+                    if (createStatement())
+                    {
+                        MessageBox.Show("Statement Successfully Created.", "Customer Statement Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        Close();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Products added to create invoice", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        private bool createStatement()
+        {
+            CustomerStatementRequestModel custStatementNew = new CustomerStatementRequestModel()
+            {
+
+                AmountDue = decimal.Parse(TextBox1.Text),
+                EndDate = dateTo.Value,
+                BalanceBroughtForward = BalanceBForward,
+                StartDate = dateFrom.Value,
+                CustomerStatementDetails = new List<CusStateDetailsItemResultModel>()
+
+            };
+
+            foreach (ListViewItem item in displayView.Items)
+            {
+                CusStateDetailsItemResultModel record = new CusStateDetailsItemResultModel()
+                {
+                    TransactionDate = DateTime.Parse(item.SubItems[0].Text),
+                    StatementReference = item.SubItems[1].Text,
+                    StatementDescription = item.SubItems[2].Text,
+                    StatementDEBIT = decimal.Parse(item.SubItems[3].Text),
+                    StatementCREDIT = decimal.Parse(item.SubItems[4].Text),
+                    StatementBalance = decimal.Parse(item.SubItems[5].Text)
+                };
+                custStatementNew.CustomerStatementDetails.Add(record);
+            }
+
+            GenericItemResultModel state = CustomerLogic.WriteCustomerStatement(custStatementNew);
+            if (state.Feedback == "Customer Statement Successfully Added")
+            {
+                return true;
+            }
+            return false;
         }
 
         private void custList_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,7 +145,7 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
             hiddenView.Items.Clear();
 
             var custId = Int32.Parse(custid.Text);
-
+            hiddenView.Items.Add(new ListViewItem(new[] { DateTime.Now + "", "", "Balance Brought Forward", BalanceBForward + "", "", "" }));
             var statementInvoices = Invoices.VatInvoices.Where(b => b.CustomerId == custId && b.InvoiceDate >= dateFrom.Value && b.InvoiceDate <= dateTo.Value).ToList();
             foreach (var invoice in statementInvoices)
             {
@@ -112,15 +168,31 @@ namespace ColorlinkTrading.Backend.WinForms.Customer
             {
                 if (item.SubItems[2].Text == "INVOICE")
                 {
-                    AmountDue += decimal.Parse(item.SubItems[3].Text);
-                    Debit += decimal.Parse(item.SubItems[3].Text);
+                    if (item.SubItems[3].Text == "")
+                    {
+                        AmountDue += 0;
+                        Debit += 0;
+                    }
+                    else
+                    {
+                        AmountDue += decimal.Parse(item.SubItems[3].Text);
+                        Debit += decimal.Parse(item.SubItems[3].Text);
+                    }
                     DebitTotal += 1;
                     displayView.Items.Add(new ListViewItem(new[] { (item.SubItems[0].Text), (item.SubItems[1].Text), "INVOICE", (item.SubItems[3].Text), "", Math.Round(1 * AmountDue, 2) + "" }));
                 }
                 else
                 {
-                    AmountDue -= decimal.Parse(item.SubItems[4].Text);
-                    Credit += decimal.Parse(item.SubItems[4].Text);
+                    if (item.SubItems[4].Text == "")
+                    {
+                        AmountDue += 0;
+                        Credit += 0;
+                    }
+                    else
+                    {
+                        AmountDue -= decimal.Parse(item.SubItems[4].Text);
+                        Credit += decimal.Parse(item.SubItems[4].Text);
+                    }
                     CreditTotal += 1;
                     displayView.Items.Add(new ListViewItem(new[] { item.SubItems[0].Text, (item.SubItems[1].Text), "PAYMENT", "", (item.SubItems[4].Text), Math.Round(1 * AmountDue, 2) + "" }));
                 }
