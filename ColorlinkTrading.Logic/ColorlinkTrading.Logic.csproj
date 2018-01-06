@@ -92,6 +92,7 @@
     <Compile Include="NonVatInvoice\NonVatInvoiceLogic.cs" />
     <Compile Include="ProformaInvoice\ProformaInvoiceLogic.cs" />
     <Compile Include="Qoutation\QoutationLogic.cs" />
+    <Compile Include="DeliveryNote\DeliveryNoteLogic.cs" />
     <Compile Include="VatInvoice\VatInvoiceLogic.cs" />
     <Compile Include="VatDeduction\VatDeductionLogic.cs" />
     <Compile Include="Payment\PaymentLogic.cs" />

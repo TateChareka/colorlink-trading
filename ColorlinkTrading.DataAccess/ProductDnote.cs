@@ -18,6 +18,7 @@ namespace ColorlinkTrading.DataAccess
         public Nullable<int> DnoteNo { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> ProdId { get; set; }
+        public string OLDNo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedByUserName { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }

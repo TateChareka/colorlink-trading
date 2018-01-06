@@ -10,7 +10,7 @@ namespace ColorlinkTrading.Models
 {
     public class DNoteProductItemResultModel : GenericItemResultModel
     {
-        public int? ProductDnoteId { get; set; }
+        public int ProductDnoteId { get; set; }
         public int? DnoteNo { get; set; }
         public int? Quantity { get; set; }
         public int? ProdId { get; set; }

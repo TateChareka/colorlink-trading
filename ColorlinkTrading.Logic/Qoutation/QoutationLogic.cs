@@ -154,6 +154,66 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
+        public static QoutationListResultModel QoutationList(GenericSearchRequestModel request)
+        {
+            var result = new QoutationListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                Qoutations = new List<QoutationItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var data = dm.Qoutations.ToList();
+                    var customers = dm.Customers.ToList();
+                    var products = dm.Products.ToList();
+
+
+                    foreach (var item in data)
+                    {
+
+                        QoutationItemResultModel qoutation = new QoutationItemResultModel
+                        {
+                            ProductQoutations = new List<QoutationProductItemResultModel>(),
+                            CustomerId = item.CustomerId,
+                            CustomerName = customers.Where(b => b.CustomerId == item.CustomerId).FirstOrDefault().CustomerName,
+                            DisplayValue = item.DisplayValue,
+                            Discount = item.Discount,
+                            ExtraDetails = item.ExtraDetails,
+                            InvoiceDate = item.InvoiceDate,
+                            QouteNumber = item.QouteNumber,
+                            Reference = item.Reference,
+                            SubTotal = item.SubTotal,
+                            TotalAmount = item.TotalAmount,
+                            VatAmount = item.VatAmount,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate,
+                        };
+                        result.Qoutations.Add(qoutation);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
         public static QoutationItemResultModel GetQoutation(QoutationRequestModel request)
         {
             var result = new QoutationItemResultModel
@@ -270,40 +330,12 @@ namespace ColorlinkTrading.Logic
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
 
-                    foreach (var vatproduct in request.ProductQoutations)
+                    resetQouteProduct(request);
+
+                    foreach (var item in request.ProductQoutations)
                     {
-                        var productV = (from a in dm.ProductQoutes
-                                        where a.QouteNo == qouteid
-                                        select a).FirstOrDefault();
-                        if (productV == null)
-                        {
-                            productV = new ProductQoute();
-                            dm.ProductQoutes.Add(productV);
-                        }
-
-                        if (vatproduct.Quantity == 0)
-                        {
-                            productV.QouteNo = 0;
-                            dm.ProductQoutes.Remove(productV);
-                        }
-                        else
-                        {
-                            productV.QouteNo = vatproduct.QouteNo;
-                        }
-
-                        productV.Amount = vatproduct.Amount;
-                        productV.CreatedByUserName = vatproduct.CreatedByUserName;
-                        productV.CreatedDate = vatproduct.CreatedDate;
-                        productV.QouteNo = vatproduct.QouteNo;
-                        productV.ProdId = vatproduct.ProdId;
-                        productV.ProductQouteId = vatproduct.ProductQouteId;
-                        productV.Quantity = vatproduct.Quantity;
-                        productV.UnitPrice = vatproduct.UnitPrice;
-                        productV.UpdatedByUserName = vatproduct.UpdatedByUserName;
-                        productV.UpdatedDate = vatproduct.UpdatedDate;
-                        dm.SaveChanges();
+                        writeQouteProduct(item, request);
                     }
-
                     dm.SaveChanges();
                     return result;
                 }
@@ -317,6 +349,47 @@ namespace ColorlinkTrading.Logic
             }
             return result;
         }
+        private static void resetQouteProduct(QoutationRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductQoutes
+                            where a.QouteNo == request.QouteNumber
+                            select a).ToList();
+                foreach (var item in data)
+                {
+                    item.OLDNo = item.QouteNo + "";
+                    item.QouteNo = 0;
+                    dm.SaveChanges();
+                }
+            }
+        }
+
+        private static void writeQouteProduct(QoutationProductItemResultModel requestvatProducts, GenericRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductQoutes
+                            where a.ProductQouteId == requestvatProducts.ProductQouteId
+                            select a).FirstOrDefault();
+
+                if (data == null)
+                {
+                    data = new ProductQoute();
+                    dm.ProductQoutes.Add(data);
+                }
+
+                data.Amount = requestvatProducts.Amount;
+                data.QouteNo = requestvatProducts.QouteNo;
+                data.ProdId = requestvatProducts.ProdId;
+                data.ProductQouteId = requestvatProducts.ProductQouteId;
+                data.Quantity = requestvatProducts.Quantity;
+                data.UnitPrice = requestvatProducts.UnitPrice;
+                dm.SaveChanges();
+
+            }
+        }
+
 
     }
 }

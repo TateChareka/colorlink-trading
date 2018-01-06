@@ -191,6 +191,7 @@
           <Property Name="DnoteNo" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="ProdId" Type="int" />
+          <Property Name="OLDNo" Type="varchar" MaxLength="255" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
           <Property Name="UpdatedDate" Type="datetime" />
@@ -755,6 +756,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not ha
           <Property Name="DnoteNo" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="ProdId" Type="Int32" />
+          <Property Name="OLDNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -1213,6 +1215,7 @@ warning 6002: The table/view 'colorlinkTrading.dbo.View_VATInvoices' does not ha
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OLDNo" ColumnName="OLDNo" />
                 <ScalarProperty Name="ProdId" ColumnName="ProdId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="DnoteNo" ColumnName="DnoteNo" />

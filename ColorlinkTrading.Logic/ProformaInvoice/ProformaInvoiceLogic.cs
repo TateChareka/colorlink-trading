@@ -153,6 +153,69 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
+        public static ProformaListResultModel ProformaList(GenericSearchRequestModel request)
+        {
+            var result = new ProformaListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                ProformaInvoices = new List<ProformaItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+
+
+                    var data = dm.ProformaInvoices.ToList();
+
+                    var customers = dm.Customers.ToList();
+                    var products = dm.Products.ToList();
+
+
+                    foreach (var item in data)
+                    {
+                        ProformaItemResultModel proforma = new ProformaItemResultModel
+                        {
+                            ProductProforma = new List<ProformaProductItemResultModel>(),
+                            CustomerId = item.CustomerId,
+                            CustomerName = customers.Where(b => b.CustomerId == item.CustomerId).FirstOrDefault().CustomerName,
+                            DisplayValue = item.DisplayValue,
+                            Discount = item.Discount,
+                            ExtraDetails = item.ExtraDetails,
+                            ProformaDate = item.ProformaDate,
+                            ProformaNumber = item.ProformaNumber,
+                            Reference = item.Reference,
+                            SubTotal = item.SubTotal,
+                            TotalAmount = item.TotalAmount,
+                            VatAmount = item.VatAmount,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate,
+                        };
+
+                        result.ProformaInvoices.Add(proforma);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
         public static ProformaItemResultModel GetProforma(ProformaRequestModel request)
         {
             var result = new ProformaItemResultModel
@@ -269,38 +332,11 @@ namespace ColorlinkTrading.Logic
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VATAmount;
 
-                    foreach (var proformaproduct in request.ProductProforma)
+                    resetProformaProduct(request);
+
+                    foreach (var item in request.ProductProforma)
                     {
-                        var productV = (from a in dm.ProductProformas
-                                        where a.ProfornaNo == proformaid
-                                        select a).FirstOrDefault();
-                        if (productV == null)
-                        {
-                            productV = new ProductProforma();
-                            dm.ProductProformas.Add(productV);
-                        }
-
-                        if (proformaproduct.Quantity == 0)
-                        {
-                            productV.ProfornaNo = 0;
-                            dm.ProductProformas.Remove(productV);
-                        }
-                        else
-                        {
-                            productV.ProfornaNo = proformaproduct.ProformaNo;
-                        }
-
-                        productV.Amount = proformaproduct.Amount;
-                        productV.CreatedByUserName = proformaproduct.CreatedByUserName;
-                        productV.CreatedDate = proformaproduct.CreatedDate;
-                        productV.ProfornaNo = proformaproduct.ProformaNo;
-                        productV.ProdId = proformaproduct.ProdId;
-                        productV.ProductProformaId = proformaproduct.ProductProformaId;
-                        productV.Quantity = proformaproduct.Quantity;
-                        productV.UnitPrice = proformaproduct.UnitPrice;
-                        productV.UpdatedByUserName = proformaproduct.UpdatedByUserName;
-                        productV.UpdatedDate = proformaproduct.UpdatedDate;
-                        dm.SaveChanges();
+                        writeProformaProduct(item, request);
                     }
 
                     dm.SaveChanges();
@@ -315,6 +351,47 @@ namespace ColorlinkTrading.Logic
                 result.HasError = true;
             }
             return result;
+        }
+
+        private static void resetProformaProduct(ProformaRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductProformas
+                            where a.ProfornaNo == request.ProformaNumber
+                            select a).ToList();
+                foreach (var item in data)
+                {
+                    item.OLDNo = item.ProfornaNo + "";
+                    item.ProfornaNo = 0;
+                    dm.SaveChanges();
+                }
+            }
+        }
+
+        private static void writeProformaProduct(ProformaProductItemResultModel requestvatProducts, GenericRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductProformas
+                            where a.ProductProformaId == requestvatProducts.ProductProformaId
+                            select a).FirstOrDefault();
+
+                if (data == null)
+                {
+                    data = new ProductProforma();
+                    dm.ProductProformas.Add(data);
+                }
+
+                data.Amount = requestvatProducts.Amount;
+                data.ProfornaNo = requestvatProducts.ProformaNo;
+                data.ProdId = requestvatProducts.ProdId;
+                data.ProductProformaId = requestvatProducts.ProductProformaId;
+                data.Quantity = requestvatProducts.Quantity;
+                data.UnitPrice = requestvatProducts.UnitPrice;
+                dm.SaveChanges();
+
+            }
         }
 
     }

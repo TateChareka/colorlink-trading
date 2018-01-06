@@ -152,6 +152,64 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
+        public static NonVatInvoiceListResultModel NonVatInvoiceList(GenericSearchRequestModel request)
+        {
+            var result = new NonVatInvoiceListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                NonVatInvoices = new List<NonVatInvoiceItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var data = dm.InvoiceNonVats.ToList();
+                    var customers = dm.Customers.ToList();
+                    var products = dm.Products.ToList();
+
+
+                    foreach (var item in data)
+                    {
+                        NonVatInvoiceItemResultModel nonVat = new NonVatInvoiceItemResultModel
+                        {
+                            ProductNonVat = new List<NonVatInvoiceProductItemResultModel>(),
+                            CustomerId = item.CustomerId,
+                            CustomerName = customers.Where(b => b.CustomerId == item.CustomerId).FirstOrDefault().CustomerName,
+                            DisplayValue = item.DisplayValue,
+                            Discount = item.Discount,
+                            ExtraDetails = item.ExtraDetails,
+                            InvoiceDate = item.InvoiceDate,
+                            InvoiceNumber = item.InvoiceNumber,
+                            Reference = item.Reference,
+                            SubTotal = item.SubTotal,
+                            TotalAmount = item.TotalAmount,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            UpdatedDate = item.UpdatedDate,
+                        };
+                        result.NonVatInvoices.Add(nonVat);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
         public static NonVatInvoiceItemResultModel GetNonVatInvoice(NonVatInvoiceRequestModel request)
         {
             var result = new NonVatInvoiceItemResultModel
@@ -266,40 +324,12 @@ namespace ColorlinkTrading.Logic
                     data.SubTotal = request.SubTotal;
                     data.TotalAmount = request.TotalAmount;
 
-                    foreach (var product in request.ProductNonVat)
+                    resetNonVatProduct(request);
+
+                    foreach (var item in request.ProductNonVat)
                     {
-                        var productV = (from a in dm.ProductInvoiceNonVats
-                                        where a.InvoiceNo == nonvatid
-                                        select a).FirstOrDefault();
-                        if (productV == null)
-                        {
-                            productV = new ProductInvoiceNonVat();
-                            dm.ProductInvoiceNonVats.Add(productV);
-                        }
-
-                        if (product.Quantity == 0)
-                        {
-                            productV.InvoiceNo = 0;
-                            dm.ProductInvoiceNonVats.Remove(productV);
-                        }
-                        else
-                        {
-                            productV.InvoiceNo = product.InvoiceNo;
-                        }
-
-                        productV.Amount = product.Amount;
-                        productV.CreatedByUserName = product.CreatedByUserName;
-                        productV.CreatedDate = product.CreatedDate;
-                        productV.InvoiceNo = product.InvoiceNo;
-                        productV.ProdId = product.ProdId;
-                        productV.ProductInvoiceNonVatId = product.ProductInvoiceNonVatId;
-                        productV.Quantity = product.Quantity;
-                        productV.UnitPrice = product.UnitPrice;
-                        productV.UpdatedByUserName = product.UpdatedByUserName;
-                        productV.UpdatedDate = product.UpdatedDate;
-                        dm.SaveChanges();
+                        writeNonVatProduct(item, request);
                     }
-
                     dm.SaveChanges();
                     return result;
                 }
@@ -312,6 +342,46 @@ namespace ColorlinkTrading.Logic
                 result.HasError = true;
             }
             return result;
+        }
+        private static void resetNonVatProduct(NonVatInvoiceRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductInvoiceNonVats
+                            where a.InvoiceNo == request.InvoiceNumber
+                            select a).ToList();
+                foreach (var item in data)
+                {
+                    item.OLDNo = item.InvoiceNo + "";
+                    item.InvoiceNo = 0;
+                    dm.SaveChanges();
+                }
+            }
+        }
+
+        private static void writeNonVatProduct(NonVatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request)
+        {
+            using (var dm = new DataModelEntities(request.SessionUserName))
+            {
+                var data = (from a in dm.ProductInvoiceNonVats
+                            where a.ProductInvoiceNonVatId == requestvatProducts.ProductInvoiceNonVatId
+                            select a).FirstOrDefault();
+
+                if (data == null)
+                {
+                    data = new ProductInvoiceNonVat();
+                    dm.ProductInvoiceNonVats.Add(data);
+                }
+
+                data.Amount = requestvatProducts.Amount;
+                data.InvoiceNo = requestvatProducts.InvoiceNo;
+                data.ProdId = requestvatProducts.ProdId;
+                data.ProductInvoiceNonVatId = requestvatProducts.ProductInvoiceNonVatId;
+                data.Quantity = requestvatProducts.Quantity;
+                data.UnitPrice = requestvatProducts.UnitPrice;
+                dm.SaveChanges();
+
+            }
         }
 
     }
