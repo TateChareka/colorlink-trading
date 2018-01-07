@@ -384,14 +384,47 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void PrintToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            VATInvoice.PrintVatInvoice printInvoice = new VATInvoice.PrintVatInvoice();
-            printInvoice.Show();
+            int count = (VatInvoiceLogic.VatInvoiceCount(
+                new GenericSearchRequestModel()
+                {
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 1000
+                }));
+            if (count > 0)
+            {
+                VATInvoice.PrintVatInvoice printInvoice = new VATInvoice.PrintVatInvoice();
+                printInvoice.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Vat invoices to Print", "No Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void EditInvoiceToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            VATInvoice.editInvoice editInvoice = new VATInvoice.editInvoice();
-            editInvoice.Show();
+            int count = (VatInvoiceLogic.VatInvoiceCount(
+                new GenericSearchRequestModel()
+                {
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 1000
+                }));
+            if (count > 0)
+            {
+                VATInvoice.editInvoice editInvoice = new VATInvoice.editInvoice();
+                editInvoice.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Vat invoices to Edit", "No Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void VatCalculationsToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -408,14 +441,94 @@ namespace ColorlinkTrading.Backend.WinForms
 
         private void EditToolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
-            Qoutation.editQoutation editQoute = new Qoutation.editQoutation();
-            editQoute.Show();
+            int count = (QoutationLogic.QoutationCount(
+                new GenericSearchRequestModel()
+                {
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 1000
+                }));
+            if (count > 0)
+            {
+                Qoutation.editQoutation editQoute = new Qoutation.editQoutation();
+                editQoute.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Qoutation to edit", "No Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void ViewToolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
-            Qoutation.PrintQoutation printQoute = new Qoutation.PrintQoutation();
-            printQoute.Show();
+            int count = (QoutationLogic.QoutationCount(
+                new GenericSearchRequestModel()
+                {
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 1000
+                }));
+            if (count > 0)
+            {
+                Qoutation.PrintQoutation printQoute = new Qoutation.PrintQoutation();
+                printQoute.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Qoutation to Print", "No Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            ProformaInvoice.NewProforma newProforma = new ProformaInvoice.NewProforma();
+            newProforma.Show();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            int count = (ProformaInvoiceLogic.ProformaInvoiceCount(
+                new GenericSearchRequestModel()
+                {
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 1000
+                }));
+            if (count > 0)
+            {
+                ProformaInvoice.PrintProforma printProforma = new ProformaInvoice.PrintProforma();
+                printProforma.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Proforma invoices to Print", "No Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            int count = (ProformaInvoiceLogic.ProformaInvoiceCount(
+                new GenericSearchRequestModel()
+                {
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 1000
+                }));
+            if (count > 0)
+            {
+                ProformaInvoice.editProforma editProforma = new ProformaInvoice.editProforma();
+                editProforma.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Proforma invoices to Edit", "No Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

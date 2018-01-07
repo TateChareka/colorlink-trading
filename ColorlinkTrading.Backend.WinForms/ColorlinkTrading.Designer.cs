@@ -197,11 +197,11 @@
             this.AddProductToolStripMenuItem,
             this.EditProductToolStripMenuItem,
             this.ToolStripMenuItem1,
+            this.toolStripMenuItem4,
             this.QoutationToolStripMenuItem,
             this.PriceListToolStripMenuItem,
             this.SuppliersToolStripMenuItem,
-            this.vATDeductionToolStripMenuItem,
-            this.toolStripMenuItem4});
+            this.vATDeductionToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(728, 24);
@@ -403,7 +403,7 @@
             // 
             this.NewToolStripMenuItem2.Name = "NewToolStripMenuItem2";
             this.NewToolStripMenuItem2.Size = new System.Drawing.Size(200, 22);
-            this.NewToolStripMenuItem2.Text = "&New";
+            this.NewToolStripMenuItem2.Text = "&Create";
             this.NewToolStripMenuItem2.Click += new System.EventHandler(this.NewToolStripMenuItem2_Click_1);
             // 
             // EditToolStripMenuItem3
@@ -417,7 +417,7 @@
             // 
             this.ViewToolStripMenuItem2.Name = "ViewToolStripMenuItem2";
             this.ViewToolStripMenuItem2.Size = new System.Drawing.Size(200, 22);
-            this.ViewToolStripMenuItem2.Text = "&View";
+            this.ViewToolStripMenuItem2.Text = "&Print";
             this.ViewToolStripMenuItem2.Click += new System.EventHandler(this.ViewToolStripMenuItem2_Click_1);
             // 
             // ConvertToInvoiceToolStripMenuItem
@@ -524,26 +524,27 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(69, 20);
             this.toolStripMenuItem4.Text = "&Proforma";
-            this.toolStripMenuItem4.Visible = false;
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem5.Text = "&Create";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem6.Text = "&Print";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem7.Text = "&Edit Invoice";
-            this.toolStripMenuItem7.Visible = false;
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // ColorlinkTrading
             // 

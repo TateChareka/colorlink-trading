@@ -28,7 +28,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             invoiceCount = (QoutationLogic.QoutationCount(
                new GenericSearchRequestModel()
                {
-                  
+
                }) + 100);
             crConnectionInfo = new ConnectionInfo();
             crConnectionInfo.ServerName = "(local)";
@@ -53,7 +53,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
 
             int invoiceNumber = Int32.Parse(TextBox1.Text);
 
-            if (invoiceNumber < 100 || invoiceNumber > invoiceCount)
+            if (invoiceNumber < 100 || invoiceNumber > invoiceCount - 1)
             {
                 MessageBox.Show("Qoutation Number should be between 100 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TextBox1.Clear();

@@ -13,15 +13,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ColorlinkTrading.Backend.WinForms.VATInvoice
+namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
 {
-    public partial class PrintVatInvoice : Form
+    public partial class PrintProforma : Form
     {
-        private int invoiceCount = 0;
-        private ConnectionInfo crConnectionInfo;
-        public PrintVatInvoice()
+        public PrintProforma()
         {
             InitializeComponent();
+        }
+        private int invoiceCount = 0;
+        private ConnectionInfo crConnectionInfo;
+        private void PrintProforma_Load(object sender, EventArgs e)
+        {
+            invoiceCount = (QoutationLogic.QoutationCount(
+              new GenericSearchRequestModel()
+              {
+
+              }) + 100);
+            crConnectionInfo = new ConnectionInfo();
+            crConnectionInfo.ServerName = "(local)";
+            crConnectionInfo.DatabaseName = "colorlinkTrading";
+            crConnectionInfo.UserID = "sa";
+            crConnectionInfo.Password = "Rabbits@2008";
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -33,7 +46,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
         {
             if (TextBox1.Text == "")
             {
-                MessageBox.Show("Enter an Invoice Number to Proceed", "Input Missing", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Enter an Proforma Number to Proceed", "Input Missing", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 TextBox1.Focus();
                 return;
             }
@@ -42,34 +55,17 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
             if (invoiceNumber < 100 || invoiceNumber > invoiceCount - 1)
             {
-                MessageBox.Show("Invoice Number should be between 101 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Proforma Number should be between 100 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TextBox1.Clear();
                 TextBox1.Focus();
                 return;
             }
             ReportDocument newReport = new ReportDocument();
-            newReport.Load(@"C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\Reports\ReportVatInvoice.rpt");
+            newReport.Load(@"C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\Reports\ReportProformaInvoice.rpt");
             //ReportVatInvoice newReport = new ReportVatInvoice();
             newReport.SetParameterValue("InvoiceNumber", invoiceNumber);
             CrystalReportViewer1.ReportSource = newReport;
             CrystalReportViewer1.Refresh();
-        }
-
-        private void PrintVatInvoice_Load(object sender, EventArgs e)
-        {
-            invoiceCount = (VatInvoiceLogic.VatInvoiceCount(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "InvoiceNumber",
-                    PageNumber = 1,
-                    PageSize = 1000
-                }) + 100);
-            crConnectionInfo = new ConnectionInfo();
-            crConnectionInfo.ServerName = "(local)";
-            crConnectionInfo.DatabaseName = "colorlinkTrading";
-            crConnectionInfo.UserID = "sa";
-            crConnectionInfo.Password = "Rabbits@2008";
         }
     }
 }

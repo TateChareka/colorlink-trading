@@ -10,19 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ColorlinkTrading.Backend.WinForms.Qoutation
+namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
 {
-    public partial class editQoutation : Form
+    public partial class editProforma : Form
     {
-        public editQoutation()
+        public editProforma()
         {
             InitializeComponent();
         }
         private CustomerListResultModel customers;
         private ProductListResultModel products;
-        private int qoutationCount = 0;
-        private void editQoutation_Load(object sender, EventArgs e)
-
+        private int invoiceCount = 0;
+        private void editProforma_Load(object sender, EventArgs e)
         {
             Width = 486; Height = 104;
             customers = CustomerLogic.SearchCustomerList(
@@ -50,7 +49,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             {
                 prodList.Items.Add(item.ProductName);
             }
-            qoutationCount = (QoutationLogic.QoutationCount(
+            invoiceCount = (ProformaInvoiceLogic.ProformaInvoiceCount(
                 new GenericSearchRequestModel()
                 {
                 }) + 101);
@@ -232,7 +231,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             txtvat.Clear();
             txtdiscount.Clear();
             txtponumber.Clear();
-            editQoutation_Load(sender, e);
+            editProforma_Load(sender, e);
         }
 
         private void procinvbtn_Click(object sender, EventArgs e)
@@ -248,7 +247,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             {
                 if (invdate.Value > DateTime.Now || invdate.Value < DateTime.Now)
                 {
-                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Qoutation Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Proforma Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dateAsk == DialogResult.No)
                     {
                         invdate.Focus();
@@ -256,12 +255,12 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                     }
                 }
 
-                DialogResult a = MessageBox.Show("Are you sure you want to edit this qoutation?", "Qoutation Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult a = MessageBox.Show("Are you sure you want to edit this proforma?", "Proforma Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (a == DialogResult.Yes)
                 {
                     if (creatInvoice())
                     {
-                        DialogResult d = MessageBox.Show("Qoutation Successfully Created." + Environment.NewLine + "Do you want to add another qoutation?", "Qoutation Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult d = MessageBox.Show("Proforma Successfully Created." + Environment.NewLine + "Do you want to add another proforma?", "Proforma Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (d == DialogResult.Yes)
                         {
                             Button1_Click(sender, e);
@@ -282,39 +281,39 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
 
         private bool creatInvoice()
         {
-            QoutationRequestModel invoiceNew = new QoutationRequestModel()
+            ProformaRequestModel invoiceNew = new ProformaRequestModel()
             {
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
-                QouteNumber = Int32.Parse(INVnO.Text),
+                ProformaNumber = Int32.Parse(INVnO.Text),
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
                 ExtraDetails = "",
-                InvoiceDate = invdate.Value,
+                ProformaDate = invdate.Value,
                 NumberOfProducts = invoiceProducts.Items.Count,
                 Reference = txtponumber.Text,
-                VatAmount = decimal.Parse(txtvat.Text),
+                VATAmount = decimal.Parse(txtvat.Text),
                 SubTotal = decimal.Parse(txtsubtot.Text),
                 TotalAmount = decimal.Parse(txttotam.Text),
-                ProductQoutations = new List<QoutationProductItemResultModel>()
+                ProductProforma = new List<ProformaProductItemResultModel>()
             };
 
             foreach (ListViewItem item in invoiceProducts.Items)
             {
-                QoutationProductItemResultModel invoiceProduct = new QoutationProductItemResultModel()
+                ProformaProductItemResultModel invoiceProduct = new ProformaProductItemResultModel()
                 {
-                    QouteNo = invoiceNew.QouteNumber,
+                    ProformaNo = invoiceNew.ProformaNumber,
                     Quantity = Int32.Parse(item.SubItems[0].Text),
                     ProductName = item.SubItems[1].Text,
                     UnitPrice = decimal.Parse(item.SubItems[2].Text),
                     Amount = decimal.Parse(item.SubItems[3].Text),
                     ProdId = Int32.Parse(item.SubItems[4].Text),
                 };
-                invoiceNew.ProductQoutations.Add(invoiceProduct);
+                invoiceNew.ProductProforma.Add(invoiceProduct);
             }
 
-            GenericItemResultModel state = QoutationLogic.WriteQoutation(invoiceNew);
-            if (state.Feedback == "Edit Qoutation Successful")
+            GenericItemResultModel state = ProformaInvoiceLogic.WriteProforma(invoiceNew);
+            if (state.Feedback == "Edit Proforma Successful")
             {
                 return true;
             }
@@ -344,24 +343,24 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             if (TextBox1.Text != "")
             {
                 Int32 r = Int32.Parse(TextBox1.Text);
-                if (r < 100 || r > qoutationCount-1)
+                if (r < 100 || r > invoiceCount - 1)
                 {
-                    MessageBox.Show("Qoutation Number should be between 100 and " + qoutationCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Qoutation Number should be between 100 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     TextBox1.Clear();
                     TextBox1.Focus();
                     return;
                 }
                 int invNo = Int32.Parse(TextBox1.Text);
 
-                var qoutation = QoutationLogic.GetQoutation(
-                    new QoutationRequestModel()
+                var qoutation = ProformaInvoiceLogic.GetProforma(
+                    new ProformaRequestModel()
                     {
-                        QouteNumber = invNo
+                        ProformaNumber = invNo
                     });
 
                 if (qoutation == null)
                 {
-                    MessageBox.Show("Qoutation not found" + Environment.NewLine + "Please ensure you have entered the correct Qoutation number", "Invalid Qoutation Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Proforma not found" + Environment.NewLine + "Please ensure you have entered the correct Proforma number", "Invalid Proforma Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     TextBox1.Clear();
                     TextBox1.Focus();
                     return;
@@ -378,9 +377,9 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                 custid.Text = qoutation.CustomerId + "";
                 custList.SelectedItem = (qoutation.CustomerName);
                 DateTime d;
-                if (qoutation.InvoiceDate != null)
+                if (qoutation.ProformaDate != null)
                 {
-                    d = DateTime.Parse(qoutation.InvoiceDate + "");
+                    d = DateTime.Parse(qoutation.ProformaDate + "");
                 }
                 else
                 {
@@ -389,9 +388,9 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                 INVnO.Text = TextBox1.Text;
                 invdate.Value = d;
                 txtponumber.Text = qoutation.Reference;
-                foreach (var item in qoutation.ProductQoutations)
+                foreach (var item in qoutation.ProductProforma)
                 {
-                    invoiceProducts.Items.Add(new ListViewItem(new[] { item.Quantity + "", item.ProductName, item.UnitPrice + "", item.Amount + "", item.ProdId + "", item.ProductQouteId + "" }));
+                    invoiceProducts.Items.Add(new ListViewItem(new[] { item.Quantity + "", item.ProductName, item.UnitPrice + "", item.Amount + "", item.ProdId + "", item.ProductProformaId + "" }));
                 }
                 prodList.Items.Remove(prodList.Text);
                 prodid.Clear();

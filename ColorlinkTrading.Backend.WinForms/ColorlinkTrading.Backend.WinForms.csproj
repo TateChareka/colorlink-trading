@@ -221,6 +221,24 @@
     <Compile Include="Product\NewProduct.Designer.cs">
       <DependentUpon>NewProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProformaInvoice\editProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProformaInvoice\editProforma.Designer.cs">
+      <DependentUpon>editProforma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProformaInvoice\NewProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProformaInvoice\NewProforma.Designer.cs">
+      <DependentUpon>NewProforma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProformaInvoice\PrintProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProformaInvoice\PrintProforma.Designer.cs">
+      <DependentUpon>PrintProforma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Qoutation\editQoutation.cs">
@@ -331,6 +349,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Product\NewProduct.resx">
       <DependentUpon>NewProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProformaInvoice\editProforma.resx">
+      <DependentUpon>editProforma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProformaInvoice\NewProforma.resx">
+      <DependentUpon>NewProforma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProformaInvoice\PrintProforma.resx">
+      <DependentUpon>PrintProforma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -454,7 +481,6 @@
   <ItemGroup>
     <Folder Include="Letter\" />
     <Folder Include="NonVATInvoice\" />
-    <Folder Include="ProformaInvoice\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

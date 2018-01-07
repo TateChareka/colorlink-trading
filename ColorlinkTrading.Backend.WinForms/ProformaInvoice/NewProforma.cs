@@ -10,29 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ColorlinkTrading.Backend.WinForms.Qoutation
+namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
 {
-    public partial class editQoutation : Form
+    public partial class NewProforma : Form
     {
-        public editQoutation()
+        public NewProforma()
         {
             InitializeComponent();
         }
         private CustomerListResultModel customers;
         private ProductListResultModel products;
-        private int qoutationCount = 0;
-        private void editQoutation_Load(object sender, EventArgs e)
-
+        private void NewProforma_Load(object sender, EventArgs e)
         {
-            Width = 486; Height = 104;
             customers = CustomerLogic.SearchCustomerList(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "CustomerId",
-                    PageNumber = 1,
-                    PageSize = 1000
-                });
+               new GenericSearchRequestModel()
+               {
+                   OrderDirection = "ASC",
+                   OrderField = "CustomerId",
+                   PageNumber = 1,
+                   PageSize = 10000
+               });
             foreach (var item in customers.Customers)
             {
                 custList.Items.Add(item.CustomerName);
@@ -43,31 +40,29 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                     OrderDirection = "ASC",
                     OrderField = "ProductId",
                     PageNumber = 1,
-                    PageSize = 1000
+                    PageSize = 10000
                 });
-
             foreach (var item in products.Products)
             {
                 prodList.Items.Add(item.ProductName);
             }
-            qoutationCount = (QoutationLogic.QoutationCount(
+            invdate.Value = DateTime.Now;
+            INVnO.Text = (ProformaInvoiceLogic.ProformaInvoiceCount(
                 new GenericSearchRequestModel()
                 {
-                }) + 101);
+                    OrderDirection = "ASC",
+                    OrderField = "InvoiceNumber",
+                    PageNumber = 1,
+                    PageSize = 10000
+                }) + 101) + "";
         }
-
-        private void cancbtn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void custList_SelectedIndexChanged(object sender, EventArgs e)
+        private void custlist_SelectedIndexChanged(object sender, EventArgs e)
         {
             custid.Text = "";
             custid.Text = customers.Customers.Where(b => b.CustomerName == custList.SelectedItem.ToString()).FirstOrDefault().CustomerId + "";
         }
 
-        private void prodList_SelectedIndexChanged(object sender, EventArgs e)
+        private void prodlist_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (prodList.SelectedIndex != -1)
             {
@@ -110,7 +105,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                     OrderDirection = "ASC",
                     OrderField = "ProductId",
                     PageNumber = 1,
-                    PageSize = 1000
+                    PageSize = 10000
                 });
                 foreach (var item in products.Products)
                 {
@@ -220,6 +215,18 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             {
                 MessageBox.Show("No Product to Remove Selected", "Removing Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
+        }
+
+        private void discotxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void cancbtn_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -232,7 +239,22 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             txtvat.Clear();
             txtdiscount.Clear();
             txtponumber.Clear();
-            editQoutation_Load(sender, e);
+            NewProforma_Load(sender, e);
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void procinvbtn_Click(object sender, EventArgs e)
@@ -248,7 +270,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             {
                 if (invdate.Value > DateTime.Now || invdate.Value < DateTime.Now)
                 {
-                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Qoutation Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Proforma Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dateAsk == DialogResult.No)
                     {
                         invdate.Focus();
@@ -256,12 +278,12 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                     }
                 }
 
-                DialogResult a = MessageBox.Show("Are you sure you want to edit this qoutation?", "Qoutation Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult a = MessageBox.Show("Are you sure you want to create this proform?", "Proforma Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (a == DialogResult.Yes)
                 {
                     if (creatInvoice())
                     {
-                        DialogResult d = MessageBox.Show("Qoutation Successfully Created." + Environment.NewLine + "Do you want to add another qoutation?", "Qoutation Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult d = MessageBox.Show("Proforma Successfully Created." + Environment.NewLine + "Do you want to add another proforma?", "Proforma Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (d == DialogResult.Yes)
                         {
                             Button1_Click(sender, e);
@@ -282,39 +304,38 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
 
         private bool creatInvoice()
         {
-            QoutationRequestModel invoiceNew = new QoutationRequestModel()
+            ProformaRequestModel invoiceNew = new ProformaRequestModel()
             {
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
-                QouteNumber = Int32.Parse(INVnO.Text),
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
                 ExtraDetails = "",
-                InvoiceDate = invdate.Value,
+                ProformaDate = invdate.Value,
                 NumberOfProducts = invoiceProducts.Items.Count,
                 Reference = txtponumber.Text,
-                VatAmount = decimal.Parse(txtvat.Text),
+                VATAmount = decimal.Parse(txtvat.Text),
                 SubTotal = decimal.Parse(txtsubtot.Text),
                 TotalAmount = decimal.Parse(txttotam.Text),
-                ProductQoutations = new List<QoutationProductItemResultModel>()
+                ProductProforma = new List<ProformaProductItemResultModel>()
             };
 
             foreach (ListViewItem item in invoiceProducts.Items)
             {
-                QoutationProductItemResultModel invoiceProduct = new QoutationProductItemResultModel()
+                ProformaProductItemResultModel invoiceProduct = new ProformaProductItemResultModel()
                 {
-                    QouteNo = invoiceNew.QouteNumber,
+                    ProformaNo = invoiceNew.ProformaNumber,
                     Quantity = Int32.Parse(item.SubItems[0].Text),
                     ProductName = item.SubItems[1].Text,
                     UnitPrice = decimal.Parse(item.SubItems[2].Text),
                     Amount = decimal.Parse(item.SubItems[3].Text),
                     ProdId = Int32.Parse(item.SubItems[4].Text),
                 };
-                invoiceNew.ProductQoutations.Add(invoiceProduct);
+                invoiceNew.ProductProforma.Add(invoiceProduct);
             }
 
-            GenericItemResultModel state = QoutationLogic.WriteQoutation(invoiceNew);
-            if (state.Feedback == "Edit Qoutation Successful")
+            GenericItemResultModel state = ProformaInvoiceLogic.WriteProforma(invoiceNew);
+            if (state.Feedback == "Proforma Successfully Added")
             {
                 return true;
             }
@@ -338,73 +359,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                 }
             }
         }
-        private void Button7_Click(object sender, EventArgs e)
-        {
 
-            if (TextBox1.Text != "")
-            {
-                Int32 r = Int32.Parse(TextBox1.Text);
-                if (r < 100 || r > qoutationCount-1)
-                {
-                    MessageBox.Show("Qoutation Number should be between 100 and " + qoutationCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    TextBox1.Clear();
-                    TextBox1.Focus();
-                    return;
-                }
-                int invNo = Int32.Parse(TextBox1.Text);
-
-                var qoutation = QoutationLogic.GetQoutation(
-                    new QoutationRequestModel()
-                    {
-                        QouteNumber = invNo
-                    });
-
-                if (qoutation == null)
-                {
-                    MessageBox.Show("Qoutation not found" + Environment.NewLine + "Please ensure you have entered the correct Qoutation number", "Invalid Qoutation Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    TextBox1.Clear();
-                    TextBox1.Focus();
-                    return;
-                }
-
-                Width = 991;
-                Height = 735;
-                invoiceProducts.Items.Clear();
-                txtsubtot.Clear();
-                txttotam.Clear();
-                txtvat.Clear();
-                txtdiscount.Clear();
-                txtponumber.Clear();
-                custid.Text = qoutation.CustomerId + "";
-                custList.SelectedItem = (qoutation.CustomerName);
-                DateTime d;
-                if (qoutation.InvoiceDate != null)
-                {
-                    d = DateTime.Parse(qoutation.InvoiceDate + "");
-                }
-                else
-                {
-                    d = DateTime.Now;
-                }
-                INVnO.Text = TextBox1.Text;
-                invdate.Value = d;
-                txtponumber.Text = qoutation.Reference;
-                foreach (var item in qoutation.ProductQoutations)
-                {
-                    invoiceProducts.Items.Add(new ListViewItem(new[] { item.Quantity + "", item.ProductName, item.UnitPrice + "", item.Amount + "", item.ProdId + "", item.ProductQouteId + "" }));
-                }
-                prodList.Items.Remove(prodList.Text);
-                prodid.Clear();
-                txtprice.Clear();
-                proddescr.Clear();
-                txtqty.Clear();
-                txtsubtot.Clear();
-                txttotam.Clear();
-                txtvat.Clear();
-                txtSearch.Clear();
-                calculate();
-            }
-        }
         private void txtqty_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtqty.Text != "")
@@ -423,7 +378,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             }
         }
 
-        private void discotxt_KeyUp(object sender, KeyEventArgs e)
+        private void discotxt_KeyUp_1(object sender, KeyEventArgs e)
         {
             if (discotxt.Text != "")
             {
@@ -452,3 +407,4 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
         }
     }
 }
+
