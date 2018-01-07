@@ -223,6 +223,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Qoutation\editQoutation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Qoutation\editQoutation.Designer.cs">
+      <DependentUpon>editQoutation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Qoutation\NewQoutation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Qoutation\NewQoutation.Designer.cs">
+      <DependentUpon>NewQoutation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Qoutation\PrintQoutation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Qoutation\PrintQoutation.Designer.cs">
+      <DependentUpon>PrintQoutation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportCustomerStatement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -328,6 +346,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportVatInvoice.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="Qoutation\editQoutation.resx">
+      <DependentUpon>editQoutation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Qoutation\NewQoutation.resx">
+      <DependentUpon>NewQoutation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Qoutation\PrintQoutation.resx">
+      <DependentUpon>PrintQoutation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReportCustomerStatement.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportCustomerStatement.cs</LastGenOutput>
@@ -428,7 +455,6 @@
     <Folder Include="Letter\" />
     <Folder Include="NonVATInvoice\" />
     <Folder Include="ProformaInvoice\" />
-    <Folder Include="Qoutation\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

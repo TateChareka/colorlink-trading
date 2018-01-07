@@ -94,8 +94,7 @@ namespace ColorlinkTrading.Logic
                                 && (dateFrom == null || b.CreatedDate >= dateFrom)
                                 //date to
                                 && (dateTo == null || b.CreatedDate <= dateTo)
-                               ).OrderBy(orderingBy)
-                        .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                               ).ToList();
 
 
                     foreach (var item in data)
@@ -130,6 +129,59 @@ namespace ColorlinkTrading.Logic
             }
             return result;
         }
+
+        public static CustomerListResultModel CustomerList(GenericSearchRequestModel request)
+        {
+            var result = new CustomerListResultModel
+            {
+                Feedback = "",
+                HasError = false,
+                IsValidationError = false,
+                NumberOfPages = 0,
+                NumberOfRecords = 0,
+                Customers = new List<CustomerItemResultModel>()
+            };
+            try
+            {
+                using (var dm = new DataModelEntities(request.SessionUserName))
+                {
+                    //timeout to make sure this completes
+                    dm.Database.CommandTimeout = globalTimeOut;
+
+                    var data = dm.Customers.ToList();
+
+
+                    foreach (var item in data)
+                    {
+                        CustomerItemResultModel customer = new CustomerItemResultModel
+                        {
+                            CustomerName = item.CustomerName,
+                            CreatedByUserName = item.CreatedByUserName,
+                            CreatedDate = item.CreatedDate,
+                            OtherDetails = item.OtherDetails,
+                            PhoneNumber = item.PhoneNumber,
+                            EmailAddress = item.EmailAddress,
+                            UpdatedByUserName = item.UpdatedByUserName,
+                            VatRegistrationNumber = item.VatRegistrationNumber,
+                            CustomerAddress = item.CustomerAddress,
+                            CustomerId = item.CustomerId,
+                            UpdatedDate = item.UpdatedDate
+                        };
+                        result.Customers.Add(customer);
+                    }
+                    return result;
+                }
+            }
+            catch (Exception error)
+            {
+                var errorState = ErrorHandling.HandleError(error);
+                result.Feedback = errorState.ErrorMessage;
+                result.IsValidationError = errorState.IsValidationError;
+                result.HasError = true;
+            }
+            return result;
+        }
+
 
         public static CustomerItemResultModel GetCustomer(CustomerRequestModel request)
         {

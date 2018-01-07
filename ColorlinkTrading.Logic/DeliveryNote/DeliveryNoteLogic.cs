@@ -46,6 +46,9 @@ namespace ColorlinkTrading.Logic
                     dm.Database.CommandTimeout = globalTimeOut;
 
                     var data = dm.DeliveryNotes.ToList();
+
+
+
                     var customers = dm.Customers.ToList();
                     var products = dm.Products.ToList();
 

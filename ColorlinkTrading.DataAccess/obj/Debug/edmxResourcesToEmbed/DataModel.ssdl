@@ -186,6 +186,7 @@
     <Property Name="DnoteNo" Type="int" />
     <Property Name="Quantity" Type="int" />
     <Property Name="ProdId" Type="int" />
+    <Property Name="OLDNo" Type="varchar" MaxLength="255" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="CreatedByUserName" Type="varchar" MaxLength="255" />
     <Property Name="UpdatedDate" Type="datetime" />

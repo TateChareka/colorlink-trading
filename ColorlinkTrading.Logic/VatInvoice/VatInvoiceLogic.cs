@@ -110,49 +110,47 @@ namespace ColorlinkTrading.Logic
                     var dateFrom = request.DateFrom;
                     var dateTo = request.DateTo;
 
-                    //var pageNumber = request.PageNumber;
-                    //var pageSize = request.PageSize;
-                    //var orderingBy = request.OrderField + " " + request.OrderDirection;
+                    var pageNumber = request.PageNumber;
+                    var pageSize = request.PageSize;
+                    var orderingBy = request.OrderField + " " + request.OrderDirection;
 
 
-                    //var count = dm.InvoicesVats
-                    //            .Where(b =>
-                    //            //search criteria
-                    //            (searchCriteria == null ||
-                    //                                      (
-                    //                                        b.InvoiceNumber.Equals(searchCriteria)
-                    //                                      )
-                    //            )
-                    //            //date from
-                    //            && (dateFrom == null || b.InvoiceDate >= dateFrom)
-                    //            //date to
-                    //            && (dateTo == null || b.InvoiceDate <= dateTo)
-                    //           ).OrderBy(orderingBy)
-                    //     .Count();
+                    var count = dm.InvoicesVats
+                                .Where(b =>
+                                //search criteria
+                                (searchCriteria == null ||
+                                                          (
+                                                            b.InvoiceNumber.Equals(searchCriteria)
+                                                          )
+                                )
+                                //date from
+                                && (dateFrom == null || b.InvoiceDate >= dateFrom)
+                                //date to
+                                && (dateTo == null || b.InvoiceDate <= dateTo)
+                               ).OrderBy(orderingBy)
+                         .Count();
 
 
-                    //var pages = Convert.ToInt32(Math.Floor((decimal)count / (decimal)pageSize));
-                    //if ((pages * pageSize) < count)
-                    //{
-                    //    pages++;
-                    //}
+                    var pages = Convert.ToInt32(Math.Floor((decimal)count / (decimal)pageSize));
+                    if ((pages * pageSize) < count)
+                    {
+                        pages++;
+                    }
 
-                    //var data = dm.InvoicesVats
-                    //            .Where(b =>
-                    //            //search criteria
-                    //            (searchCriteria == null ||
-                    //                                      (
-                    //                                        b.InvoiceNumber.Equals(searchCriteria)
-                    //                                      )
-                    //            )
-                    //            //date from
-                    //            && (dateFrom == null || b.InvoiceDate >= dateFrom)
-                    //            //date to
-                    //            && (dateTo == null || b.InvoiceDate <= dateTo)
-                    //           ).OrderBy(orderingBy)
-                    //    .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                    var data = dm.InvoicesVats
+                                .Where(b =>
+                                //search criteria
+                                (searchCriteria == null ||
+                                                          (
+                                                            b.InvoiceNumber.Equals(searchCriteria)
+                                                          )
+                                )
+                                //date from
+                                && (dateFrom == null || b.InvoiceDate >= dateFrom)
+                                //date to
+                                && (dateTo == null || b.InvoiceDate <= dateTo)
+                               ).ToList();
 
-                    var data = dm.InvoicesVats.ToList();
                     var customers = dm.Customers.ToList();
                     var products = dm.Products.ToList();
 

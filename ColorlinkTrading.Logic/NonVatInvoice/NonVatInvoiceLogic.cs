@@ -88,8 +88,7 @@ namespace ColorlinkTrading.Logic
                                 && (dateFrom == null || b.InvoiceDate >= dateFrom)
                                 //date to
                                 && (dateTo == null || b.InvoiceDate <= dateTo)
-                               ).OrderBy(orderingBy)
-                        .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                               ).ToList();
 
                     var customers = dm.Customers.ToList();
                     var products = dm.Products.ToList();

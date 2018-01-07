@@ -399,5 +399,23 @@ namespace ColorlinkTrading.Backend.WinForms
             VATDeduction.VATStatement vatStatement = new VATDeduction.VATStatement();
             vatStatement.Show();
         }
+
+        private void NewToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            Qoutation.NewQoutation newQoute = new Qoutation.NewQoutation();
+            newQoute.Show();
+        }
+
+        private void EditToolStripMenuItem3_Click_1(object sender, EventArgs e)
+        {
+            Qoutation.editQoutation editQoute = new Qoutation.editQoutation();
+            editQoute.Show();
+        }
+
+        private void ViewToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            Qoutation.PrintQoutation printQoute = new Qoutation.PrintQoutation();
+            printQoute.Show();
+        }
     }
 }

@@ -10,26 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ColorlinkTrading.Backend.WinForms.VATInvoice
+namespace ColorlinkTrading.Backend.WinForms.Qoutation
 {
-    public partial class NewInvoice : Form
+    public partial class NewQoutation : Form
     {
-        public NewInvoice()
+        public NewQoutation()
         {
             InitializeComponent();
         }
         private CustomerListResultModel customers;
         private ProductListResultModel products;
-        private void NewInvoice_Load(object sender, EventArgs e)
+        private void NewQoutation_Load(object sender, EventArgs e)
         {
             customers = CustomerLogic.SearchCustomerList(
-                new GenericSearchRequestModel()
-                {
-                    OrderDirection = "ASC",
-                    OrderField = "CustomerId",
-                    PageNumber = 1,
-                    PageSize = 10000
-                });
+                            new GenericSearchRequestModel()
+                            {
+                                OrderDirection = "ASC",
+                                OrderField = "CustomerId",
+                                PageNumber = 1,
+                                PageSize = 1000
+                            });
             foreach (var item in customers.Customers)
             {
                 custList.Items.Add(item.CustomerName);
@@ -40,20 +40,16 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     OrderDirection = "ASC",
                     OrderField = "ProductId",
                     PageNumber = 1,
-                    PageSize = 10000
+                    PageSize = 1000
                 });
             foreach (var item in products.Products)
             {
                 prodList.Items.Add(item.ProductName);
             }
             invdate.Value = DateTime.Now;
-            INVnO.Text = (VatInvoiceLogic.VatInvoiceCount(
+            INVnO.Text = (QoutationLogic.QoutationCount(
                 new GenericSearchRequestModel()
                 {
-                    OrderDirection = "ASC",
-                    OrderField = "InvoiceNumber",
-                    PageNumber = 1,
-                    PageSize = 10000
                 }) + 101) + "";
         }
 
@@ -106,7 +102,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     OrderDirection = "ASC",
                     OrderField = "ProductId",
                     PageNumber = 1,
-                    PageSize = 10000
+                    PageSize = 1000
                 });
                 foreach (var item in products.Products)
                 {
@@ -219,12 +215,6 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         }
 
-        private void discotxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void cancbtn_Click(object sender, EventArgs e)
         {
             Close();
@@ -240,22 +230,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             txtvat.Clear();
             txtdiscount.Clear();
             txtponumber.Clear();
-            NewInvoice_Load(sender, e);
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-
+            NewQoutation_Load(sender, e);
         }
 
         private void procinvbtn_Click(object sender, EventArgs e)
@@ -271,7 +246,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             {
                 if (invdate.Value > DateTime.Now || invdate.Value < DateTime.Now)
                 {
-                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Invoice Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Qoutation Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dateAsk == DialogResult.No)
                     {
                         invdate.Focus();
@@ -279,12 +254,12 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     }
                 }
 
-                DialogResult a = MessageBox.Show("Are you sure you want to create this invoice?", "Invoice Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult a = MessageBox.Show("Are you sure you want to create this Qoutation?", "Qoutation Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (a == DialogResult.Yes)
                 {
                     if (creatInvoice())
                     {
-                        DialogResult d = MessageBox.Show("Invoice Successfully Created." + Environment.NewLine + "Do you want to add another invoice?", "Invoice Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult d = MessageBox.Show("Qoutation Successfully Created." + Environment.NewLine + "Do you want to add another Qoutation?", "Qoutation Created", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (d == DialogResult.Yes)
                         {
                             Button1_Click(sender, e);
@@ -298,20 +273,19 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             }
             else
             {
-                MessageBox.Show("No Products added to create invoice", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No Products added to create Qoutation", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
         }
 
         private bool creatInvoice()
         {
-            VatInvoiceRequestModel invoiceNew = new VatInvoiceRequestModel()
+            QoutationRequestModel invoiceNew = new QoutationRequestModel()
             {
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
-                CreditValidation = 0,
                 ExtraDetails = "",
                 InvoiceDate = invdate.Value,
                 NumberOfProducts = invoiceProducts.Items.Count,
@@ -319,39 +293,30 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 VatAmount = decimal.Parse(txtvat.Text),
                 SubTotal = decimal.Parse(txtsubtot.Text),
                 TotalAmount = decimal.Parse(txttotam.Text),
-                ProductVat = new List<VatInvoiceProductItemResultModel>()
+                //QouteNumber = Int32.Parse(INVnO.Text),
+                ProductQoutations = new List<QoutationProductItemResultModel>()
             };
 
             foreach (ListViewItem item in invoiceProducts.Items)
             {
-                VatInvoiceProductItemResultModel invoiceProduct = new VatInvoiceProductItemResultModel()
+                QoutationProductItemResultModel invoiceProduct = new QoutationProductItemResultModel()
                 {
-                    InvoiceNo = invoiceNew.InvoiceNumber,
+                    QouteNo = invoiceNew.QouteNumber,
                     Quantity = Int32.Parse(item.SubItems[0].Text),
                     ProductName = item.SubItems[1].Text,
                     UnitPrice = decimal.Parse(item.SubItems[2].Text),
                     Amount = decimal.Parse(item.SubItems[3].Text),
                     ProdId = Int32.Parse(item.SubItems[4].Text),
                 };
-                invoiceNew.ProductVat.Add(invoiceProduct);
+                invoiceNew.ProductQoutations.Add(invoiceProduct);
             }
 
-            GenericItemResultModel state = VatInvoiceLogic.WriteVatInvoice(invoiceNew);
-            if (state.Feedback == "Invoice Successfully Added")
+            GenericItemResultModel state = QoutationLogic.WriteQoutation(invoiceNew);
+            if (state.Feedback == "Qoutation Successfully Added")
             {
                 return true;
             }
             return false;
-        }
-
-        private void txtprice_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtqty_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void txtprice_KeyUp(object sender, KeyEventArgs e)
@@ -419,3 +384,4 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
         }
     }
 }
+

@@ -110,7 +110,7 @@ namespace ColorlinkTrading.Backend.WinForms.Product
                     OrderDirection = "ASC",
                     OrderField = "ProductId",
                     PageNumber = 1,
-                    PageSize = 1000
+                    PageSize = 10000
                 });
 
             foreach (var item in productList.Products)

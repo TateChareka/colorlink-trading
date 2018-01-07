@@ -74,6 +74,11 @@ namespace ColorlinkTrading.Backend.WinForms
                 return;
             }
 
+            if (txtCompetitorPrice.Text == "")
+            {
+                txtCompetitorPrice.Text = "0.00";
+            }
+
             ProductRequestModel newProduct = new ProductRequestModel()
             {
                 CashPrice = Decimal.Parse(txtUSValue.Text),
@@ -94,7 +99,7 @@ namespace ColorlinkTrading.Backend.WinForms
 
             if (validationCheck.ProductId != null)
             {
-                MessageBox.Show(validationCheck.ProductName + " has the same details with this new customer. Cannot proceed", "Duplicate Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(validationCheck.ProductName + "with product Id: " + validationCheck.ProductId + " has the same details with this new PRODUCT. Cannot proceed", "Duplicate Entries", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

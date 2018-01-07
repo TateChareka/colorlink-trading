@@ -136,8 +136,7 @@ namespace ColorlinkTrading.Logic
                                 && (dateFrom == null || b.TransactionDate >= dateFrom)
                                 //date to
                                 && (dateTo == null || b.TransactionDate <= dateTo)
-                               ).OrderBy(orderingBy)
-                        .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                               ).ToList();
 
 
                     foreach (var item in data)

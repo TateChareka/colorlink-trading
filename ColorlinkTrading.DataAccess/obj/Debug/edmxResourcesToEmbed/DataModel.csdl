@@ -214,6 +214,7 @@
     <Property Name="DnoteNo" Type="Int32" />
     <Property Name="Quantity" Type="Int32" />
     <Property Name="ProdId" Type="Int32" />
+    <Property Name="OLDNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedByUserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />

@@ -197,6 +197,7 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedByUserName" ColumnName="CreatedByUserName" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OLDNo" ColumnName="OLDNo" />
           <ScalarProperty Name="ProdId" ColumnName="ProdId" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="DnoteNo" ColumnName="DnoteNo" />

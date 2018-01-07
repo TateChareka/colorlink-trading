@@ -58,10 +58,6 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             invoiceCount = (VatInvoiceLogic.VatInvoiceCount(
                 new GenericSearchRequestModel()
                 {
-                    OrderDirection = "ASC",
-                    OrderField = "InvoiceNumber",
-                    PageNumber = 1,
-                    PageSize = 1000
                 }) + 101);
         }
 
@@ -255,6 +251,16 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
             if (invoiceProducts.Items.Count > 0)
             {
+                if (invdate.Value > DateTime.Now || invdate.Value < DateTime.Now)
+                {
+                    DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Invoice Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dateAsk == DialogResult.No)
+                    {
+                        invdate.Focus();
+                        return;
+                    }
+                }
+
                 DialogResult a = MessageBox.Show("Are you sure you want to edit this invoice?", "Invoice Edit", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (a == DialogResult.Yes)
                 {
@@ -309,8 +315,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     UnitPrice = decimal.Parse(item.SubItems[2].Text),
                     Amount = decimal.Parse(item.SubItems[3].Text),
                     ProdId = Int32.Parse(item.SubItems[4].Text),
-                    ProductInvoiceVatId = Int32.Parse(item.SubItems[5].Text),
-                     
+                    ProductInvoiceVatId = Int32.Parse(item.SubItems[5].Text)
                 };
                 invoiceNew.ProductVat.Add(invoiceProduct);
             }
@@ -407,11 +412,10 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
         private void Button7_Click(object sender, EventArgs e)
         {
-
             if (TextBox1.Text != "")
             {
                 Int32 r = Int32.Parse(TextBox1.Text);
-                if (r < 100 || r > invoiceCount)
+                if (r < 100 || r > invoiceCount-1)
                 {
                     MessageBox.Show("Invoice Number should be between 101 and " + invoiceCount, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     TextBox1.Clear();

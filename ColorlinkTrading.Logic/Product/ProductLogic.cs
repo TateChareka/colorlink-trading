@@ -88,8 +88,7 @@ namespace ColorlinkTrading.Logic
                                 && (dateFrom == null || b.CreatedDate >= dateFrom)
                                 //date to
                                 && (dateTo == null || b.CreatedDate <= dateTo)
-                               ).OrderBy(orderingBy)
-                        .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                               ).ToList();
 
 
                     foreach (var item in data)
@@ -292,7 +291,7 @@ namespace ColorlinkTrading.Logic
                         result.ProductId = null;
                     }
                     return result;
-                    
+
                 }
             }
             catch (Exception error)

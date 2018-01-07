@@ -255,7 +255,7 @@
             this.NewToolStripMenuItem3,
             this.ViewToolStripMenuItem3});
             this.StatementToolStripMenuItem1.Name = "StatementToolStripMenuItem1";
-            this.StatementToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.StatementToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.StatementToolStripMenuItem1.Text = "&Statement";
             // 
             // NewToolStripMenuItem3
@@ -268,7 +268,7 @@
             // ViewToolStripMenuItem3
             // 
             this.ViewToolStripMenuItem3.Name = "ViewToolStripMenuItem3";
-            this.ViewToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.ViewToolStripMenuItem3.Size = new System.Drawing.Size(99, 22);
             this.ViewToolStripMenuItem3.Text = "&View";
             this.ViewToolStripMenuItem3.Visible = false;
             this.ViewToolStripMenuItem3.Click += new System.EventHandler(this.ViewToolStripMenuItem3_Click_1);
@@ -326,28 +326,28 @@
             // CreateToolStripMenuItem
             // 
             this.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem";
-            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.CreateToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.CreateToolStripMenuItem.Text = "&Create";
             this.CreateToolStripMenuItem.Click += new System.EventHandler(this.CreateToolStripMenuItem_Click_1);
             // 
             // PrintToolStripMenuItem1
             // 
             this.PrintToolStripMenuItem1.Name = "PrintToolStripMenuItem1";
-            this.PrintToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.PrintToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.PrintToolStripMenuItem1.Text = "&Print";
             this.PrintToolStripMenuItem1.Click += new System.EventHandler(this.PrintToolStripMenuItem1_Click);
             // 
             // EditInvoiceToolStripMenuItem
             // 
             this.EditInvoiceToolStripMenuItem.Name = "EditInvoiceToolStripMenuItem";
-            this.EditInvoiceToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.EditInvoiceToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.EditInvoiceToolStripMenuItem.Text = "&Edit Invoice";
             this.EditInvoiceToolStripMenuItem.Click += new System.EventHandler(this.EditInvoiceToolStripMenuItem_Click_1);
             // 
             // VatCalculationsToolStripMenuItem
             // 
             this.VatCalculationsToolStripMenuItem.Name = "VatCalculationsToolStripMenuItem";
-            this.VatCalculationsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.VatCalculationsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.VatCalculationsToolStripMenuItem.Text = "&Vat Statement";
             this.VatCalculationsToolStripMenuItem.Click += new System.EventHandler(this.VatCalculationsToolStripMenuItem_Click_1);
             // 
@@ -398,25 +398,27 @@
             this.QoutationToolStripMenuItem.Name = "QoutationToolStripMenuItem";
             this.QoutationToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.QoutationToolStripMenuItem.Text = "&Qoutation";
-            this.QoutationToolStripMenuItem.Visible = false;
             // 
             // NewToolStripMenuItem2
             // 
             this.NewToolStripMenuItem2.Name = "NewToolStripMenuItem2";
             this.NewToolStripMenuItem2.Size = new System.Drawing.Size(200, 22);
             this.NewToolStripMenuItem2.Text = "&New";
+            this.NewToolStripMenuItem2.Click += new System.EventHandler(this.NewToolStripMenuItem2_Click_1);
             // 
             // EditToolStripMenuItem3
             // 
             this.EditToolStripMenuItem3.Name = "EditToolStripMenuItem3";
             this.EditToolStripMenuItem3.Size = new System.Drawing.Size(200, 22);
             this.EditToolStripMenuItem3.Text = "&Edit";
+            this.EditToolStripMenuItem3.Click += new System.EventHandler(this.EditToolStripMenuItem3_Click_1);
             // 
             // ViewToolStripMenuItem2
             // 
             this.ViewToolStripMenuItem2.Name = "ViewToolStripMenuItem2";
             this.ViewToolStripMenuItem2.Size = new System.Drawing.Size(200, 22);
             this.ViewToolStripMenuItem2.Text = "&View";
+            this.ViewToolStripMenuItem2.Click += new System.EventHandler(this.ViewToolStripMenuItem2_Click_1);
             // 
             // ConvertToInvoiceToolStripMenuItem
             // 

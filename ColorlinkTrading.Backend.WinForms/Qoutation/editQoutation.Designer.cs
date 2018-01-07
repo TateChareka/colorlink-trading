@@ -1,6 +1,6 @@
-﻿namespace ColorlinkTrading.Backend.WinForms.VATInvoice
+﻿namespace ColorlinkTrading.Backend.WinForms.Qoutation
 {
-    partial class editInvoice
+    partial class editQoutation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtvat = new System.Windows.Forms.TextBox();
-            this.txtprice = new System.Windows.Forms.TextBox();
-            this.invdate = new System.Windows.Forms.DateTimePicker();
-            this.txtponumber = new System.Windows.Forms.TextBox();
-            this.proddescr = new System.Windows.Forms.TextBox();
-            this.custid = new System.Windows.Forms.TextBox();
-            this.custList = new System.Windows.Forms.ListBox();
-            this.txtsubtot = new System.Windows.Forms.TextBox();
-            this.txtqty = new System.Windows.Forms.TextBox();
-            this.ColProdName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColUnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ProductId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prodid = new System.Windows.Forms.TextBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.ColQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.Button5 = new System.Windows.Forms.Button();
-            this.Button4 = new System.Windows.Forms.Button();
-            this.Button3 = new System.Windows.Forms.Button();
-            this.Button2 = new System.Windows.Forms.Button();
-            this.Button1 = new System.Windows.Forms.Button();
             this.GroupBox10 = new System.Windows.Forms.GroupBox();
             this.INVnO = new System.Windows.Forms.TextBox();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
@@ -61,25 +39,46 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.txttotam = new System.Windows.Forms.TextBox();
+            this.txtvat = new System.Windows.Forms.TextBox();
+            this.txtsubtot = new System.Windows.Forms.TextBox();
+            this.TextBox1 = new System.Windows.Forms.TextBox();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
+            this.invdate = new System.Windows.Forms.DateTimePicker();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
+            this.custid = new System.Windows.Forms.TextBox();
+            this.custList = new System.Windows.Forms.ListBox();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.prodid = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.prodList = new System.Windows.Forms.ListBox();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtprice = new System.Windows.Forms.TextBox();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtponumber = new System.Windows.Forms.TextBox();
             this.procinvbtn = new System.Windows.Forms.Button();
             this.rmvbtn = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.proddescr = new System.Windows.Forms.TextBox();
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
+            this.txtqty = new System.Windows.Forms.TextBox();
             this.invoiceProducts = new System.Windows.Forms.ListView();
+            this.ColQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColProdName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColUnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ColAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ProductId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prodVatId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addbtn = new System.Windows.Forms.Button();
-            this.cancbtn = new System.Windows.Forms.Button();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.Button7 = new System.Windows.Forms.Button();
-            this.TextBox1 = new System.Windows.Forms.TextBox();
             this.Label5 = new System.Windows.Forms.Label();
-            this.GroupBox1.SuspendLayout();
+            this.cancbtn = new System.Windows.Forms.Button();
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.Button5 = new System.Windows.Forms.Button();
+            this.Button4 = new System.Windows.Forms.Button();
+            this.Button3 = new System.Windows.Forms.Button();
+            this.Button2 = new System.Windows.Forms.Button();
+            this.Button1 = new System.Windows.Forms.Button();
             this.GroupBox10.SuspendLayout();
             this.GroupBox8.SuspendLayout();
             this.GroupBox15.SuspendLayout();
@@ -91,218 +90,8 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
+            this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtvat
-            // 
-            this.txtvat.BackColor = System.Drawing.Color.Black;
-            this.txtvat.Enabled = false;
-            this.txtvat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtvat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.txtvat.Location = new System.Drawing.Point(171, 77);
-            this.txtvat.Name = "txtvat";
-            this.txtvat.ReadOnly = true;
-            this.txtvat.Size = new System.Drawing.Size(140, 26);
-            this.txtvat.TabIndex = 31;
-            this.txtvat.Text = "Vat";
-            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtprice
-            // 
-            this.txtprice.Location = new System.Drawing.Point(6, 27);
-            this.txtprice.Name = "txtprice";
-            this.txtprice.Size = new System.Drawing.Size(93, 20);
-            this.txtprice.TabIndex = 2;
-            this.txtprice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtprice_KeyUp);
-            // 
-            // invdate
-            // 
-            this.invdate.CustomFormat = "dd MMMM yyyy";
-            this.invdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.invdate.Location = new System.Drawing.Point(6, 19);
-            this.invdate.Name = "invdate";
-            this.invdate.Size = new System.Drawing.Size(150, 20);
-            this.invdate.TabIndex = 36;
-            // 
-            // txtponumber
-            // 
-            this.txtponumber.Location = new System.Drawing.Point(6, 19);
-            this.txtponumber.Multiline = true;
-            this.txtponumber.Name = "txtponumber";
-            this.txtponumber.Size = new System.Drawing.Size(188, 49);
-            this.txtponumber.TabIndex = 0;
-            // 
-            // proddescr
-            // 
-            this.proddescr.Enabled = false;
-            this.proddescr.Location = new System.Drawing.Point(7, 19);
-            this.proddescr.Multiline = true;
-            this.proddescr.Name = "proddescr";
-            this.proddescr.Size = new System.Drawing.Size(187, 186);
-            this.proddescr.TabIndex = 0;
-            // 
-            // custid
-            // 
-            this.custid.Location = new System.Drawing.Point(95, 97);
-            this.custid.Name = "custid";
-            this.custid.ReadOnly = true;
-            this.custid.Size = new System.Drawing.Size(30, 20);
-            this.custid.TabIndex = 2;
-            this.custid.Visible = false;
-            // 
-            // custList
-            // 
-            this.custList.FormattingEnabled = true;
-            this.custList.Location = new System.Drawing.Point(6, 19);
-            this.custList.Name = "custList";
-            this.custList.Size = new System.Drawing.Size(209, 186);
-            this.custList.Sorted = true;
-            this.custList.TabIndex = 0;
-            this.custList.SelectedIndexChanged += new System.EventHandler(this.custList_SelectedIndexChanged);
-            // 
-            // txtsubtot
-            // 
-            this.txtsubtot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.txtsubtot.Enabled = false;
-            this.txtsubtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsubtot.ForeColor = System.Drawing.Color.Red;
-            this.txtsubtot.Location = new System.Drawing.Point(171, 19);
-            this.txtsubtot.Name = "txtsubtot";
-            this.txtsubtot.ReadOnly = true;
-            this.txtsubtot.Size = new System.Drawing.Size(140, 26);
-            this.txtsubtot.TabIndex = 30;
-            this.txtsubtot.Text = "Sub total";
-            this.txtsubtot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtqty
-            // 
-            this.txtqty.Location = new System.Drawing.Point(7, 20);
-            this.txtqty.Name = "txtqty";
-            this.txtqty.Size = new System.Drawing.Size(92, 20);
-            this.txtqty.TabIndex = 0;
-            this.txtqty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtqty_KeyUp);
-            // 
-            // ColProdName
-            // 
-            this.ColProdName.Text = "Product Name";
-            this.ColProdName.Width = 350;
-            // 
-            // ColUnitPrice
-            // 
-            this.ColUnitPrice.Text = "Unit Price ($)";
-            this.ColUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ColUnitPrice.Width = 100;
-            // 
-            // ColAmount
-            // 
-            this.ColAmount.Text = "Amount ($)";
-            this.ColAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ColAmount.Width = 100;
-            // 
-            // ProductId
-            // 
-            this.ProductId.Width = 0;
-            // 
-            // prodid
-            // 
-            this.prodid.Location = new System.Drawing.Point(181, 97);
-            this.prodid.Name = "prodid";
-            this.prodid.Size = new System.Drawing.Size(30, 20);
-            this.prodid.TabIndex = 3;
-            this.prodid.Visible = false;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.txtSearch.Location = new System.Drawing.Point(6, 189);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(380, 20);
-            this.txtSearch.TabIndex = 2;
-            this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
-            // 
-            // ColQuantity
-            // 
-            this.ColQuantity.Text = "Quantity";
-            // 
-            // GroupBox1
-            // 
-            this.GroupBox1.Controls.Add(this.Button5);
-            this.GroupBox1.Controls.Add(this.Button4);
-            this.GroupBox1.Controls.Add(this.Button3);
-            this.GroupBox1.Controls.Add(this.Button2);
-            this.GroupBox1.Controls.Add(this.Button1);
-            this.GroupBox1.Controls.Add(this.GroupBox10);
-            this.GroupBox1.Controls.Add(this.GroupBox8);
-            this.GroupBox1.Controls.Add(this.GroupBox7);
-            this.GroupBox1.Controls.Add(this.GroupBox6);
-            this.GroupBox1.Controls.Add(this.GroupBox2);
-            this.GroupBox1.Controls.Add(this.GroupBox5);
-            this.GroupBox1.Controls.Add(this.GroupBox4);
-            this.GroupBox1.Controls.Add(this.procinvbtn);
-            this.GroupBox1.Controls.Add(this.rmvbtn);
-            this.GroupBox1.Controls.Add(this.GroupBox3);
-            this.GroupBox1.Controls.Add(this.GroupBox9);
-            this.GroupBox1.Controls.Add(this.invoiceProducts);
-            this.GroupBox1.Controls.Add(this.addbtn);
-            this.GroupBox1.Location = new System.Drawing.Point(12, 76);
-            this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(958, 593);
-            this.GroupBox1.TabIndex = 3;
-            this.GroupBox1.TabStop = false;
-            // 
-            // Button5
-            // 
-            this.Button5.Enabled = false;
-            this.Button5.Location = new System.Drawing.Point(512, 521);
-            this.Button5.Name = "Button5";
-            this.Button5.Size = new System.Drawing.Size(75, 51);
-            this.Button5.TabIndex = 59;
-            this.Button5.Text = "P&rint Invoice";
-            this.Button5.UseVisualStyleBackColor = true;
-            this.Button5.Visible = false;
-            // 
-            // Button4
-            // 
-            this.Button4.Location = new System.Drawing.Point(239, 534);
-            this.Button4.Name = "Button4";
-            this.Button4.Size = new System.Drawing.Size(97, 39);
-            this.Button4.TabIndex = 58;
-            this.Button4.Text = "PRODUCT PRICE FORMAT";
-            this.Button4.UseVisualStyleBackColor = true;
-            this.Button4.Visible = false;
-            // 
-            // Button3
-            // 
-            this.Button3.Location = new System.Drawing.Point(136, 534);
-            this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(97, 39);
-            this.Button3.TabIndex = 57;
-            this.Button3.Text = "PRODUCT NAME UPPER";
-            this.Button3.UseVisualStyleBackColor = true;
-            this.Button3.Visible = false;
-            // 
-            // Button2
-            // 
-            this.Button2.Location = new System.Drawing.Point(46, 534);
-            this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(84, 39);
-            this.Button2.TabIndex = 56;
-            this.Button2.Text = "AUTOMATED INVOICES";
-            this.Button2.UseVisualStyleBackColor = true;
-            this.Button2.Visible = false;
-            // 
-            // Button1
-            // 
-            this.Button1.Location = new System.Drawing.Point(61, 463);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(75, 39);
-            this.Button1.TabIndex = 55;
-            this.Button1.Text = "&Reset Invoice";
-            this.Button1.UseVisualStyleBackColor = true;
-            this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // GroupBox10
             // 
@@ -312,7 +101,7 @@
             this.GroupBox10.Size = new System.Drawing.Size(112, 46);
             this.GroupBox10.TabIndex = 54;
             this.GroupBox10.TabStop = false;
-            this.GroupBox10.Text = "INVOICE No";
+            this.GroupBox10.Text = "QOUTATION No";
             // 
             // INVnO
             // 
@@ -425,6 +214,41 @@
             this.txttotam.Text = "Total";
             this.txttotam.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // txtvat
+            // 
+            this.txtvat.BackColor = System.Drawing.Color.Black;
+            this.txtvat.Enabled = false;
+            this.txtvat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtvat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtvat.Location = new System.Drawing.Point(171, 77);
+            this.txtvat.Name = "txtvat";
+            this.txtvat.ReadOnly = true;
+            this.txtvat.Size = new System.Drawing.Size(140, 26);
+            this.txtvat.TabIndex = 31;
+            this.txtvat.Text = "Vat";
+            this.txtvat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtsubtot
+            // 
+            this.txtsubtot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.txtsubtot.Enabled = false;
+            this.txtsubtot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsubtot.ForeColor = System.Drawing.Color.Red;
+            this.txtsubtot.Location = new System.Drawing.Point(171, 19);
+            this.txtsubtot.Name = "txtsubtot";
+            this.txtsubtot.ReadOnly = true;
+            this.txtsubtot.Size = new System.Drawing.Size(140, 26);
+            this.txtsubtot.TabIndex = 30;
+            this.txtsubtot.Text = "Sub total";
+            this.txtsubtot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // TextBox1
+            // 
+            this.TextBox1.Location = new System.Drawing.Point(121, 19);
+            this.TextBox1.Name = "TextBox1";
+            this.TextBox1.Size = new System.Drawing.Size(100, 20);
+            this.TextBox1.TabIndex = 5;
+            // 
             // GroupBox7
             // 
             this.GroupBox7.Controls.Add(this.invdate);
@@ -434,6 +258,15 @@
             this.GroupBox7.TabIndex = 51;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "Select Date";
+            // 
+            // invdate
+            // 
+            this.invdate.CustomFormat = "dd MMMM yyyy";
+            this.invdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.invdate.Location = new System.Drawing.Point(6, 19);
+            this.invdate.Name = "invdate";
+            this.invdate.Size = new System.Drawing.Size(150, 20);
+            this.invdate.TabIndex = 36;
             // 
             // GroupBox6
             // 
@@ -446,6 +279,25 @@
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "Select Customer";
             // 
+            // custid
+            // 
+            this.custid.Location = new System.Drawing.Point(95, 97);
+            this.custid.Name = "custid";
+            this.custid.ReadOnly = true;
+            this.custid.Size = new System.Drawing.Size(30, 20);
+            this.custid.TabIndex = 2;
+            this.custid.Visible = false;
+            // 
+            // custList
+            // 
+            this.custList.FormattingEnabled = true;
+            this.custList.Location = new System.Drawing.Point(6, 19);
+            this.custList.Name = "custList";
+            this.custList.Size = new System.Drawing.Size(209, 186);
+            this.custList.Sorted = true;
+            this.custList.TabIndex = 0;
+            this.custList.SelectedIndexChanged += new System.EventHandler(this.custList_SelectedIndexChanged);
+            // 
             // GroupBox2
             // 
             this.GroupBox2.Controls.Add(this.prodid);
@@ -457,6 +309,23 @@
             this.GroupBox2.TabIndex = 39;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Select Product";
+            // 
+            // prodid
+            // 
+            this.prodid.Location = new System.Drawing.Point(181, 97);
+            this.prodid.Name = "prodid";
+            this.prodid.Size = new System.Drawing.Size(30, 20);
+            this.prodid.TabIndex = 3;
+            this.prodid.Visible = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtSearch.Location = new System.Drawing.Point(6, 189);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(380, 20);
+            this.txtSearch.TabIndex = 2;
             // 
             // prodList
             // 
@@ -479,6 +348,14 @@
             this.GroupBox5.TabStop = false;
             this.GroupBox5.Text = "Product Price ($)";
             // 
+            // txtprice
+            // 
+            this.txtprice.Location = new System.Drawing.Point(6, 27);
+            this.txtprice.Name = "txtprice";
+            this.txtprice.Size = new System.Drawing.Size(93, 20);
+            this.txtprice.TabIndex = 2;
+            this.txtprice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtprice_KeyUp);
+            // 
             // GroupBox4
             // 
             this.GroupBox4.Controls.Add(this.txtponumber);
@@ -488,6 +365,14 @@
             this.GroupBox4.TabIndex = 47;
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "Reference";
+            // 
+            // txtponumber
+            // 
+            this.txtponumber.Location = new System.Drawing.Point(6, 19);
+            this.txtponumber.Multiline = true;
+            this.txtponumber.Name = "txtponumber";
+            this.txtponumber.Size = new System.Drawing.Size(188, 49);
+            this.txtponumber.TabIndex = 0;
             // 
             // procinvbtn
             // 
@@ -519,6 +404,15 @@
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "Product Description";
             // 
+            // proddescr
+            // 
+            this.proddescr.Enabled = false;
+            this.proddescr.Location = new System.Drawing.Point(7, 19);
+            this.proddescr.Multiline = true;
+            this.proddescr.Name = "proddescr";
+            this.proddescr.Size = new System.Drawing.Size(187, 186);
+            this.proddescr.TabIndex = 0;
+            // 
             // GroupBox9
             // 
             this.GroupBox9.Controls.Add(this.txtqty);
@@ -528,6 +422,14 @@
             this.GroupBox9.TabIndex = 40;
             this.GroupBox9.TabStop = false;
             this.GroupBox9.Text = "Enter Quantity";
+            // 
+            // txtqty
+            // 
+            this.txtqty.Location = new System.Drawing.Point(7, 20);
+            this.txtqty.Name = "txtqty";
+            this.txtqty.Size = new System.Drawing.Size(92, 20);
+            this.txtqty.TabIndex = 0;
+            this.txtqty.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtqty_KeyUp);
             // 
             // invoiceProducts
             // 
@@ -548,6 +450,31 @@
             this.invoiceProducts.UseCompatibleStateImageBehavior = false;
             this.invoiceProducts.View = System.Windows.Forms.View.Details;
             // 
+            // ColQuantity
+            // 
+            this.ColQuantity.Text = "Quantity";
+            // 
+            // ColProdName
+            // 
+            this.ColProdName.Text = "Product Name";
+            this.ColProdName.Width = 350;
+            // 
+            // ColUnitPrice
+            // 
+            this.ColUnitPrice.Text = "Unit Price ($)";
+            this.ColUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ColUnitPrice.Width = 100;
+            // 
+            // ColAmount
+            // 
+            this.ColAmount.Text = "Amount ($)";
+            this.ColAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ColAmount.Width = 100;
+            // 
+            // ProductId
+            // 
+            this.ProductId.Width = 0;
+            // 
             // prodVatId
             // 
             this.prodVatId.Width = 0;
@@ -562,16 +489,6 @@
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
-            // cancbtn
-            // 
-            this.cancbtn.Location = new System.Drawing.Point(385, 31);
-            this.cancbtn.Name = "cancbtn";
-            this.cancbtn.Size = new System.Drawing.Size(75, 23);
-            this.cancbtn.TabIndex = 50;
-            this.cancbtn.Text = "&Cancel";
-            this.cancbtn.UseVisualStyleBackColor = true;
-            this.cancbtn.Click += new System.EventHandler(this.cancbtn_Click);
-            // 
             // GroupBox11
             // 
             this.GroupBox11.Controls.Add(this.Button7);
@@ -579,27 +496,19 @@
             this.GroupBox11.Controls.Add(this.Label5);
             this.GroupBox11.Location = new System.Drawing.Point(12, 12);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(314, 43);
-            this.GroupBox11.TabIndex = 4;
+            this.GroupBox11.Size = new System.Drawing.Size(320, 43);
+            this.GroupBox11.TabIndex = 52;
             this.GroupBox11.TabStop = false;
             // 
             // Button7
             // 
             this.Button7.Location = new System.Drawing.Point(227, 16);
             this.Button7.Name = "Button7";
-            this.Button7.Size = new System.Drawing.Size(75, 23);
+            this.Button7.Size = new System.Drawing.Size(81, 23);
             this.Button7.TabIndex = 6;
-            this.Button7.Text = "&Get Invoice";
+            this.Button7.Text = "&Get Qoutation";
             this.Button7.UseVisualStyleBackColor = true;
             this.Button7.Click += new System.EventHandler(this.Button7_Click);
-            // 
-            // TextBox1
-            // 
-            this.TextBox1.Location = new System.Drawing.Point(121, 19);
-            this.TextBox1.Name = "TextBox1";
-            this.TextBox1.Size = new System.Drawing.Size(100, 20);
-            this.TextBox1.TabIndex = 5;
-            this.TextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyUp);
             // 
             // Label5
             // 
@@ -610,19 +519,103 @@
             this.Label5.TabIndex = 4;
             this.Label5.Text = "Enter Invoice Number";
             // 
-            // editInvoice
+            // cancbtn
+            // 
+            this.cancbtn.Location = new System.Drawing.Point(385, 31);
+            this.cancbtn.Name = "cancbtn";
+            this.cancbtn.Size = new System.Drawing.Size(75, 23);
+            this.cancbtn.TabIndex = 53;
+            this.cancbtn.Text = "&Cancel";
+            this.cancbtn.UseVisualStyleBackColor = true;
+            this.cancbtn.Click += new System.EventHandler(this.cancbtn_Click);
+            // 
+            // GroupBox1
+            // 
+            this.GroupBox1.Controls.Add(this.Button5);
+            this.GroupBox1.Controls.Add(this.Button4);
+            this.GroupBox1.Controls.Add(this.Button3);
+            this.GroupBox1.Controls.Add(this.Button2);
+            this.GroupBox1.Controls.Add(this.Button1);
+            this.GroupBox1.Controls.Add(this.GroupBox10);
+            this.GroupBox1.Controls.Add(this.GroupBox8);
+            this.GroupBox1.Controls.Add(this.GroupBox7);
+            this.GroupBox1.Controls.Add(this.GroupBox6);
+            this.GroupBox1.Controls.Add(this.GroupBox2);
+            this.GroupBox1.Controls.Add(this.GroupBox5);
+            this.GroupBox1.Controls.Add(this.GroupBox4);
+            this.GroupBox1.Controls.Add(this.procinvbtn);
+            this.GroupBox1.Controls.Add(this.rmvbtn);
+            this.GroupBox1.Controls.Add(this.GroupBox3);
+            this.GroupBox1.Controls.Add(this.GroupBox9);
+            this.GroupBox1.Controls.Add(this.invoiceProducts);
+            this.GroupBox1.Controls.Add(this.addbtn);
+            this.GroupBox1.Location = new System.Drawing.Point(12, 76);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(958, 593);
+            this.GroupBox1.TabIndex = 51;
+            this.GroupBox1.TabStop = false;
+            // 
+            // Button5
+            // 
+            this.Button5.Enabled = false;
+            this.Button5.Location = new System.Drawing.Point(512, 521);
+            this.Button5.Name = "Button5";
+            this.Button5.Size = new System.Drawing.Size(75, 51);
+            this.Button5.TabIndex = 59;
+            this.Button5.Text = "P&rint Invoice";
+            this.Button5.UseVisualStyleBackColor = true;
+            this.Button5.Visible = false;
+            // 
+            // Button4
+            // 
+            this.Button4.Location = new System.Drawing.Point(239, 534);
+            this.Button4.Name = "Button4";
+            this.Button4.Size = new System.Drawing.Size(97, 39);
+            this.Button4.TabIndex = 58;
+            this.Button4.Text = "PRODUCT PRICE FORMAT";
+            this.Button4.UseVisualStyleBackColor = true;
+            this.Button4.Visible = false;
+            // 
+            // Button3
+            // 
+            this.Button3.Location = new System.Drawing.Point(136, 534);
+            this.Button3.Name = "Button3";
+            this.Button3.Size = new System.Drawing.Size(97, 39);
+            this.Button3.TabIndex = 57;
+            this.Button3.Text = "PRODUCT NAME UPPER";
+            this.Button3.UseVisualStyleBackColor = true;
+            this.Button3.Visible = false;
+            // 
+            // Button2
+            // 
+            this.Button2.Location = new System.Drawing.Point(46, 534);
+            this.Button2.Name = "Button2";
+            this.Button2.Size = new System.Drawing.Size(84, 39);
+            this.Button2.TabIndex = 56;
+            this.Button2.Text = "AUTOMATED INVOICES";
+            this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Visible = false;
+            // 
+            // Button1
+            // 
+            this.Button1.Location = new System.Drawing.Point(61, 463);
+            this.Button1.Name = "Button1";
+            this.Button1.Size = new System.Drawing.Size(75, 39);
+            this.Button1.TabIndex = 55;
+            this.Button1.Text = "&Reset Invoice";
+            this.Button1.UseVisualStyleBackColor = true;
+            // 
+            // editQoutation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 684);
+            this.ClientSize = new System.Drawing.Size(996, 605);
             this.Controls.Add(this.GroupBox11);
-            this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.cancbtn);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "editInvoice";
-            this.Text = "editInvoice";
-            this.Load += new System.EventHandler(this.editInvoice_Load);
-            this.GroupBox1.ResumeLayout(false);
+            this.Controls.Add(this.GroupBox1);
+            this.Name = "editQoutation";
+            this.Text = "editQoutation";
+            this.Load += new System.EventHandler(this.editQoutation_Load);
             this.GroupBox10.ResumeLayout(false);
             this.GroupBox10.PerformLayout();
             this.GroupBox8.ResumeLayout(false);
@@ -644,34 +637,13 @@
             this.GroupBox9.PerformLayout();
             this.GroupBox11.ResumeLayout(false);
             this.GroupBox11.PerformLayout();
+            this.GroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        internal System.Windows.Forms.TextBox txtvat;
-        internal System.Windows.Forms.TextBox txtprice;
-        internal System.Windows.Forms.DateTimePicker invdate;
-        internal System.Windows.Forms.TextBox txtponumber;
-        internal System.Windows.Forms.TextBox proddescr;
-        internal System.Windows.Forms.TextBox custid;
-        internal System.Windows.Forms.ListBox custList;
-        internal System.Windows.Forms.TextBox txtsubtot;
-        internal System.Windows.Forms.TextBox txtqty;
-        internal System.Windows.Forms.ColumnHeader ColProdName;
-        internal System.Windows.Forms.ColumnHeader ColUnitPrice;
-        internal System.Windows.Forms.ColumnHeader ColAmount;
-        private System.Windows.Forms.ColumnHeader ProductId;
-        internal System.Windows.Forms.TextBox prodid;
-        internal System.Windows.Forms.TextBox txtSearch;
-        internal System.Windows.Forms.ColumnHeader ColQuantity;
-        internal System.Windows.Forms.GroupBox GroupBox1;
-        internal System.Windows.Forms.Button Button5;
-        internal System.Windows.Forms.Button Button4;
-        internal System.Windows.Forms.Button Button3;
-        internal System.Windows.Forms.Button Button2;
-        internal System.Windows.Forms.Button Button1;
         internal System.Windows.Forms.GroupBox GroupBox10;
         internal System.Windows.Forms.TextBox INVnO;
         internal System.Windows.Forms.GroupBox GroupBox8;
@@ -683,23 +655,45 @@
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TextBox txttotam;
+        internal System.Windows.Forms.TextBox txtvat;
+        internal System.Windows.Forms.TextBox txtsubtot;
+        internal System.Windows.Forms.TextBox TextBox1;
         internal System.Windows.Forms.GroupBox GroupBox7;
+        internal System.Windows.Forms.DateTimePicker invdate;
         internal System.Windows.Forms.GroupBox GroupBox6;
+        internal System.Windows.Forms.TextBox custid;
+        internal System.Windows.Forms.ListBox custList;
         internal System.Windows.Forms.GroupBox GroupBox2;
+        internal System.Windows.Forms.TextBox prodid;
+        internal System.Windows.Forms.TextBox txtSearch;
         internal System.Windows.Forms.ListBox prodList;
         internal System.Windows.Forms.GroupBox GroupBox5;
+        internal System.Windows.Forms.TextBox txtprice;
         internal System.Windows.Forms.GroupBox GroupBox4;
+        internal System.Windows.Forms.TextBox txtponumber;
         internal System.Windows.Forms.Button procinvbtn;
         internal System.Windows.Forms.Button rmvbtn;
         internal System.Windows.Forms.GroupBox GroupBox3;
+        internal System.Windows.Forms.TextBox proddescr;
         internal System.Windows.Forms.GroupBox GroupBox9;
+        internal System.Windows.Forms.TextBox txtqty;
         internal System.Windows.Forms.ListView invoiceProducts;
+        internal System.Windows.Forms.ColumnHeader ColQuantity;
+        internal System.Windows.Forms.ColumnHeader ColProdName;
+        internal System.Windows.Forms.ColumnHeader ColUnitPrice;
+        internal System.Windows.Forms.ColumnHeader ColAmount;
+        private System.Windows.Forms.ColumnHeader ProductId;
+        private System.Windows.Forms.ColumnHeader prodVatId;
         internal System.Windows.Forms.Button addbtn;
-        internal System.Windows.Forms.Button cancbtn;
         internal System.Windows.Forms.GroupBox GroupBox11;
         internal System.Windows.Forms.Button Button7;
-        internal System.Windows.Forms.TextBox TextBox1;
         internal System.Windows.Forms.Label Label5;
-        private System.Windows.Forms.ColumnHeader prodVatId;
+        internal System.Windows.Forms.Button cancbtn;
+        internal System.Windows.Forms.GroupBox GroupBox1;
+        internal System.Windows.Forms.Button Button5;
+        internal System.Windows.Forms.Button Button4;
+        internal System.Windows.Forms.Button Button3;
+        internal System.Windows.Forms.Button Button2;
+        internal System.Windows.Forms.Button Button1;
     }
 }
