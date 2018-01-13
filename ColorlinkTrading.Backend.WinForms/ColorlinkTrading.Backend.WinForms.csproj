@@ -203,6 +203,18 @@
     <Compile Include="Customer\Statements.Designer.cs">
       <DependentUpon>Statements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delivery Note\NewDeliveryNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery Note\NewDeliveryNote.Designer.cs">
+      <DependentUpon>NewDeliveryNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delivery Note\PrintDeliveryNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delivery Note\PrintDeliveryNote.Designer.cs">
+      <DependentUpon>PrintDeliveryNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Payment\Payments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\Statements.resx">
       <DependentUpon>Statements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Note\NewDeliveryNote.resx">
+      <DependentUpon>NewDeliveryNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delivery Note\PrintDeliveryNote.resx">
+      <DependentUpon>PrintDeliveryNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payment\Payments.resx">
       <DependentUpon>Payments.cs</DependentUpon>
