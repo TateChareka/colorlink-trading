@@ -120,3 +120,5 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\Colorli
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.ProformaInvoice.editProforma.resources
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.ProformaInvoice.NewProforma.resources
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.ProformaInvoice.PrintProforma.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Delivery_Note.NewDeliveryNote.resources
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.Delivery_Note.PrintDeliveryNote.resources
