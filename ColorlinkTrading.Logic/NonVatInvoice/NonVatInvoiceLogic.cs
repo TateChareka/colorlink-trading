@@ -243,7 +243,9 @@ namespace ColorlinkTrading.Logic
                     result.SubTotal = data.SubTotal;
                     result.TotalAmount = data.TotalAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == Int32.Parse(data.DisplayValue)).ToList();
+                    var invNo = Int32.Parse(data.DisplayValue.Trim());
+
+                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == invNo).ToList();
 
                     if (nonVatProducts != null)
                     {

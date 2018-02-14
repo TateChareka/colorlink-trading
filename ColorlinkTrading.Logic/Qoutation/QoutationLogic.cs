@@ -248,7 +248,8 @@ namespace ColorlinkTrading.Logic
                     result.TotalAmount = data.TotalAmount;
                     result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == Int32.Parse(data.DisplayValue)).ToList();
+                    var invNo = Int32.Parse(data.DisplayValue.Trim());
+                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == invNo).ToList();
                     if (qouteProducts != null)
                     {
                         result.NumberOfProducts = qouteProducts.Count();

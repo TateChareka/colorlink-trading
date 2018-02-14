@@ -250,7 +250,9 @@ namespace ColorlinkTrading.Logic
                     result.TotalAmount = data.TotalAmount;
                     result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var proformaProducts = dm.ProductProformas.Where(b => b.ProfornaNo == Int32.Parse(result.DisplayValue)).ToList();
+                    var invNo = Int32.Parse(data.DisplayValue.Trim());
+
+                    var proformaProducts = dm.ProductProformas.Where(b => b.ProfornaNo == invNo).ToList();
                     if (proformaProducts != null)
                     {
                         result.NumberOfProducts = proformaProducts.Count();

@@ -250,12 +250,11 @@ namespace ColorlinkTrading.Logic
                     result.SubTotal = data.SubTotal;
                     result.TotalAmount = data.TotalAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-
-                    var vatProducts = dm.ProductInvoiceVats.Where(b => b.InvoiceNo == Int32.Parse(data.DisplayValue)).ToList();
+                    var invNo = Int32.Parse(data.DisplayValue.Trim());
+                    var vatProducts = dm.ProductInvoiceVats.Where(b => b.InvoiceNo == invNo).ToList();
 
                     result.VatAmount = data.VatAmount;
 
-                    var tate = true;
                     if (vatProducts != null)
                     {
                         result.NumberOfProducts = vatProducts.Count();
