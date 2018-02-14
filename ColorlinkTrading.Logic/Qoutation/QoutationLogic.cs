@@ -229,9 +229,9 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var qouteid = request.QouteNumber;
+                    var qouteid = request.QouteNumber+"";
 
-                    var data = dm.Qoutations.Where(b => b.QouteNumber == qouteid).FirstOrDefault();
+                    var data = dm.Qoutations.Where(b => b.DisplayValue == qouteid).FirstOrDefault();
 
                     result.CreatedByUserName = data.CreatedByUserName;
                     result.CreatedDate = data.CreatedDate;
@@ -248,7 +248,7 @@ namespace ColorlinkTrading.Logic
                     result.TotalAmount = data.TotalAmount;
                     result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == result.QouteNumber).ToList();
+                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == Int32.Parse(request.DisplayValue)).ToList();
                     result.NumberOfProducts = qouteProducts.Count();
                     foreach (var qouteproduct in qouteProducts)
                     {
@@ -297,10 +297,10 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var qouteid = request.QouteNumber;
+                    var qouteid = request.QouteNumber+"";
 
                     var data = (from a in dm.Qoutations
-                                where a.QouteNumber == qouteid
+                                where a.DisplayValue == qouteid
                                 select a).FirstOrDefault();
 
                     if (data == null)
@@ -333,7 +333,7 @@ namespace ColorlinkTrading.Logic
 
                     foreach (var item in request.ProductQoutations)
                     {
-                        writeQouteProduct(item, request);
+                        writeQouteProduct(item, request, Int32.Parse(request.DisplayValue));
                     }
                     dm.SaveChanges();
                     return result;
@@ -353,7 +353,7 @@ namespace ColorlinkTrading.Logic
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
                 var data = (from a in dm.ProductQoutes
-                            where a.QouteNo == request.QouteNumber
+                            where a.QouteNo == Int32.Parse(request.DisplayValue)
                             select a).ToList();
                 foreach (var item in data)
                 {
@@ -364,7 +364,7 @@ namespace ColorlinkTrading.Logic
             }
         }
 
-        private static void writeQouteProduct(QoutationProductItemResultModel requestvatProducts, GenericRequestModel request)
+        private static void writeQouteProduct(QoutationProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo)
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
@@ -379,7 +379,7 @@ namespace ColorlinkTrading.Logic
                 }
 
                 data.Amount = requestvatProducts.Amount;
-                data.QouteNo = requestvatProducts.QouteNo;
+                data.QouteNo = invNo;
                 data.ProdId = requestvatProducts.ProdId;
                 data.ProductQouteId = requestvatProducts.ProductQouteId;
                 data.Quantity = requestvatProducts.Quantity;

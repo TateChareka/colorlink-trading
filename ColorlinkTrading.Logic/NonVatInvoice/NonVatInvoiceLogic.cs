@@ -225,9 +225,9 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var nonvatInvoiceid = request.InvoiceNumber;
+                    var nonvatInvoiceid = request.InvoiceNumber + "";
 
-                    var data = dm.InvoiceNonVats.Where(b => b.InvoiceNumber == nonvatInvoiceid).FirstOrDefault();
+                    var data = dm.InvoiceNonVats.Where(b => b.DisplayValue == nonvatInvoiceid).FirstOrDefault();
 
                     result.CreatedByUserName = data.CreatedByUserName;
                     result.CreatedDate = data.CreatedDate;
@@ -243,7 +243,7 @@ namespace ColorlinkTrading.Logic
                     result.SubTotal = data.SubTotal;
                     result.TotalAmount = data.TotalAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == result.InvoiceNumber).ToList();
+                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == Int32.Parse(nonvatInvoiceid)).ToList();
                     result.NumberOfProducts = nonVatProducts.Count();
                     foreach (var product in nonVatProducts)
                     {
@@ -292,10 +292,10 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var nonvatid = request.InvoiceNumber;
+                    var nonvatid = request.InvoiceNumber+"";
 
                     var data = (from a in dm.InvoiceNonVats
-                                where a.InvoiceNumber == nonvatid
+                                where a.DisplayValue == nonvatid
                                 select a).FirstOrDefault();
 
                     if (data == null)
@@ -327,7 +327,7 @@ namespace ColorlinkTrading.Logic
 
                     foreach (var item in request.ProductNonVat)
                     {
-                        writeNonVatProduct(item, request);
+                        writeNonVatProduct(item, request,Int32.Parse(data.DisplayValue));
                     }
                     dm.SaveChanges();
                     return result;
@@ -347,7 +347,7 @@ namespace ColorlinkTrading.Logic
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
                 var data = (from a in dm.ProductInvoiceNonVats
-                            where a.InvoiceNo == request.InvoiceNumber
+                            where a.InvoiceNo == Int32.Parse(request.DisplayValue)
                             select a).ToList();
                 foreach (var item in data)
                 {
@@ -358,7 +358,7 @@ namespace ColorlinkTrading.Logic
             }
         }
 
-        private static void writeNonVatProduct(NonVatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request)
+        private static void writeNonVatProduct(NonVatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo)
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
@@ -373,7 +373,7 @@ namespace ColorlinkTrading.Logic
                 }
 
                 data.Amount = requestvatProducts.Amount;
-                data.InvoiceNo = requestvatProducts.InvoiceNo;
+                data.InvoiceNo = invNo;
                 data.ProdId = requestvatProducts.ProdId;
                 data.ProductInvoiceNonVatId = requestvatProducts.ProductInvoiceNonVatId;
                 data.Quantity = requestvatProducts.Quantity;

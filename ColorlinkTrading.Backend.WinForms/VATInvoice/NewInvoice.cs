@@ -326,7 +326,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             {
                 VatInvoiceProductItemResultModel invoiceProduct = new VatInvoiceProductItemResultModel()
                 {
-                    InvoiceNo = invoiceNew.InvoiceNumber,
+                    InvoiceNo = Int32.Parse(invoiceNew.DisplayValue),
                     Quantity = Int32.Parse(item.SubItems[0].Text),
                     ProductName = item.SubItems[1].Text,
                     UnitPrice = decimal.Parse(item.SubItems[2].Text),
