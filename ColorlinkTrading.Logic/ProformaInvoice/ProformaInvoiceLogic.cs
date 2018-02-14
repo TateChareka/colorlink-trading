@@ -251,26 +251,28 @@ namespace ColorlinkTrading.Logic
                     result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
                     var proformaProducts = dm.ProductProformas.Where(b => b.ProfornaNo == Int32.Parse(result.DisplayValue)).ToList();
-                    result.NumberOfProducts = proformaProducts.Count();
-                    foreach (var proformaproduct in proformaProducts)
+                    if (proformaProducts != null)
                     {
-                        result.ProductProforma.Add(
-                            new ProformaProductItemResultModel()
-                            {
-                                Amount = proformaproduct.Amount,
-                                CreatedByUserName = proformaproduct.CreatedByUserName,
-                                CreatedDate = proformaproduct.CreatedDate,
-                                ProformaNo = proformaproduct.ProfornaNo,
-                                ProdId = proformaproduct.ProdId,
-                                ProductName = dm.Products.Where(b => b.ProductId == proformaproduct.ProdId).FirstOrDefault().ProductName,
-                                ProductProformaId = proformaproduct.ProductProformaId,
-                                Quantity = proformaproduct.Quantity,
-                                UnitPrice = proformaproduct.UnitPrice,
-                                UpdatedByUserName = proformaproduct.UpdatedByUserName,
-                                UpdatedDate = proformaproduct.UpdatedDate
-                            });
+                        result.NumberOfProducts = proformaProducts.Count();
+                        foreach (var proformaproduct in proformaProducts)
+                        {
+                            result.ProductProforma.Add(
+                                new ProformaProductItemResultModel()
+                                {
+                                    Amount = proformaproduct.Amount,
+                                    CreatedByUserName = proformaproduct.CreatedByUserName,
+                                    CreatedDate = proformaproduct.CreatedDate,
+                                    ProformaNo = proformaproduct.ProfornaNo,
+                                    ProdId = proformaproduct.ProdId,
+                                    ProductName = dm.Products.Where(b => b.ProductId == proformaproduct.ProdId).FirstOrDefault().ProductName,
+                                    ProductProformaId = proformaproduct.ProductProformaId,
+                                    Quantity = proformaproduct.Quantity,
+                                    UnitPrice = proformaproduct.UnitPrice,
+                                    UpdatedByUserName = proformaproduct.UpdatedByUserName,
+                                    UpdatedDate = proformaproduct.UpdatedDate
+                                });
+                        }
                     }
-
                     return result;
                 }
             }

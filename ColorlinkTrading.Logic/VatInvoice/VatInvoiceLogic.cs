@@ -232,7 +232,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var vatinvoiceid = request.InvoiceNumber+"";
+                    var vatinvoiceid = request.InvoiceNumber + "";
 
                     var data = dm.InvoicesVats.Where(b => b.DisplayValue == vatinvoiceid).FirstOrDefault();
                     result.CreatedByUserName = data.CreatedByUserName;
@@ -249,30 +249,36 @@ namespace ColorlinkTrading.Logic
                     result.Reference = data.Reference;
                     result.SubTotal = data.SubTotal;
                     result.TotalAmount = data.TotalAmount;
-                    result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var vatProducts = dm.ProductInvoiceVats.Where(b => b.InvoiceNo == Int32.Parse(request.DisplayValue)).ToList();
-                    result.NumberOfProducts = vatProducts.Count();
-                    foreach (var vatproduct in vatProducts)
-                    {
-                        result.ProductVat.Add(
-                            new VatInvoiceProductItemResultModel()
-                            {
-                                Amount = vatproduct.Amount,
-                                CreatedByUserName = vatproduct.CreatedByUserName,
-                                CreatedDate = vatproduct.CreatedDate,
-                                InvoiceNo = vatproduct.InvoiceNo,
-                                OldNumber = vatproduct.OLDNo,
-                                ProdId = vatproduct.ProdId,
-                                ProductName = dm.Products.Where(b => b.ProductId == vatproduct.ProdId).FirstOrDefault().ProductName,
-                                ProductInvoiceVatId = vatproduct.ProductInvoiceVatId,
-                                Quantity = vatproduct.Quantity,
-                                UnitPrice = vatproduct.UnitPrice,
-                                UpdatedByUserName = vatproduct.UpdatedByUserName,
-                                UpdatedDate = vatproduct.UpdatedDate
-                            });
-                    }
 
+                    var vatProducts = dm.ProductInvoiceVats.Where(b => b.InvoiceNo == Int32.Parse(data.DisplayValue)).ToList();
+
+                    result.VatAmount = data.VatAmount;
+
+                    var tate = true;
+                    if (vatProducts != null)
+                    {
+                        result.NumberOfProducts = vatProducts.Count();
+                        foreach (var vatproduct in vatProducts)
+                        {
+                            result.ProductVat.Add(
+                                new VatInvoiceProductItemResultModel()
+                                {
+                                    Amount = vatproduct.Amount,
+                                    CreatedByUserName = vatproduct.CreatedByUserName,
+                                    CreatedDate = vatproduct.CreatedDate,
+                                    InvoiceNo = vatproduct.InvoiceNo,
+                                    OldNumber = vatproduct.OLDNo,
+                                    ProdId = vatproduct.ProdId,
+                                    ProductName = dm.Products.Where(b => b.ProductId == vatproduct.ProdId).FirstOrDefault().ProductName,
+                                    ProductInvoiceVatId = vatproduct.ProductInvoiceVatId,
+                                    Quantity = vatproduct.Quantity,
+                                    UnitPrice = vatproduct.UnitPrice,
+                                    UpdatedByUserName = vatproduct.UpdatedByUserName,
+                                    UpdatedDate = vatproduct.UpdatedDate
+                                });
+                        }
+                    }
                     return result;
                 }
             }
@@ -301,7 +307,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var vatinvoiceid = request.InvoiceNumber+"";
+                    var vatinvoiceid = request.InvoiceNumber + "";
 
                     var data = (from a in dm.InvoicesVats
                                 where a.DisplayValue == vatinvoiceid
@@ -333,7 +339,7 @@ namespace ColorlinkTrading.Logic
 
                     foreach (var item in request.ProductVat)
                     {
-                        writeVatProduct(item, request,Int32.Parse(request.DisplayValue));
+                        writeVatProduct(item, request, Int32.Parse(request.DisplayValue));
                     }
 
 
@@ -367,7 +373,7 @@ namespace ColorlinkTrading.Logic
             }
         }
 
-        private static void writeVatProduct(VatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo)
+        private static void writeVatProduct(VatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request, int invNo)
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {

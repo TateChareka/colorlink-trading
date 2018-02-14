@@ -11,7 +11,7 @@ namespace ColorlinkTrading.Logic
     {
         public static bool IsDebugMode()
         {
-           return Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["SettingDebugMode"].ToString());
+           return true;
         }
     }
 }

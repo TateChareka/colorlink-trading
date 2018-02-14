@@ -243,27 +243,30 @@ namespace ColorlinkTrading.Logic
                     result.SubTotal = data.SubTotal;
                     result.TotalAmount = data.TotalAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == Int32.Parse(nonvatInvoiceid)).ToList();
-                    result.NumberOfProducts = nonVatProducts.Count();
-                    foreach (var product in nonVatProducts)
-                    {
-                        result.ProductNonVat.Add(
-                            new NonVatInvoiceProductItemResultModel()
-                            {
-                                Amount = product.Amount,
-                                CreatedByUserName = product.CreatedByUserName,
-                                CreatedDate = product.CreatedDate,
-                                InvoiceNo = product.InvoiceNo,
-                                ProdId = product.ProdId,
-                                ProductName = dm.Products.Where(b => b.ProductId == product.ProdId).FirstOrDefault().ProductName,
-                                ProductInvoiceNonVatId = product.ProductInvoiceNonVatId,
-                                Quantity = product.Quantity,
-                                UnitPrice = product.UnitPrice,
-                                UpdatedByUserName = product.UpdatedByUserName,
-                                UpdatedDate = product.UpdatedDate
-                            });
-                    }
+                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == Int32.Parse(data.DisplayValue)).ToList();
 
+                    if (nonVatProducts != null)
+                    {
+                        result.NumberOfProducts = nonVatProducts.Count();
+                        foreach (var product in nonVatProducts)
+                        {
+                            result.ProductNonVat.Add(
+                                new NonVatInvoiceProductItemResultModel()
+                                {
+                                    Amount = product.Amount,
+                                    CreatedByUserName = product.CreatedByUserName,
+                                    CreatedDate = product.CreatedDate,
+                                    InvoiceNo = product.InvoiceNo,
+                                    ProdId = product.ProdId,
+                                    ProductName = dm.Products.Where(b => b.ProductId == product.ProdId).FirstOrDefault().ProductName,
+                                    ProductInvoiceNonVatId = product.ProductInvoiceNonVatId,
+                                    Quantity = product.Quantity,
+                                    UnitPrice = product.UnitPrice,
+                                    UpdatedByUserName = product.UpdatedByUserName,
+                                    UpdatedDate = product.UpdatedDate
+                                });
+                        }
+                    }
                     return result;
                 }
             }

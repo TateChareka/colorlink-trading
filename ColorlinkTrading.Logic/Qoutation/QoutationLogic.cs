@@ -248,27 +248,29 @@ namespace ColorlinkTrading.Logic
                     result.TotalAmount = data.TotalAmount;
                     result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
-                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == Int32.Parse(request.DisplayValue)).ToList();
-                    result.NumberOfProducts = qouteProducts.Count();
-                    foreach (var qouteproduct in qouteProducts)
+                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == Int32.Parse(data.DisplayValue)).ToList();
+                    if (qouteProducts != null)
                     {
-                        result.ProductQoutations.Add(
-                            new QoutationProductItemResultModel()
-                            {
-                                Amount = qouteproduct.Amount,
-                                CreatedByUserName = qouteproduct.CreatedByUserName,
-                                CreatedDate = qouteproduct.CreatedDate,
-                                QouteNo = qouteproduct.QouteNo,
-                                ProdId = qouteproduct.ProdId,
-                                ProductName = dm.Products.Where(b => b.ProductId == qouteproduct.ProdId).FirstOrDefault().ProductName,
-                                ProductQouteId = qouteproduct.ProductQouteId,
-                                Quantity = qouteproduct.Quantity,
-                                UnitPrice = qouteproduct.UnitPrice,
-                                UpdatedByUserName = qouteproduct.UpdatedByUserName,
-                                UpdatedDate = qouteproduct.UpdatedDate
-                            });
+                        result.NumberOfProducts = qouteProducts.Count();
+                        foreach (var qouteproduct in qouteProducts)
+                        {
+                            result.ProductQoutations.Add(
+                                new QoutationProductItemResultModel()
+                                {
+                                    Amount = qouteproduct.Amount,
+                                    CreatedByUserName = qouteproduct.CreatedByUserName,
+                                    CreatedDate = qouteproduct.CreatedDate,
+                                    QouteNo = qouteproduct.QouteNo,
+                                    ProdId = qouteproduct.ProdId,
+                                    ProductName = dm.Products.Where(b => b.ProductId == qouteproduct.ProdId).FirstOrDefault().ProductName,
+                                    ProductQouteId = qouteproduct.ProductQouteId,
+                                    Quantity = qouteproduct.Quantity,
+                                    UnitPrice = qouteproduct.UnitPrice,
+                                    UpdatedByUserName = qouteproduct.UpdatedByUserName,
+                                    UpdatedDate = qouteproduct.UpdatedDate
+                                });
+                        }
                     }
-
                     return result;
                 }
             }
