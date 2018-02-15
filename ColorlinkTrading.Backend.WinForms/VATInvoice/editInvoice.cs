@@ -251,7 +251,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
 
             if (invoiceProducts.Items.Count > 0)
             {
-                if (invdate.Value > DateTime.Now || invdate.Value < DateTime.Now)
+                if (invdate.Value > DateTime.Today || invdate.Value < DateTime.Today)
                 {
                     DialogResult dateAsk = MessageBox.Show("Date is not equal to todays date, Are you sure you want to continue?", "Invoice Creation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dateAsk == DialogResult.No)
