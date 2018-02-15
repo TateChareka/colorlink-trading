@@ -48,3 +48,4 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\bin\Debug\HtmlAgilityPack.x
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.csprojResolveAssemblyReference.cache
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.dll
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Debug\ColorlinkTrading.Models.csproj.CoreCompileInputs.cache

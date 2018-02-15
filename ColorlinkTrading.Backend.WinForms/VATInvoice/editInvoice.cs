@@ -58,7 +58,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
             invoiceCount = (VatInvoiceLogic.VatInvoiceCount(
                 new GenericSearchRequestModel()
                 {
-                }) + 101);
+                }) + 102);
         }
 
         private void custList_SelectedIndexChanged(object sender, EventArgs e)
@@ -319,7 +319,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 };
                 invoiceNew.ProductVat.Add(invoiceProduct);
             }
-
+            invoiceNew.InvoiceNumber=Int32.Parse(invoiceNew.DisplayValue);
             GenericItemResultModel state = VatInvoiceLogic.WriteVatInvoice(invoiceNew);
             if (state.Feedback == "Edit Invoice Successful")
             {

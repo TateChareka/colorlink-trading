@@ -252,7 +252,7 @@ namespace ColorlinkTrading.Logic
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
                     var invNo = Int32.Parse(data.DisplayValue.Trim());
 
-                    var proformaProducts = dm.ProductProformas.Where(b => b.ProfornaNo == invNo).ToList();
+                    var proformaProducts = dm.ProductProformas.Where(b => b.ProfornaNo == result.ProformaNumber).ToList();
                     if (proformaProducts != null)
                     {
                         result.NumberOfProducts = proformaProducts.Count();
@@ -303,7 +303,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var proformaid = request.ProformaNumber+"";
+                    var proformaid = request.DisplayValue+"";
 
                     var data = (from a in dm.ProformaInvoices
                                 where a.DisplayValue == proformaid
@@ -325,7 +325,7 @@ namespace ColorlinkTrading.Logic
                     data.UpdatedByUserName = request.UpdatedByUserName;
                     data.UpdatedDate = request.UpdatedDate;
                     data.CustomerId = request.CustomerId;
-                    data.DisplayValue = request.DisplayValue;
+                    data.DisplayValue = proformaid;
                     data.Discount = request.Discount;
                     data.ExtraDetails = request.ExtraDetails;
                     data.ProformaDate = request.ProformaDate;
@@ -335,11 +335,12 @@ namespace ColorlinkTrading.Logic
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VATAmount;
 
+                    dm.SaveChanges();
                     resetProformaProduct(request);
 
                     foreach (var item in request.ProductProforma)
                     {
-                        writeProformaProduct(item, request,Int32.Parse(data.DisplayValue));
+                        writeProformaProduct(item, request, data.ProformaNumber);
                     }
 
                     dm.SaveChanges();
@@ -360,15 +361,18 @@ namespace ColorlinkTrading.Logic
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
+                var invoiceNo = Int32.Parse(request.DisplayValue);
+
                 var data = (from a in dm.ProductProformas
-                            where a.ProfornaNo == Int32.Parse(request.DisplayValue)
+                            where a.ProfornaNo == invoiceNo
                             select a).ToList();
                 foreach (var item in data)
                 {
                     item.OLDNo = item.ProfornaNo + "";
                     item.ProfornaNo = 0;
-                    dm.SaveChanges();
+                   
                 }
+                dm.SaveChanges();
             }
         }
 

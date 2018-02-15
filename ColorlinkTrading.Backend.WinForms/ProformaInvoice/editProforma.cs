@@ -52,7 +52,7 @@ namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
             invoiceCount = (ProformaInvoiceLogic.ProformaInvoiceCount(
                 new GenericSearchRequestModel()
                 {
-                }) + 101);
+                }) + 102);
         }
 
         private void cancbtn_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                new GenericSearchRequestModel()
                {
 
-               }) + 100);
+               }) + 102);
             crConnectionInfo = new ConnectionInfo();
             crConnectionInfo.ServerName = "(local)";
             crConnectionInfo.DatabaseName = "colorlinkTrading";
@@ -60,10 +60,17 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                 TextBox1.Focus();
                 return;
             }
+
+            var invNo = (QoutationLogic.GetQoutation(
+                new QoutationRequestModel()
+                {
+                    QouteNumber = invoiceNumber
+                }).QouteNumber);
+
             ReportDocument newReport = new ReportDocument();
             newReport.Load(@"C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\Reports\ReportVatQoutation.rpt");
             //ReportVatInvoice newReport = new ReportVatInvoice();
-            newReport.SetParameterValue("InvoiceNumber", invoiceNumber);
+            newReport.SetParameterValue("InvoiceNumber", invNo);
             CrystalReportViewer1.ReportSource = newReport;
             CrystalReportViewer1.Refresh();
         }

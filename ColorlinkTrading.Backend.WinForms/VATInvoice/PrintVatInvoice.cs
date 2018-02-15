@@ -47,10 +47,15 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 TextBox1.Focus();
                 return;
             }
+            var invNo = (VatInvoiceLogic.GetVatInvoice(
+                new VatInvoiceRequestModel()
+                {
+                    InvoiceNumber = invoiceNumber
+                }).InvoiceNumber);
             ReportDocument newReport = new ReportDocument();
             newReport.Load(@"C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\Reports\ReportVatInvoice.rpt");
             //ReportVatInvoice newReport = new ReportVatInvoice();
-            newReport.SetParameterValue("InvoiceNumber", invoiceNumber);
+            newReport.SetParameterValue("InvoiceNumber", invNo);
             CrystalReportViewer1.ReportSource = newReport;
             CrystalReportViewer1.Refresh();
         }
@@ -64,7 +69,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     OrderField = "InvoiceNumber",
                     PageNumber = 1,
                     PageSize = 1000
-                }) + 100);
+                }) + 102);
             crConnectionInfo = new ConnectionInfo();
             crConnectionInfo.ServerName = "(local)";
             crConnectionInfo.DatabaseName = "colorlinkTrading";

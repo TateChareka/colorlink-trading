@@ -30,3 +30,4 @@ C:\Projects\ColorlinkTrading\SofticeMailFetcher\bin\Debug\HtmlAgilityPack.xml
 C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.csprojResolveAssemblyReference.cache
 C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.dll
 C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.pdb
+C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.csproj.CoreCompileInputs.cache

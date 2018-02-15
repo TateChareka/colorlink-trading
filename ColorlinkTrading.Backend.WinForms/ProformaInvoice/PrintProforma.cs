@@ -29,7 +29,7 @@ namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
               new GenericSearchRequestModel()
               {
 
-              }) + 100);
+              }) + 102);
             crConnectionInfo = new ConnectionInfo();
             crConnectionInfo.ServerName = "(local)";
             crConnectionInfo.DatabaseName = "colorlinkTrading";
@@ -60,10 +60,15 @@ namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
                 TextBox1.Focus();
                 return;
             }
+            var invNo = (ProformaInvoiceLogic.GetProforma(
+                new ProformaRequestModel()
+                {
+                     ProformaNumber = invoiceNumber
+                }).ProformaNumber);
             ReportDocument newReport = new ReportDocument();
             newReport.Load(@"C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\Reports\ReportProformaInvoice.rpt");
             //ReportVatInvoice newReport = new ReportVatInvoice();
-            newReport.SetParameterValue("InvoiceNumber", invoiceNumber);
+            newReport.SetParameterValue("InvoiceNumber", invNo);
             CrystalReportViewer1.ReportSource = newReport;
             CrystalReportViewer1.Refresh();
         }

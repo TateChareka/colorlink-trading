@@ -249,7 +249,7 @@ namespace ColorlinkTrading.Logic
                     result.VatAmount = data.VatAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
                     var invNo = Int32.Parse(data.DisplayValue.Trim());
-                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == invNo).ToList();
+                    var qouteProducts = dm.ProductQoutes.Where(b => b.QouteNo == result.QouteNumber).ToList();
                     if (qouteProducts != null)
                     {
                         result.NumberOfProducts = qouteProducts.Count();
@@ -300,7 +300,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var qouteid = request.QouteNumber+"";
+                    var qouteid = request.DisplayValue+"";
 
                     var data = (from a in dm.Qoutations
                                 where a.DisplayValue == qouteid
@@ -322,7 +322,7 @@ namespace ColorlinkTrading.Logic
                     data.UpdatedByUserName = request.UpdatedByUserName;
                     data.UpdatedDate = request.UpdatedDate;
                     data.CustomerId = request.CustomerId;
-                    data.DisplayValue = request.DisplayValue;
+                    data.DisplayValue = qouteid;
                     data.Discount = request.Discount;
                     data.ExtraDetails = request.ExtraDetails;
                     data.InvoiceDate = request.InvoiceDate;
@@ -331,12 +331,13 @@ namespace ColorlinkTrading.Logic
                     data.SubTotal = request.SubTotal;
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
+                    dm.SaveChanges();
 
                     resetQouteProduct(request);
 
                     foreach (var item in request.ProductQoutations)
                     {
-                        writeQouteProduct(item, request, Int32.Parse(request.DisplayValue));
+                        writeQouteProduct(item, request, data.QouteNumber);
                     }
                     dm.SaveChanges();
                     return result;
@@ -355,15 +356,18 @@ namespace ColorlinkTrading.Logic
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
+                var invoiceNo = Int32.Parse(request.DisplayValue);
+
                 var data = (from a in dm.ProductQoutes
-                            where a.QouteNo == Int32.Parse(request.DisplayValue)
+                            where a.QouteNo == invoiceNo
                             select a).ToList();
                 foreach (var item in data)
                 {
                     item.OLDNo = item.QouteNo + "";
                     item.QouteNo = 0;
-                    dm.SaveChanges();
+                  
                 }
+                dm.SaveChanges();
             }
         }
 

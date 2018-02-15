@@ -53,7 +53,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             qoutationCount = (QoutationLogic.QoutationCount(
                 new GenericSearchRequestModel()
                 {
-                }) + 101);
+                }) + 102);
         }
 
         private void cancbtn_Click(object sender, EventArgs e)

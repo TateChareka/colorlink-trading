@@ -251,7 +251,7 @@ namespace ColorlinkTrading.Logic
                     result.TotalAmount = data.TotalAmount;
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
                     var invNo = Int32.Parse(data.DisplayValue.Trim());
-                    var vatProducts = dm.ProductInvoiceVats.Where(b => b.InvoiceNo == invNo).ToList();
+                    var vatProducts = dm.ProductInvoiceVats.Where(b => b.InvoiceNo == result.InvoiceNumber).ToList();
 
                     result.VatAmount = data.VatAmount;
 
@@ -306,7 +306,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var vatinvoiceid = request.InvoiceNumber + "";
+                    var vatinvoiceid = request.DisplayValue + "";
 
                     var data = (from a in dm.InvoicesVats
                                 where a.DisplayValue == vatinvoiceid
@@ -324,7 +324,7 @@ namespace ColorlinkTrading.Logic
                     }
 
                     data.CustomerId = request.CustomerId;
-                    data.DisplayValue = request.DisplayValue;
+                    data.DisplayValue = vatinvoiceid;
                     data.Discount = request.Discount;
                     data.ExtraDetails = request.ExtraDetails;
                     data.InvoiceDate = request.InvoiceDate;
@@ -334,15 +334,18 @@ namespace ColorlinkTrading.Logic
                     data.CreditValidation = request.CreditValidation;
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
+
                     resetVatProduct(request);
+
+                    dm.SaveChanges();
 
                     foreach (var item in request.ProductVat)
                     {
-                        writeVatProduct(item, request, Int32.Parse(request.DisplayValue));
+                        writeVatProduct(item, request, data.InvoiceNumber);
                     }
 
 
-                    dm.SaveChanges();
+                   
                     return result;
                 }
             }
@@ -360,15 +363,17 @@ namespace ColorlinkTrading.Logic
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
+                var invoiceNo = Int32.Parse(request.DisplayValue);
                 var data = (from a in dm.ProductInvoiceVats
-                            where a.InvoiceNo == Int32.Parse(request.DisplayValue)
+                            where a.InvoiceNo == invoiceNo
                             select a).ToList();
+
                 foreach (var item in data)
                 {
                     item.OLDNo = item.InvoiceNo + "";
-                    item.InvoiceNo = 0;
-                    dm.SaveChanges();
+                    item.InvoiceNo = 0;                    
                 }
+                dm.SaveChanges();
             }
         }
 

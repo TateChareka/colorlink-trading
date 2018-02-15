@@ -24,3 +24,4 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramewo
 C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
 C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.dll
 C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csproj.CoreCompileInputs.cache

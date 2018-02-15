@@ -122,3 +122,4 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\Colorli
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csproj.GenerateResource.Cache
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.exe
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Backend.WinForms\obj\Debug\ColorlinkTrading.Backend.WinForms.csproj.CoreCompileInputs.cache

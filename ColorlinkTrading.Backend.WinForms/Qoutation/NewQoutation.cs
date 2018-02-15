@@ -50,7 +50,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             INVnO.Text = (QoutationLogic.QoutationCount(
                 new GenericSearchRequestModel()
                 {
-                }) + 101) + "";
+                }) + 102) + "";
         }
 
         private void custlist_SelectedIndexChanged(object sender, EventArgs e)

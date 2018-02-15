@@ -245,7 +245,7 @@ namespace ColorlinkTrading.Logic
                     result.CustomerName = dm.Customers.Where(b => b.CustomerId == data.CustomerId).FirstOrDefault().CustomerName;
                     var invNo = Int32.Parse(data.DisplayValue.Trim());
 
-                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == invNo).ToList();
+                    var nonVatProducts = dm.ProductInvoiceNonVats.Where(b => b.InvoiceNo == result.InvoiceNumber).ToList();
 
                     if (nonVatProducts != null)
                     {
@@ -297,7 +297,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var nonvatid = request.InvoiceNumber+"";
+                    var nonvatid = request.DisplayValue+"";
 
                     var data = (from a in dm.InvoiceNonVats
                                 where a.DisplayValue == nonvatid
@@ -319,7 +319,7 @@ namespace ColorlinkTrading.Logic
                     data.UpdatedByUserName = request.UpdatedByUserName;
                     data.UpdatedDate = request.UpdatedDate;
                     data.CustomerId = request.CustomerId;
-                    data.DisplayValue = request.DisplayValue;
+                    data.DisplayValue = nonvatid;
                     data.Discount = request.Discount;
                     data.ExtraDetails = request.ExtraDetails;
                     data.InvoiceDate = request.InvoiceDate;
@@ -332,7 +332,7 @@ namespace ColorlinkTrading.Logic
 
                     foreach (var item in request.ProductNonVat)
                     {
-                        writeNonVatProduct(item, request,Int32.Parse(data.DisplayValue));
+                        writeNonVatProduct(item, request, data.InvoiceNumber);
                     }
                     dm.SaveChanges();
                     return result;
@@ -351,15 +351,18 @@ namespace ColorlinkTrading.Logic
         {
             using (var dm = new DataModelEntities(request.SessionUserName))
             {
+                var invoiceNo = Int32.Parse(request.DisplayValue);
+
                 var data = (from a in dm.ProductInvoiceNonVats
-                            where a.InvoiceNo == Int32.Parse(request.DisplayValue)
+                            where a.InvoiceNo == invoiceNo
                             select a).ToList();
                 foreach (var item in data)
                 {
                     item.OLDNo = item.InvoiceNo + "";
                     item.InvoiceNo = 0;
-                    dm.SaveChanges();
+                    
                 }
+                dm.SaveChanges();
             }
         }
 

@@ -54,7 +54,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     OrderField = "InvoiceNumber",
                     PageNumber = 1,
                     PageSize = 10000
-                }) + 101) + "";
+                }) + 102) + "";
         }
 
         private void custlist_SelectedIndexChanged(object sender, EventArgs e)

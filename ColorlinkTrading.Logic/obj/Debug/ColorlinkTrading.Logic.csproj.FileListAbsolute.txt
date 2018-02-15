@@ -58,3 +58,4 @@ C:\Projects\ColorlinkTrading\ColorlinkTrading.Logic\bin\Debug\HtmlAgilityPack.xm
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Logic\obj\Debug\ColorlinkTrading.Logic.csprojResolveAssemblyReference.cache
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Logic\obj\Debug\ColorlinkTtrading.Logic.dll
 C:\Projects\ColorlinkTrading\ColorlinkTrading.Logic\obj\Debug\ColorlinkTtrading.Logic.pdb
+C:\Projects\ColorlinkTrading\ColorlinkTrading.Logic\obj\Debug\ColorlinkTrading.Logic.csproj.CoreCompileInputs.cache
