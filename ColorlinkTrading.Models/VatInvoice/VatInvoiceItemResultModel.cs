@@ -10,7 +10,7 @@ namespace ColorlinkTrading.Models
 {
     public class VatInvoiceItemResultModel : GenericItemResultModel
     {
-        public int? InvoiceNumber { get; set; }
+        public int InvoiceNumber { get; set; }
         public int? CustomerId { get; set; }
         public string CustomerName { get; set; }
         public DateTime? InvoiceDate { get; set; }

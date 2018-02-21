@@ -336,11 +336,11 @@ namespace ColorlinkTrading.Logic
                     data.VatAmount = request.VATAmount;
 
                     dm.SaveChanges();
-                    resetProformaProduct(request);
+                    resetProformaProduct(request,dm);
 
                     foreach (var item in request.ProductProforma)
                     {
-                        writeProformaProduct(item, request, data.ProformaNumber);
+                        writeProformaProduct(item, request, data.ProformaNumber,dm);
                     }
 
                     dm.SaveChanges();
@@ -357,29 +357,21 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
-        private static void resetProformaProduct(ProformaRequestModel request)
+        private static void resetProformaProduct(ProformaRequestModel request,DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
-            {
-                var invoiceNo = Int32.Parse(request.DisplayValue);
-
                 var data = (from a in dm.ProductProformas
-                            where a.ProfornaNo == invoiceNo
+                            where a.ProfornaNo == request.ProformaNumber
                             select a).ToList();
                 foreach (var item in data)
                 {
                     item.OLDNo = item.ProfornaNo + "";
                     item.ProfornaNo = 0;
-                   
+                 //   dm.ProductProformas.Remove(item);
                 }
-                dm.SaveChanges();
-            }
         }
 
-        private static void writeProformaProduct(ProformaProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo)
+        private static void writeProformaProduct(ProformaProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo,DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
-            {
                 var data = (from a in dm.ProductProformas
                             where a.ProductProformaId == requestvatProducts.ProductProformaId
                             select a).FirstOrDefault();
@@ -395,10 +387,7 @@ namespace ColorlinkTrading.Logic
                 data.ProdId = requestvatProducts.ProdId;
                 data.ProductProformaId = requestvatProducts.ProductProformaId;
                 data.Quantity = requestvatProducts.Quantity;
-                data.UnitPrice = requestvatProducts.UnitPrice;
-                dm.SaveChanges();
-
-            }
+                data.UnitPrice = requestvatProducts.UnitPrice;             
         }
 
     }

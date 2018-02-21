@@ -335,17 +335,15 @@ namespace ColorlinkTrading.Logic
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
 
-                    resetVatProduct(request);
+                    resetVatProduct(request,dm);
 
-                    dm.SaveChanges();
-
+                
                     foreach (var item in request.ProductVat)
                     {
-                        writeVatProduct(item, request, data.InvoiceNumber);
+                        writeVatProduct(item, request, data.InvoiceNumber,dm);
                     }
+                    dm.SaveChanges();
 
-
-                   
                     return result;
                 }
             }
@@ -359,47 +357,38 @@ namespace ColorlinkTrading.Logic
             return result;
         }
 
-        private static void resetVatProduct(VatInvoiceRequestModel request)
+        private static void resetVatProduct(VatInvoiceRequestModel request, DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
-            {
-                var invoiceNo = Int32.Parse(request.DisplayValue);
-                var data = (from a in dm.ProductInvoiceVats
-                            where a.InvoiceNo == invoiceNo
-                            select a).ToList();
+            var data = (from a in dm.ProductInvoiceVats
+                        where a.InvoiceNo == request.InvoiceNumber
+                        select a).ToList();
 
-                foreach (var item in data)
-                {
-                    item.OLDNo = item.InvoiceNo + "";
-                    item.InvoiceNo = 0;                    
-                }
-                dm.SaveChanges();
+            foreach (var item in data)
+            {
+                item.OLDNo = item.InvoiceNo + "";
+                item.InvoiceNo = 0;
+                //dm.ProductInvoiceVats.Remove(item);
             }
         }
 
-        private static void writeVatProduct(VatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request, int invNo)
+        private static void writeVatProduct(VatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request, int invNo, DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
+            var data = (from a in dm.ProductInvoiceVats
+                        where a.ProductInvoiceVatId == requestvatProducts.ProductInvoiceVatId
+                        select a).FirstOrDefault();
+
+            if (data == null)
             {
-                var data = (from a in dm.ProductInvoiceVats
-                            where a.ProductInvoiceVatId == requestvatProducts.ProductInvoiceVatId
-                            select a).FirstOrDefault();
-
-                if (data == null)
-                {
-                    data = new ProductInvoiceVat();
-                    dm.ProductInvoiceVats.Add(data);
-                }
-
-                data.Amount = requestvatProducts.Amount;
-                data.InvoiceNo = invNo;
-                data.ProdId = requestvatProducts.ProdId;
-                data.ProductInvoiceVatId = requestvatProducts.ProductInvoiceVatId;
-                data.Quantity = requestvatProducts.Quantity;
-                data.UnitPrice = requestvatProducts.UnitPrice;
-                dm.SaveChanges();
-
+                data = new ProductInvoiceVat();
+                dm.ProductInvoiceVats.Add(data);
             }
+
+            data.Amount = requestvatProducts.Amount;
+            data.InvoiceNo = invNo;
+            data.ProdId = requestvatProducts.ProdId;
+            data.ProductInvoiceVatId = requestvatProducts.ProductInvoiceVatId;
+            data.Quantity = requestvatProducts.Quantity;
+            data.UnitPrice = requestvatProducts.UnitPrice;
         }
     }
 }

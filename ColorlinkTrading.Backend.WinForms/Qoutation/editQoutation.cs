@@ -21,6 +21,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
         private CustomerListResultModel customers;
         private ProductListResultModel products;
         private int qoutationCount = 0;
+        private int prodID;
         private void editQoutation_Load(object sender, EventArgs e)
 
         {
@@ -286,7 +287,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
             {
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
-                QouteNumber = Int32.Parse(INVnO.Text),
+                QouteNumber = prodID,
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
                 ExtraDetails = "",
@@ -358,7 +359,7 @@ namespace ColorlinkTrading.Backend.WinForms.Qoutation
                     {
                         QouteNumber = invNo
                     });
-
+                prodID = qoutation.QouteNumber;
                 if (qoutation == null)
                 {
                     MessageBox.Show("Qoutation not found" + Environment.NewLine + "Please ensure you have entered the correct Qoutation number", "Invalid Qoutation Number", MessageBoxButtons.OK, MessageBoxIcon.Error);

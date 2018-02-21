@@ -10,7 +10,7 @@ namespace ColorlinkTrading.Models
 {
     public class QoutationItemResultModel : GenericItemResultModel
     {
-        public int? QouteNumber { get; set; }
+        public int QouteNumber { get; set; }
         public int? CustomerId { get; set; }
         public string CustomerName { get; set; }
         public DateTime? InvoiceDate { get; set; }

@@ -297,7 +297,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var nonvatid = request.DisplayValue+"";
+                    var nonvatid = request.DisplayValue + "";
 
                     var data = (from a in dm.InvoiceNonVats
                                 where a.DisplayValue == nonvatid
@@ -328,11 +328,11 @@ namespace ColorlinkTrading.Logic
                     data.SubTotal = request.SubTotal;
                     data.TotalAmount = request.TotalAmount;
 
-                    resetNonVatProduct(request);
+                    resetNonVatProduct(request,dm);
 
                     foreach (var item in request.ProductNonVat)
                     {
-                        writeNonVatProduct(item, request, data.InvoiceNumber);
+                        writeNonVatProduct(item, request, data.InvoiceNumber,dm);
                     }
                     dm.SaveChanges();
                     return result;
@@ -347,48 +347,37 @@ namespace ColorlinkTrading.Logic
             }
             return result;
         }
-        private static void resetNonVatProduct(NonVatInvoiceRequestModel request)
+        private static void resetNonVatProduct(NonVatInvoiceRequestModel request, DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
+            var data = (from a in dm.ProductInvoiceNonVats
+                        where a.InvoiceNo == request.InvoiceNumber
+                        select a).ToList();
+            foreach (var item in data)
             {
-                var invoiceNo = Int32.Parse(request.DisplayValue);
-
-                var data = (from a in dm.ProductInvoiceNonVats
-                            where a.InvoiceNo == invoiceNo
-                            select a).ToList();
-                foreach (var item in data)
-                {
-                    item.OLDNo = item.InvoiceNo + "";
-                    item.InvoiceNo = 0;
-                    
-                }
-                dm.SaveChanges();
+                item.OLDNo = item.InvoiceNo + "";
+                item.InvoiceNo = 0;
+               // dm.ProductInvoiceNonVats.Remove(item);
             }
         }
 
-        private static void writeNonVatProduct(NonVatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo)
+        private static void writeNonVatProduct(NonVatInvoiceProductItemResultModel requestvatProducts, GenericRequestModel request, int invNo, DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
+            var data = (from a in dm.ProductInvoiceNonVats
+                        where a.ProductInvoiceNonVatId == requestvatProducts.ProductInvoiceNonVatId
+                        select a).FirstOrDefault();
+
+            if (data == null)
             {
-                var data = (from a in dm.ProductInvoiceNonVats
-                            where a.ProductInvoiceNonVatId == requestvatProducts.ProductInvoiceNonVatId
-                            select a).FirstOrDefault();
-
-                if (data == null)
-                {
-                    data = new ProductInvoiceNonVat();
-                    dm.ProductInvoiceNonVats.Add(data);
-                }
-
-                data.Amount = requestvatProducts.Amount;
-                data.InvoiceNo = invNo;
-                data.ProdId = requestvatProducts.ProdId;
-                data.ProductInvoiceNonVatId = requestvatProducts.ProductInvoiceNonVatId;
-                data.Quantity = requestvatProducts.Quantity;
-                data.UnitPrice = requestvatProducts.UnitPrice;
-                dm.SaveChanges();
-
+                data = new ProductInvoiceNonVat();
+                dm.ProductInvoiceNonVats.Add(data);
             }
+
+            data.Amount = requestvatProducts.Amount;
+            data.InvoiceNo = invNo;
+            data.ProdId = requestvatProducts.ProdId;
+            data.ProductInvoiceNonVatId = requestvatProducts.ProductInvoiceNonVatId;
+            data.Quantity = requestvatProducts.Quantity;
+            data.UnitPrice = requestvatProducts.UnitPrice;
         }
 
     }

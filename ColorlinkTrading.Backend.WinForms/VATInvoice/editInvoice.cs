@@ -21,7 +21,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
         private CustomerListResultModel customers;
         private ProductListResultModel products;
         private int invoiceCount = 0;
-
+        private int prodID;
         private void cancbtn_Click(object sender, EventArgs e)
         {
             Close();
@@ -212,8 +212,10 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                                 ProductId = Int32.Parse(item.SubItems[4].Text)
                             });
                         prodList.Items.Add(prod.ProductName);
+                        break;
                     }
                 }
+                
                 prodid.Clear();
                 txtprice.Clear();
                 proddescr.Clear();
@@ -289,7 +291,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
         {
             VatInvoiceRequestModel invoiceNew = new VatInvoiceRequestModel()
             {
-                InvoiceNumber = Int32.Parse(INVnO.Text),
+                InvoiceNumber = prodID,
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
                 Discount = decimal.Parse(txtdiscount.Text),
@@ -319,8 +321,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 };
                 invoiceNew.ProductVat.Add(invoiceProduct);
             }
-            invoiceNew.InvoiceNumber=Int32.Parse(invoiceNew.DisplayValue);
-            GenericItemResultModel state = VatInvoiceLogic.WriteVatInvoice(invoiceNew);
+             GenericItemResultModel state = VatInvoiceLogic.WriteVatInvoice(invoiceNew);
             if (state.Feedback == "Edit Invoice Successful")
             {
                 return true;
@@ -409,7 +410,6 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                 }
             }
         }
-
         private void Button7_Click(object sender, EventArgs e)
         {
             if (TextBox1.Text != "")
@@ -429,7 +429,7 @@ namespace ColorlinkTrading.Backend.WinForms.VATInvoice
                     {
                         InvoiceNumber = invNo
                     });
-
+                prodID = invoice.InvoiceNumber;
                 if (invoice == null)
                 {
                     MessageBox.Show("Invoice not found" + Environment.NewLine + "Please ensure you have entered the correct invoice number", "Invalid Invoice Number", MessageBoxButtons.OK, MessageBoxIcon.Error);

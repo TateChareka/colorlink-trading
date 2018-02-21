@@ -20,6 +20,8 @@ namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
         }
         private CustomerListResultModel customers;
         private ProductListResultModel products;
+        private int prodID;
+
         private int invoiceCount = 0;
         private void editProforma_Load(object sender, EventArgs e)
         {
@@ -285,7 +287,7 @@ namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
             {
                 CustomerId = Int32.Parse(custid.Text),
                 CustomerName = custList.Text,
-                ProformaNumber = Int32.Parse(INVnO.Text),
+                ProformaNumber = prodID,
                 Discount = decimal.Parse(txtdiscount.Text),
                 DisplayValue = INVnO.Text,
                 ExtraDetails = "",
@@ -357,7 +359,7 @@ namespace ColorlinkTrading.Backend.WinForms.ProformaInvoice
                     {
                         ProformaNumber = invNo
                     });
-
+                prodID = qoutation.ProformaNumber;
                 if (qoutation == null)
                 {
                     MessageBox.Show("Proforma not found" + Environment.NewLine + "Please ensure you have entered the correct Proforma number", "Invalid Proforma Number", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -10,7 +10,7 @@ namespace ColorlinkTrading.Models
 {
     public class ProformaItemResultModel : GenericItemResultModel
     {
-        public int? ProformaNumber { get; set; }
+        public int ProformaNumber { get; set; }
         public int? CustomerId { get; set; }
         public string CustomerName { get; set; }
         public DateTime? ProformaDate { get; set; }

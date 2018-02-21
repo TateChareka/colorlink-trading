@@ -31,3 +31,14 @@ C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.csp
 C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.dll
 C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.pdb
 C:\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.csproj.CoreCompileInputs.cache
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\SofticeMailFetcher.dll
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\SofticeMailFetcher.pdb
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\ChilkatDotNet45.dll
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\colorlink-trading\SofticeMailFetcher\bin\Debug\HtmlAgilityPack.xml
+D:\Projects\colorlink-trading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.csprojResolveAssemblyReference.cache
+D:\Projects\colorlink-trading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.dll
+D:\Projects\colorlink-trading\SofticeMailFetcher\obj\Debug\SofticeMailFetcher.pdb

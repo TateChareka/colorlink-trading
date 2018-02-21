@@ -229,7 +229,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var qouteid = request.QouteNumber+"";
+                    var qouteid = request.QouteNumber + "";
 
                     var data = dm.Qoutations.Where(b => b.DisplayValue == qouteid).FirstOrDefault();
 
@@ -300,7 +300,7 @@ namespace ColorlinkTrading.Logic
                     //timeout to make sure this completes
                     dm.Database.CommandTimeout = globalTimeOut;
 
-                    var qouteid = request.DisplayValue+"";
+                    var qouteid = request.DisplayValue + "";
 
                     var data = (from a in dm.Qoutations
                                 where a.DisplayValue == qouteid
@@ -331,13 +331,11 @@ namespace ColorlinkTrading.Logic
                     data.SubTotal = request.SubTotal;
                     data.TotalAmount = request.TotalAmount;
                     data.VatAmount = request.VatAmount;
-                    dm.SaveChanges();
-
-                    resetQouteProduct(request);
+                     resetQouteProduct(request,dm);
 
                     foreach (var item in request.ProductQoutations)
                     {
-                        writeQouteProduct(item, request, data.QouteNumber);
+                        writeQouteProduct(item, request, data.QouteNumber,dm);
                     }
                     dm.SaveChanges();
                     return result;
@@ -352,50 +350,37 @@ namespace ColorlinkTrading.Logic
             }
             return result;
         }
-        private static void resetQouteProduct(QoutationRequestModel request)
+        private static void resetQouteProduct(QoutationRequestModel request, DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
+             var data = (from a in dm.ProductQoutes
+                        where a.QouteNo == request.QouteNumber
+                        select a).ToList();
+            foreach (var item in data)
             {
-                var invoiceNo = Int32.Parse(request.DisplayValue);
-
-                var data = (from a in dm.ProductQoutes
-                            where a.QouteNo == invoiceNo
-                            select a).ToList();
-                foreach (var item in data)
-                {
-                    item.OLDNo = item.QouteNo + "";
-                    item.QouteNo = 0;
-                  
-                }
-                dm.SaveChanges();
+                item.OLDNo = item.QouteNo + "";
+                item.QouteNo = 0;
+               // dm.ProductQoutes.Remove(item);
             }
         }
 
-        private static void writeQouteProduct(QoutationProductItemResultModel requestvatProducts, GenericRequestModel request,int invNo)
+        private static void writeQouteProduct(QoutationProductItemResultModel requestvatProducts, GenericRequestModel request, int invNo, DataModelEntities dm)
         {
-            using (var dm = new DataModelEntities(request.SessionUserName))
+            var data = (from a in dm.ProductQoutes
+                        where a.ProductQouteId == requestvatProducts.ProductQouteId
+                        select a).FirstOrDefault();
+
+            if (data == null)
             {
-                var data = (from a in dm.ProductQoutes
-                            where a.ProductQouteId == requestvatProducts.ProductQouteId
-                            select a).FirstOrDefault();
-
-                if (data == null)
-                {
-                    data = new ProductQoute();
-                    dm.ProductQoutes.Add(data);
-                }
-
-                data.Amount = requestvatProducts.Amount;
-                data.QouteNo = invNo;
-                data.ProdId = requestvatProducts.ProdId;
-                data.ProductQouteId = requestvatProducts.ProductQouteId;
-                data.Quantity = requestvatProducts.Quantity;
-                data.UnitPrice = requestvatProducts.UnitPrice;
-                dm.SaveChanges();
-
+                data = new ProductQoute();
+                dm.ProductQoutes.Add(data);
             }
+
+            data.Amount = requestvatProducts.Amount;
+            data.QouteNo = invNo;
+            data.ProdId = requestvatProducts.ProdId;
+            data.ProductQouteId = requestvatProducts.ProductQouteId;
+            data.Quantity = requestvatProducts.Quantity;
+            data.UnitPrice = requestvatProducts.UnitPrice;
         }
-
-
     }
 }
