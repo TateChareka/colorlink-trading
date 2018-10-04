@@ -38,3 +38,16 @@ D:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramew
 D:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
 D:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.dll
 D:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.dll.config
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\ColorlinkTrading.DataAccess.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\System.Data.SqlServerCe.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.pdb
