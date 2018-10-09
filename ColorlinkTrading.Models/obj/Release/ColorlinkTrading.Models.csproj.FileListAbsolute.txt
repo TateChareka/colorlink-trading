@@ -23,3 +23,28 @@ C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Release\ColorlinkTrading.Models.csprojResolveAssemblyReference.cache
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Release\ColorlinkTrading.Models.dll
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.Models\obj\Release\ColorlinkTrading.Models.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ColorlinkTrading.Models.dll.config
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ColorlinkTrading.Models.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ColorlinkTrading.Models.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ColorlinkTrading.DataAccess.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\DocumentFormat.OpenXml.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\EntityFramework.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\EntityFramework.SqlServer.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\EntityFramework.SqlServerCompact.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\SofticeMailFetcher.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\System.Data.SqlServerCe.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\System.Linq.Dynamic.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ChilkatDotNet45.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\HtmlAgilityPack.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ColorlinkTrading.DataAccess.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\ColorlinkTrading.DataAccess.dll.config
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\SofticeMailFetcher.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\DocumentFormat.OpenXml.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\EntityFramework.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\EntityFramework.SqlServer.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\EntityFramework.SqlServerCompact.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\HtmlAgilityPack.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\bin\Release\HtmlAgilityPack.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\obj\Release\ColorlinkTrading.Models.csprojResolveAssemblyReference.cache
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\obj\Release\ColorlinkTrading.Models.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.Models\obj\Release\ColorlinkTrading.Models.pdb

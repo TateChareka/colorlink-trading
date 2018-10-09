@@ -11,3 +11,16 @@ C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Release\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Release\ColorlinkTrading.DataAccess.dll
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\ColorlinkTrading.DataAccess\obj\Release\ColorlinkTrading.DataAccess.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\ColorlinkTrading.DataAccess.dll.config
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\ColorlinkTrading.DataAccess.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\ColorlinkTrading.DataAccess.pdb
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\EntityFramework.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\EntityFramework.SqlServerCompact.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\System.Data.SqlServerCe.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\EntityFramework.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Release\EntityFramework.SqlServerCompact.xml
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Release\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Release\ColorlinkTrading.DataAccess.dll
+C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Release\ColorlinkTrading.DataAccess.pdb

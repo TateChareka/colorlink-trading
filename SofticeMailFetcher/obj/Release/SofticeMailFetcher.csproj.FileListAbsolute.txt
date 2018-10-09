@@ -9,3 +9,14 @@ C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Release\SofticeMailFetcher.csprojResolveAssemblyReference.cache
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Release\SofticeMailFetcher.dll
 C:\Users\Tatenda Chareka\documents\visual studio 2017\Projects\ColorlinkTrading\SofticeMailFetcher\obj\Release\SofticeMailFetcher.pdb
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\SofticeMailFetcher.dll
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\SofticeMailFetcher.pdb
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\ChilkatDotNet45.dll
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\DocumentFormat.OpenXml.dll
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\HtmlAgilityPack.dll
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\DocumentFormat.OpenXml.xml
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\HtmlAgilityPack.pdb
+C:\Projects\colorlink-trading\SofticeMailFetcher\bin\Release\HtmlAgilityPack.xml
+C:\Projects\colorlink-trading\SofticeMailFetcher\obj\Release\SofticeMailFetcher.csprojResolveAssemblyReference.cache
+C:\Projects\colorlink-trading\SofticeMailFetcher\obj\Release\SofticeMailFetcher.dll
+C:\Projects\colorlink-trading\SofticeMailFetcher\obj\Release\SofticeMailFetcher.pdb

@@ -48,6 +48,5 @@ C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\System.Data.
 C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.xml
 C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
 C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\bin\Debug\EntityFramework.SqlServerCompact.xml
-C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.csprojResolveAssemblyReference.cache
 C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.dll
 C:\Projects\colorlink-trading\ColorlinkTrading.DataAccess\obj\Debug\ColorlinkTrading.DataAccess.pdb
